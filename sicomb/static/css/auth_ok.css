@@ -1,0 +1,260 @@
+.title{
+    font-size: 1.5em;
+    color: #90816A;
+    /* padding: 25px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3% 0%;
+}
+.table_itens{
+    
+}
+.loading_or_unloading{
+    /* display: grid; */
+    /* color: #fff; */
+    font-family: interBold;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* margin: 0% 0% 2% 0; */
+}
+
+.choice_loading_unloading{
+    list-style-type: none;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.choice_loading_unloading li{
+    align-items: center;
+    width: 500px;
+    margin: 2%;
+    /* padding: 10px; */
+    /* width: 100%; */
+}
+.choice_loading_unloading li a{
+    background-color: #5B4939;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+    /* margin: 20px; */
+    /* width: 70%; */
+    border-radius: 10px;
+    box-shadow: -0px 5px 10px rgb(0,0,0,0.50);
+
+    
+}
+
+.choice_loading_unloading li a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.choice_loading_unloading li a:hover{
+    background-color: #fff;
+    transition: .5s;
+
+
+}
+
+.choice_loading_unloading li:hover span{
+    color:#5B4939
+
+}
+
+.military_means_room{
+    display: grid;
+    align-items: center;
+}
+.tbody_top_means_room tr td{
+    padding: 5px 10px;
+}
+.checkbox input, label{
+   cursor: pointer;
+}
+
+.button_continue{
+    /* justify-content: center; */
+    /* padding: 0 0 10px 0; */
+}
+
+/* Tela de autenticação: "AGUARDANDO AUTENTICAÇÃO"*/
+
+.means_room_content{
+    width: 100%;
+    height: 100%;
+}
+.means_room_auth{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.waiting_auth{
+    
+    width: 75%;
+    height: 80%;
+    display: flex;
+    background-color: rgb(243, 241, 241);
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px ridge #c1d1e4;
+    padding: 15px;
+}
+
+
+/* .police_officer_field{
+    height: 100%;
+    width: 100%;
+} */
+.police_officer_auth{
+    /* border: 1px outset #004593; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+/* .military_means_room{
+    border: 1px outset #004593;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+/* .cargo_itens{
+    border: 1px outset #004593;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+.means_room_load{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table_select_time{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tbody_select_time{
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.radio{
+    /* text-align: left; */
+    padding: 5px;
+    position: relative;
+    height: 4rem;
+    width: 11rem;
+    margin: 0.5rem;
+}
+.radio input{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0;
+}
+
+.radio .radio_label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    /* border: 2px solid #5B4939; */
+    /* background-color: #8D7A68; */
+    /* background-color: burlywood; */
+    border-radius: 8px;
+    transition: all 300ms ease;
+    background-color: #5B4939;
+    box-shadow: 0 0 12px #5B4939;
+    color: white; 
+}
+
+.radio label{
+    /* color: white; */
+    font-size: 0.80rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+}
+
+input:checked + .radio_label{
+    background-color: white;
+    box-shadow: 0 0 12px #5B4939;
+}
+
+input:hover + .radio_label{
+    color: #5B4939;
+    background-color: white;
+    /* box-shadow: 0 0 12px #5B4939; */
+    box-shadow: 0 0 15px #5B4939;
+    border: 2px solid #5b493996;
+    
+
+}
+
+input:checked + .radio_label label{
+    color: #5B4939;
+}
+
+.continue_or_return{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.button_continue{
+    /* background-color: #90816A;
+    color: #c1d1e4;
+    border: 2px solid #5b493996;
+    box-shadow: 0 0 12px #5B4939;
+    border-radius: 10px; */
+}
+
+.btn-continue{
+    height: 4rem;
+    width: 11rem;
+    background: none;
+    background-color: #90816aaf;
+    color: white;
+    border: 2px solid #5b493996;
+    box-shadow: 0 0 12px #5B4939;
+    border-radius: 10px;
+    font-family: interBold;
+    font-size: 15px;
+    cursor: pointer;
+    /* background: none; */
+}
+.btn-continue:hover{
+    transition: 0.5s;
+    background-color: #90816A;
+    box-shadow: 0 2px 15px #5B4939;
+    color: white;  
+}
+
+.return_button{
+    display: flex;
+    justify-content: center;
+}

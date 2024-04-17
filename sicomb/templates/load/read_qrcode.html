@@ -1,0 +1,28 @@
+{% extends 'base/footer.html' %}
+{% load static %}
+
+{% block css %}{% static 'css/register_model.css' %}{% endblock %}
+{% block title %}SICOMB - Registro de Modelos Equipamento{% endblock title %}
+{% block title_top %}Ler QR code{% endblock title_top %}
+{% block nav %}{% endblock nav %}
+
+{% block content_final %}
+
+<button onclick="startCamera()">Permitir Acesso à Câmera</button>
+<video id="video" width="100%" height="auto" autoplay></video>
+
+<script>
+  async function startCamera() {
+    try {
+      // Solicitar permissão para acessar a câmera
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+
+      // Obter o elemento de vídeo e configurar a fonte do stream
+      const videoElement = document.getElementById('video');
+      videoElement.srcObject = stream;
+    } catch (error) {
+      console.error('Erro ao acessar a câmera:', error);
+    }
+  }
+</script>
+{% endblock content_final %}

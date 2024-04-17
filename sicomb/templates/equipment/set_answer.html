@@ -1,0 +1,116 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="{% static "img/policiamilitar_logo.png" %}">
+  <style>
+    /* Estilos para os links/botões */
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: auto 400px;
+    }
+    .uid-links {
+        display: grid;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+    }
+
+    .uid-link {
+        background-color: #f0f0f0;
+        color: #333;
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin: 10px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .uid-link:hover {
+      transition: 0.2s;
+      filter: brightness(0.8);
+      color: white;
+    }
+
+    /* Estilos para o botão de reenvio */
+    .resend-btn {
+        background-color: rgba(0, 0, 0, 0.54);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .resend-btn:hover {
+      background-color: rgba(0, 0, 0, 0.915);
+    }
+
+    /* Estilos para o botão de envio */
+    .submit-btn {
+        background-color: #008CBA;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .submit-btn:hover {
+      background-color: #005c7a;
+    }
+
+    .container-uid-links {
+      display: flex;
+      flex-wrap: nowrap;
+      align-content: space-between;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    .ac {
+      background-color: #91e1fb;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p class="success">Sucesso, uid = {{uid}}</p>
+    <button class="resend-btn" onclick="location.href='set?uid={{uid}}'">Reenviar</button>
+    <div class="container-uid-links">
+      <div class="uid-links">
+          {% for i in equipments %}
+            <a class="uid-link ac" href="set?uid={{ i.uid }}">{{ i.model_type.name }} {{ i.model.model }} - {{ i.status }} - {{ i.uid }}</a>
+          {% endfor %}
+      </div>
+    </div>
+    <a class="uid-link" href="set?uid=ns11">não setado</a>
+    <h1>Novo uid</h1>
+    <form method="GET">
+      {% csrf_token %}
+      <input class="uid-input" name="uid" type="text" placeholder="UID">
+      <input class="submit-btn" type="submit">
+      <br>
+      <br>
+      <a class="uid-link ac" href="./set">Recarregar página</a>
+    </form>
+  </div>
+</body>
+</html>

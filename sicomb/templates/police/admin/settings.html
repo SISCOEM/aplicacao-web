@@ -1,0 +1,17 @@
+{% extends 'base/footer.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block css %}{% static 'css/register_police_form.css' %}{% endblock %}
+{% block title %}SICOMB - Registro de Equipamento{% endblock title %}
+{% block title_top %}{% if edit|default:False %}EDIÇÃO DE POLICIAL{% else %}REGISTRO DE POLICIAL{% endif %}{% endblock title_top %}
+
+{% block content_final %}
+
+
+
+{% endblock content_final %}
+
+{% block js %}
+<script src="{% static "js/register_police.js" %}"></script>
+{% endblock js %}

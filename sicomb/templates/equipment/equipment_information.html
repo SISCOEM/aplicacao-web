@@ -1,0 +1,131 @@
+{% extends 'base/footer.html' %}
+{% load static %}
+
+{% block title %}SICOMB - Lista de modelos{% endblock title %}
+{% block title_top %}LISTA DE EQUIPAMENTOS{% endblock title_top %}
+{% block css2 %}{% static 'css/equipamentos.css' %}{% endblock%}
+
+{% block content_final %}
+
+<section class="equipment_informations">
+    <section class="equipment_and_police" style="padding: 0px 20px">
+        <div id="police_officer_field" class="equipment_field shadow">
+            <table class="police_officer_table">
+                <thead>
+                    <tr>
+                        <th colspan="100%" class="cargo_title">EQUIPAMENTO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td>{{equipment.model}}</td>
+                    </tr>
+                    <tr>
+                        <td>Núm. de Série: {{equipment.serial_number}}</td>
+                    </tr>
+                    <tr>
+                        <td>Calibre: {{equipment.armament.caliber}}</td>
+                    </tr>
+                    <tr>
+                        <td>Situação: {{equipment.status}}</td>
+                    </tr>
+                    <tr>
+                        <td>Aprovado por {{equipment.activator}}</td>
+                    </tr>
+                    <tr>
+                        <td>Cadastrado em {{equipment.date_register}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{equipment.description}}</td>
+                    </tr>
+                    
+                    <tr>
+                        <!-- <td>{{equipment.}}</td> -->
+                    </tr>
+                    <tr>
+                        <!-- <td>{{equipment.}}</td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="police_officer_field" class="police_officer_field shadow">
+            <table class="police_officer_table">
+                <thead>
+                    <tr>
+                        <th colspan="100%" class="cargo_title">POLICIAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% comment %} <td rowspan="100%"> {% endcomment %}
+                        <td>
+                            <a><img class="shadow" src="{% if load.police.image_path %}{{ load.police.image_path.url }}{% else %}static/img/user.png{% endif %}" onerror="this.src='{% static "img/user.png"%}'" alt="Perfil do policial" alt=""></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{load.police.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{load.police.matricula}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{load.police.telefone}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{load.police.lotacao}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{load.police.email}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="police_officer_field" class="police_officer_field shadow">
+            <table class="police_officer_table">
+                <thead>
+                    <tr>
+                        <th colspan="100%" class="cargo_title">CARGA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        {% comment %} <td rowspan="100%"> {% endcomment %}
+                        <td>
+                            <a><img class="shadow" src="{% if load.police.image_path %}{{ load.police.image_path.url }}{% else %}static/img/user.png{% endif %}" onerror="this.src='{% static "img/user.png"%}'" alt="Perfil do policial" alt=""></a>
+                        </td>
+                    </tr> -->
+                    <tr>
+                        <td>ID DE CARGA: 139</td>
+                    </tr>
+                    <tr>
+                        <td>TURNO / TIPO: 24H</td>
+                    </tr>
+                    <tr>
+                        <td>ADJUNTO: Ediel</td>
+                    </tr>
+                    <tr>
+                        <td>QNT. DE ITENS: 3</td>
+                    </tr>
+                    <tr>
+                        <td>DATA: 14/12/2023 14:49:38</td>
+                    </tr>
+                    <tr>
+                        <td>PREVISÃO DE DESCARGA: 14/12/2023 14:49:38</td>
+                    </tr>
+                    <tr>
+                        <td>STATUS: DESCARREGADA COM ATRASO</td>
+                    </tr>
+                    <tr>
+                        <td>DESCARGA: 15/12/2023 16:02:24</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </section>
+
+    
+</section>
+{% endblock content_final %} 

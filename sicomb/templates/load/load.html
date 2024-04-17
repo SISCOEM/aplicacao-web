@@ -1,0 +1,117 @@
+{% extends 'base/footer.html' %}
+{% load static %}
+
+{% block css %}{% static 'css/carga.css' %}{% endblock %}
+{% block css2 %}{% static 'css/auth_ok.css' %}{% endblock %}
+{% block title %}SICOMB - Fazer Carga / Descarga{% endblock title %}
+{% block title_top %}FAZER CARGA{% endblock title_top %}
+
+{% block content_final %}
+<style>
+    .wating_list_div {
+        display: none;
+    }
+    .container {
+        display: grid;
+    }
+</style>
+    <div class="content">
+        <!-- <main role="main" > -->
+        <section class="cargo">
+            <div id="police_officer_field" class="police_officer_field shadow">
+                <div class="police_officer_auth">
+                    <div class="waiting_auth">
+                        <table class="alert_auth">
+                            <thead>
+                                <tr>
+                                    <th>AGUARDANDO <br> AUTENTICAÇÃO</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        É preciso que o policial solicitante faça autenticação por meio da digital ou matrícula e senha!
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wating_list_div">
+                <table class="police_officer_table">
+                    <thead>
+                        <tr>
+                            <th class="cargo_title">LISTA DE ESPERA</th>
+                        </tr>
+                    </thead>
+                    <tbody id="wating_list" style="text-align: center;">
+                        
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="military_means_room shadow">
+                <div class="means_room_content" id="means_room_content">
+                    <div class="means_room_auth">
+                        <div class="waiting_auth">
+                            <table class="alert_auth">
+                                <thead>
+                                    <tr>
+                                        <th>AGUARDANDO <br> AUTENTICAÇÃO</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            É preciso que o policial solicitante faça autenticação por meio da digital ou matrícula e senha!
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="cargo_itens shadow">
+                <table class="table_itens">
+                    <thead>
+                        <tr>
+                            <th colspan="100%" class="cargo_title">
+                                <h3>ITENS</h3>
+                            </th>
+                        </tr>
+                        <tr class="col-itens">
+                            <th>Nª</th>
+                            <th>Nº DE SÉRIE</th>
+                            <th>MODELO</th>
+                            <th>TIPO</th>
+                            <th>CALIBRE</th>
+                            <th>QUANTIDADE</th>
+                            <th>TAMANHO</th>
+                            <th>OBSERVAÇÃO</th>
+                            <th>AÇÃO</th>
+                        </tr>
+                    </thead>
+                    <tbody class="row-tbody" id="body_table_itens">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <div class="finalize_load">
+            <form action="." method="POST" id="form-equipment">
+                {% csrf_token %}
+                <div class=""><input class="btn_finalize btn_disabled shadow" disabled type="button" id="cancel_btn" onclick="window.location.href = './cancelar';" value="Limpar lista">
+                <input class="btn_finalize btn_disabled shadow" id="submit_btn" disabled type="button" onclick="confirmCargo()" value="Finalizar"></div>
+            </form>
+        </div>
+    </div>
+    
+    {% block js %}
+        <script src="{% static 'js/select_load.js' %}"></script>
+    {% endblock js %}
+
+{% endblock content_final %}

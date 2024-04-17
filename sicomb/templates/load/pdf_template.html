@@ -1,0 +1,111 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Comprovante de Carga</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #000;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #ddd;
+        }
+        .police th {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Comprovante de {% if load.turn_type == "descarga" %}{{ load.turn_type }}{% else %}Carga{% endif %}</h1>
+
+    <p><strong>Tipo:</strong> {{ load.turn_type }}</p>
+    <p><strong>ID da Carga:</strong> {{ load.pk }}</p>
+    <p><strong>Data:</strong> {{ load.date_load }}</p>
+    <p><strong>Data esperada de retorno:</strong> {{ load.expected_load_return_date }}</p>
+    <p><strong>Data descarga:</strong> {{ load.returned_load_date|default:"-" }}</p>
+    
+    <h2>Informações do Policial</h2>
+    <table class="police">
+        <tr>
+            <th>Nome</th>
+            <td>{{ load.police.name }}</td>
+        </tr>
+        <tr>
+            <th>Matrícula</th>
+            <td>{{ load.police.matricula }}</td>
+        </tr>
+        <!-- Adicione mais informações do policial aqui -->
+    </table>
+
+    <h2>Informações do Adjunto</h2>
+    <table class="police">
+        <tr>
+            <th>Nome</th>
+            <td>{{ load.adjunct.name }}</td>
+        </tr>
+        <tr>
+            <th>Matrícula</th>
+            <td>{{ load.adjunct.matricula }}</td>
+        </tr>
+        <!-- Adicione mais informações do adjunto aqui -->
+    </table>
+
+    <h2>Itens da Carga</h2>
+    <table>
+        <tr>
+            <th>Nº</th>
+            <th>Nº de Série</th>
+            <th>Descrição</th>
+            <th>Tipo</th>
+            <th>Calibre</th>
+            <th>Quantidade</th>
+            <th>Tamanho</th>
+            <th>Status</th>
+            <th>Observação</th>
+        </tr>
+        {% for equipment_load in equipment_loads %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ equipment_load.equipment.serial_number }}{{equipment_load.bullet.caliber}}</td>
+            <td>{{ equipment_load.equipment.model.description }}{{ equipment_load.bullet.description}}</td>
+            <td>{{ equipment_load.equipment.model.model|default:equipment_load.bullet}}</td>
+            <td>{% if equipment_load.equipment.model.caliber %}
+                {{ equipment_load.equipment.model.caliber }}
+            {% else %}
+                {{ equipment_load.bullet.caliber|default:'-' }}
+            {% endif %}</td>
+            <td>{{ equipment_load.amount }}</td>
+            <td>{{ equipment_load.equipment.model.size|default:"-" }}</td>
+            <td>{{ equipment_load.status }}</td>
+            <td>{{ equipment_load.observation|default:"-" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,64 @@
+{% extends 'base/footer.html' %}
+{% load static %}
+
+{% block css %}{% static 'css/register_equipment.css' %}{% endblock %}
+{% block title %}SICOMB - Registro de Equipamento{% endblock title %}
+{% block title_top %}FORMULÁRIO{% endblock title_top %}
+
+{% block content_final %}
+
+<section class="section_register shadow">
+  <div class="registration shadow box-form">
+    <table>
+        <thead>
+            <tr>
+                <th colspan="100%" class="title"><h3>FORMULÁRIO DE CADASTRO</h3></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="sub-title">FORMULÁRIO</td>
+            </tr>
+        </tbody>   
+    </table>
+    <div class="row_color"><span><hr></span></div>
+      
+    <form method="post" action="." class="form-element" id="form-equipment">
+      <div class="input-div">
+        {% csrf_token %}
+        {% for field in form %}
+            {% if field.name == "image_path" %}
+                <div class="input-box">
+                    <h4 class="input-title">{{ field.label }}</h4>
+                    <div class="file-div">
+                        <label class="file-label" for="{{ field.id_for_label }}">UPLOAD DE ARQUIVO +</label>
+                        <input class="input-file" name="{{ field.name }}" type="file" id="{{ field.id_for_label }}" accept="image/*">
+                    </div>
+                </div>
+            {% else %}
+                <div class="input-box">
+                    <h4 for="{{ field.id_for_label }}" class="input-title">{{ field.label }}</h4>
+                    {{ field }}
+                </div>
+            {% endif %}
+            {% if field.errors %}
+                <usl>
+                    {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </usl>
+            {% endif %}
+        {% endfor %}
+        <div class="finalize-registration">
+          <label><input type="button" id="submit-btn" class="box-shadow-registration" value="Enviar"></label>
+        </div>
+      </div> 
+    </form>
+  </div>
+</section>
+
+{% endblock content_final %}
+
+{% block js %}
+    <script src="{% static 'js/register_equipment.js' %}"></script>
+{% endblock js %}

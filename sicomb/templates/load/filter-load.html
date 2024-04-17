@@ -1,0 +1,83 @@
+{% extends 'base/footer.html' %}
+{% load static %}
+
+{% block title %}SICOMB - Cargas{% endblock title %}
+{% block title_top %}TABELA DE CARGAS{% endblock title_top %}
+{% block css2 %}{% static 'css/carga.css' %}{% endblock%}
+{% block content_final %}
+<link rel="stylesheet" href="{% static 'css/equipamentos.css' %}">
+<style>
+    .footer-div{
+        position: absolute;
+    }
+    .container {
+        {% comment %} max-width: 100%; {% endcomment %}
+    }
+</style>
+<section style="/*display:grid;*/ padding: 0px 20px">
+    <div class="cargo_itens dashboard_loads shadow"> 
+         <table class="table_itens">
+            <thead>
+                <form method="get">
+                <tr>
+                    <th colspan="100%" class="cargo_title"><h3>CARGAS </h3></th>
+                </tr>
+                    <tr class="col-itens">
+                        <th colspan="2">NUMERO DE SÉRIE {{ filter_form.equipment_sn }}</th>
+                        <th colspan="100%" class=""><input type="submit" class="button" value="Filtrar"></th>
+                    </tr>
+                    
+                    <tr class="col-itens">
+                        <th></th>
+                        <th>{{ filter_form.turn_type }}</th>
+                        <th>{{ filter_form.police }}</th>
+                        <th>{{ filter_form.plate }}</th>
+                        <th>{{ filter_form.graduation }}</th>
+                        <th>{{ filter_form.adjunct }}</th>
+                        <th>{{ filter_form.amount_items }}</th>
+                        <th><label>Começo<br> {{ filter_form.date_load_start }} <br>Fim<br> {{ filter_form.date_load_end }}</th>
+                        <th>Começo<br> {{ filter_form.expected_load_return_date_start }} <br>Fim<br> {{ filter_form.expected_load_return_date_end }}</th>
+                        <th>{{ filter_form.status }}</th>
+                        <th>Começo<br> {{ filter_form.returned_load_date_start }} <br>Fim<br> {{ filter_form.returned_load_date_end }}</th>
+                    </tr>
+                </form>
+                <tr class="col-itens">
+                    <th>ID DE CARGA</th>
+                    <th>TURNO / TIPO</th>
+                    <th>REQUISITANTE</th>
+                    <th>MATRÍCULA</th>
+                    <th>POSTO / GRADUAÇÃO</th>
+                    <th>ADJUNTO</th>
+                    <th>QNT. DE ITENS</th>
+                    <th>DATA</th>
+                    <th>PREVISÃO DE DESCARGA</th>
+                    <th>STATUS</th>
+                    <th>DATA DE DESCARGA</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in loads %}
+                <tr class="row-tbody">
+                    <td class="click_redirect"><a href="{% url 'carga_polical' pk=i.0.pk %}">{{ i.0.pk }}</a></td>
+                    <td>{{i.0.turn_type}}</td>
+                    <td class="click_redirect"><a href="{% url 'perfil_police' id=i.0.police.id %}">{{ i.0.police.name|default:'Policial não cadastrado' }}</a></td>
+                    <td>{{ i.0.police.matricula |default:'Policial não cadastrado'}}</td>
+                    <td>{{ i.0.police.posto |default:'Policial não cadastrado'}}</td>
+                    <td class="click_redirect" ><a href="{% url 'perfil_police' id=i.0.adjunct.id %}">{{ i.0.adjunct.name|default:'Adjunto não cadastrado' }}</a></td>
+                    <td>{{ i.1 }}</td>
+                    <td>{{ i.0.date_load|date:"d/m/Y  H:i:s" }}</td>
+                    <td>{{ i.0.expected_load_return_date|date:"d/m/Y  H:i:s" |default:'-' }}</td>
+                    <td class="{% if i.0.status == 'ATRASADA' %}status-atrasada{% elif i.0.status == 'DENTRO DO PRAZO' %}status-dentro-prazo{% elif i.0.status == 'DESCARREGADA COM ATRASO' %}status-descarregada-atraso{% elif i.0.status == 'DESCARREGADA' %}status-descarregada-prazo{% elif i.0.status == 'DATA DE RETORNO NÃO DEFINIDA' %}status-data-indefinida{% elif i.0.status == 'DESVIADA COM ATRASO' %}status-atraso{% elif i.0.status == 'DESVIADA DENTRO DO PRAZO' %}status-prazo{% elif i.0.status == 'PARCIALMENTE DESCARREGADA COM ATRASO' %}status-parcial-atraso{% elif i.0.status == 'PARCIALMENTE DESCARREGADA' %}status-parcial-prazo{% elif i.0.status == 'PARCIALMENTE DESCARREGADA COM ATRASO' %}status-parcial-atraso{% elif i.0.status == 'PARCIALMENTE DESCARREGADA DENTRO DO PRAZO' %}status-parcial-prazo{% endif %}">{{ i.0.status}}</td>
+                    <td>{{ i.0.returned_load_date|date:"d/m/Y  H:i:s" |default:'NÃO DESCARREGADA' }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="100%" style="text-align: center">Nenhuma carga encontrada</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+{% endblock content_final %} 

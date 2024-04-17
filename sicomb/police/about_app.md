@@ -1,0 +1,1 @@
+Este app gerencia informações relacionadas à polícia. Ele inclui funcionalidades específicas para o gerenciamento de dados relacionados aos policiais, como cadastro, autenticação, permissões, e operações relacionadas ao policiamento.

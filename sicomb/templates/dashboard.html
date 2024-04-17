@@ -1,0 +1,87 @@
+{% extends 'base/footer.html' %}
+{% load static %}
+
+{% block css %}{% static 'css/register_equipment.css' %}{% endblock %}
+{% block css2 %}{% static 'css/dashboard.css' %}{% endblock %}
+
+{% block title %}SICOMB - Home{% endblock title %}
+{% block title_top %}DASHBOARD{% endblock title_top %}
+
+{% block content_final %}
+
+<div class="card_container">
+    <div class="cards-row-1">
+        <div class="card card_report">
+            <div class="top-card">
+                <img src="static/img/analytics.png">
+                <span><a href="">IR PARA RELATÓRIOS</a></span>
+            </div>
+            <div class="card-informations">
+                <h2>CARGAS REALIZADAS</h2>
+                <span>{{loads.total}}</span>
+                <h2>CARGAS FINALIZADAS</h2>
+                <span>{{loads.completed}}</span>
+                <h2>FINALIZADAS COM FALTA</h2>
+                <span>{{loads.pending}}</span>
+            </div>
+        </div>
+
+        <div class="card card_equipment_available">
+            <div class="top-card">
+                <img src="static/img/accept.png">
+                <span><a href="/equipamento/">IR PARA EQUIPAMENTOS</a></span>
+            </div>
+            <div class="card-informations">
+                <h2>TOTAL DE EQUIPAMENTOS</h2>
+                <span>{{equipment.total}}</span>
+                <h2>DISPONÍVEIS</h2>
+                <span>{{equipment.available}}</span>
+                <h2>AGUARDANDO APROVAÇÃO</h2>
+                <span>{{equipment.inactive}}</span>
+            </div>
+        </div>
+
+        <div class="card card_equipment_unavailable">
+            <div class="top-card">
+                <img src="static/img/warning.png">
+                {% comment %} <span><a href=""></a></span> {% endcomment %}
+            </div>
+            <div class="card-informations">
+                <h2>EQUIP. INDISPONÍVEIS</h2>
+                <span>{{equipment.unavailable}}</span>
+                <h2>EM CONSERTO</h2>
+                <span>{{equipment.repair}}</span>
+                <h2>EM PERÍCIA</h2>
+                <span>{{equipment.judicial_request}}</span>
+            </div>
+
+        </div>
+    </div>
+    <div class="cards-row-2">
+        <div class="card-2 card_police">
+            <div class="top-card">
+                <img src="static/img/grupo-de-trabalho.png">
+                {% comment %} <span><a href=""></a></span> {% endcomment %}
+            </div>
+            <div class=" card-informations">
+                <h2>POLICIAIS CADASTRADOS</h2>
+                <span>{{police.total}}</span>
+                <h2>AGUARDANDO APROVAÇÃO</h2>
+                <span>{{police.inactive}}</span>
+            </div>
+        </div>
+
+        <div class="card-2 card_equipment_justice">
+            <div class="top-card">
+                <img src="static/img/sinal-de-alerta.png">
+                {% comment %} <span><a href=""></a></span> {% endcomment %}
+            </div>
+            <div class="card-informations">
+                <h2>LIMITE DE DIGITAIS</h2>
+                <span>{{police.fingerprints}}/1000</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content_final %}

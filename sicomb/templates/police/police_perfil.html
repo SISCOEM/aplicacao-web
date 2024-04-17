@@ -1,0 +1,92 @@
+{% extends 'base/footer.html' %}
+{% load static %}
+
+{% block css %}{% static 'css/police_page.css' %}{% endblock %}
+{% block title %}SICOMB - Login Policial{% endblock title %}
+{% block title_top %}PERFIL DO POLICIAL{% endblock title_top %}
+{% block perfil %}{% endblock perfil %}
+
+{% block content_final%}
+    <section class="cargo" style="justify-content: space-around;">
+        <div class="police_officer_field shadow">
+            <table class="police_officer_table">
+                <thead>
+                    <tr>
+                        <th class="cargo_title">POLICIAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="#"><img class="shadow perfil" src="{% if police.image_path %}{{ police.image_path.url }}{% else %}static/img/user.png{% endif %}" onerror="this.src='{% static "img/user.png"%}'" alt=""></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{police.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{police.matricula}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{police.telefone}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{police.lotacao}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{police.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <form action="./" method="post">
+                                {% csrf_token %}
+                                <div class="btn_final">
+                                    <input class="btn_finalize btn_cancel shadow" name="cancelar" type="button" onclick="window.location='{% url "logout" %}'" value="Sair">
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="cargo_itens shadow">
+            <table class="table_itens">
+                <thead>
+                    <tr>
+                        <th colspan="100%" class="cargo_title"><h3 >ITENS</h3></th>
+                    </tr>
+                    <tr class="col-itens">
+                        <th>ID DE CARGA</th>
+                        <th>TIPO</th>
+                        <th>MATRÍCULA</th>
+                        <th>ADJUNTO</th>
+                        <th>GRADUAÇÃO</th>
+                        <th>QNT. DE ITENS</th>
+                        <th>DATA</th>
+                        <th>PREVISÃO DE DESCARGA</th>
+                    </tr>
+                </thead>
+                {% if loads %}
+                <tbody>
+                    {% for i in loads %}
+                    <tr>
+                        <tr>
+                            <td class="click_redirect"><a href="{% url 'carga_polical' pk=i.0.pk %}">{{ i.0.pk }}</a></td>
+                            <td>{{i.0.turn_type}}</td>
+                            <td>{{ i.0.police.matricula |default:"-" }}</td>
+                            <td class="click_redirect"><a href="{% url 'perfil_police' id=i.0.adjunct.id %}">{{ i.0.adjunct.name |default:"Adjunto Indisponível" }}</a></td>
+                            <td>{{ i.0.police.posto |default:'Tenente'}}</td>
+                            <td>{{ i.1 }}</td>
+                            <td>{{ i.0.date_cargo }}</td>
+                            <td>{{ i.0.expected_load_return_date |default:'-' }}</td>
+                        </tr>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                {% endif %}
+            </table>
+
+        </div>
+    </section>
+{% endblock content_final%}
+

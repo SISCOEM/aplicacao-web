@@ -1,0 +1,101 @@
+{% extends 'base/footer.html' %}
+{% load static %}
+
+{% block css %}{% static 'css/register_model.css' %}{% endblock %}
+{% block title %}SICOMB - Registro de Modelos Equipamento{% endblock title %}
+{% block title_top %}REGISTRO DE MODELO DE EQUIPAMENTO{% endblock title_top %}
+
+{% block content_final %}
+
+<section class="section_register shadow">
+  <div class="registration shadow box-form">
+    <table>
+        <thead>
+            <tr>
+                <th colspan="100%" class="title"><h3>FORMULÁRIO DE CADASTRO DE MODELOS</h3></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="sub-title">PREENCHA O FORMULÁRIO PARA O CADASTRO DE UM NOVO MODELO DE EQUIPAMENTO</td>
+            </tr>
+        </tbody>   
+    </table>
+    <div class="row_color"><span><hr></span></div>
+    {% if form %}
+        <form method="post" action="." class="form-element" id="form-equipment" enctype="multipart/form-data">
+            <div class="input-div">
+                {% csrf_token %}
+                {% for field in form %}
+                    {% if field.name == "image_path" %}
+                        <div class="input-box">
+                            <h4 class="input-title">{{ field.label }}</h4>
+                            <div class="file-div">
+                                <label class="file-label" for="{{ field.id_for_label }}">UPLOAD DE ARQUIVO +</label>
+                                <input class="input-file" name="{{ field.name }}" type="file" id="{{ field.id_for_label }}" accept="image/*">
+                            </div>
+                        </div>
+                    {% elif field.name == "caliber" %}
+                        <div class="input-box">
+                            <h4 for="{{ field.id_for_label }}" class="input-title">{{ field.label }}</h4>
+                            <div class="select">
+                                {{ field }}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="input-box">
+                            <h4 for="{{ field.id_for_label }}" class="input-title">{{ field.label }}</h4>
+                            {{ field }}
+                        </div>
+                    {% endif %}
+                    {% if field.errors %}
+                        <usl>
+                            {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </usl>
+                    {% endif %}
+                {% endfor %}
+                <div class="finalize-registration">
+                    <label><input type="submit" id="submit-btn" class="box-shadow-registration" value="Cadastrar"></label>
+                    <label><input type="button" id="submit-btn" class="box-shadow-registration" value="Voltar" onclick="window.location='/equipamento/modelo/cadastro/'"></label>
+                </div>
+            </div> 
+        </form>
+    {% else %}
+        <div class="define-registration-div">
+            <div class="option_type_model">
+                <a href="{% url "register_model" model_name="armament" %}" class="a-register-btn">
+                    <!-- <label>
+                        
+                    </label> -->
+                    <span>Cadastrar Armamento</span>
+                </a>
+            </div>
+            <div class="option_type_model">
+                <a href="{% url "register_model" model_name="grenada" %}" class="a-register-btn"> 
+                    <!-- <label> 
+                        <img  src="{% static 'img/granade_icon.png' %}"> 
+                    </label>                     -->
+                    <span>Cadastrar Granada</span>
+                </a>
+            </div>
+            <div class="option_type_model">
+                <a href="{% url "register_model" model_name="wearable" %}" class="a-register-btn">Cadastrar Vestimento</a>
+            </div>
+            <div class="option_type_model">
+                <a href="{% url "register_model" model_name="accessory" %}" class="a-register-btn">Cadastrar Acessório</a>
+            </div>
+            <div class="option_type_model">
+                <a href="{% url "register_model" model_name="bullet" %}" class="a-register-btn">Cadastrar Munição</a>
+            </div>
+        </div>
+    {% endif %}
+  </div>
+</section>
+
+{% endblock content_final %}
+
+{% block js %}
+    <script src="{% static 'js/register_equipment.js' %}"></script>
+{% endblock js %}

@@ -1,0 +1,166 @@
+{% extends 'base/footer.html' %}
+{% load static %}
+
+{% block title %}
+    SICOMB - 
+    {% if btn_promote == "EDITAR" %}
+        Policiais
+    {% elif btn_promote == "APROVAR" %}
+        Policiais
+    {% elif btn_promote == "PROMOVER" %}
+        Promover a adjunto
+    {% elif btn_promote == "REBAIXAR" %}
+        Rebaixar a policial
+    {% endif %}
+{% endblock title %}
+{% block title_top %}
+    {% if btn_promote == "EDITAR" %}
+        POLICIAIS
+    {% elif btn_promote == "APROVAR" %}
+        POLICIAIS
+    {% elif btn_promote == "PROMOVER" %}
+        PROMOVER A ADJUNTO
+    {% elif btn_promote == "REBAIXAR" %}
+        REBAIXAR A POLICIAIS
+    {% endif %}
+{% endblock title_top %}
+{% block css2 %}{% static 'css/carga.css' %}{% endblock%}
+
+{% block content_final %}
+<link rel="stylesheet" href="{% static 'css/equipamentos.css' %}">
+<style>
+    .footer-div{
+        position: absolute;
+    }
+    .container {
+        <!-- max-width: 100%; -->
+    }
+    .dashboard_loads{
+        width: auto;
+    }
+    .button_promote {
+        width: 100%;
+        padding: 5px;
+        border-radius: 10px;
+        background-color: rgb(130, 241, 130);
+    }
+    .button_promote:hover {
+        background-color: rgb(90, 206, 90);
+    }
+</style>
+<section style="padding: 0px 20px">
+    <div class="cargo_itens dashboard_loads shadow"> 
+         <table class="table_itens">
+            <thead>
+                <tr>
+                    <th colspan="100%" class="cargo_title"><h3> 
+                    {% if btn_promote == "EDITAR" or btn_promote == "PROMOVER" %}
+                        POLICIAIS
+                    {% elif btn_promote == "REBAIXAR" %}
+                        ADJUNTOS
+                    {% endif %} </h3></th>
+                </tr>
+                <form method="get">
+                    <tr class="col-itens">
+                        <th colspan="100%" class=""><input type="submit" class="button" value="Filtrar"></th>
+                    </tr>
+                    <tr class="col-itens">
+                        {% for field in filter_form %}
+                            <th>
+                                {{ field }}
+                                {% for erro in field.errors %}
+                                    {{erro}}
+                                {% endfor %}
+                            </th>
+                        {% endfor %}
+                        {% if user.is_superuser %}
+                        <th colspan="3"></th>
+                        {% endif %}
+                    </tr>
+                </form>
+                <tr class="col-itens">
+                    {% for field in filter_form %}
+                        <td>
+                            {{ field.label }}
+                        </td>
+                    {% endfor %}
+                    {% if user.is_superuser %}
+                        <td colspan="3">Ação</td>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                <form action="." id="form" method="post">
+                    {% csrf_token %}
+                    {% for i in police_list %}
+                        <tr>
+                            <td style="align-itens:center;"><a href="{% url "perfil_police" id=i.id %}"><img src="{% if i.image_path %}{{ i.image_path.url }}{% else %}static/img/user.png{% endif %}" onerror="this.src='{% static "img/user.png"%}'" alt="Perfil do policial" style="max-height:80px; width: auto; border-radius:500px; border: 2px solid #6a5a4a; margin-top: 10px;"></a></td>
+                            <td>{{ i.name }}</td>
+                            <td>{{ i.email }}</td>
+                            <td>{{ i.matricula }}</td>
+                            <td>{{ i.telefone }}</td>
+                            <td>{{ i.lotacao }}</td>
+                            <td>{{ i.posto }}</td>
+                            <td>{{ i.tipo }}</td>
+                            <td><a href="{% if i.activator %}{% url 'perfil_police' id=i.activator.id %}{% endif %}">{{ i.activator|default:"-" }}</a></td>
+
+                            {% if btn_promote == "APROVAR" %}
+                                <td class="click_redirect"><button class="button" onclick="$('#action-type').val('approve'); $('#police-id').val('{{ i.pk }}'); $('#form').submit()" type="button">APROVAR<button></td>
+                                <td class="click_redirect"><button class="button" onclick="$('#action-type').val('disapprove');$('#police-id').val('{{ i.pk }}'); $('#form').submit()" type="button">REPROVAR<button></td>
+                            {% else %}
+                                <td class="click_redirect"><button class="button" type="submit" name="pk" value="{{ i.pk }}">{{ btn_promote }}<button></td>
+                            {% endif %}
+                            </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="100%">Nenhum policial encontrado.</td>
+                        </tr>
+                    {% endfor %}
+                    {% if btn_promote == "APROVAR" %}
+                        <input type="hidden" name="action-type" id="action-type" value=""> 
+                        <input type="hidden" id="police-id" name="pk" value="{{ equipment.pk }}"> 
+                    {% endif %}
+
+                </form>
+            </tbody>
+        </table>
+    </div>
+</section>
+{% if messages %}
+<script>
+
+   // Função para fechar o alerta
+   function closeAlert(alert) {
+      alert.remove();
+   }
+
+   // Função para exibir as mensagens de sucesso
+   function showSuccessMessages() {
+      {% for message in messages %}
+      var messageText = "{{ message }}";
+      // Crie um elemento de alerta para cada mensagem
+      var alert = document.createElement('div');
+      alert.className = 'alert alert-success';
+      alert.textContent = messageText;
+      // Crie um botão de fechamento (X)
+      var closeButton = document.createElement('span');
+      closeButton.className = 'alert-close';
+      closeButton.textContent = 'X';
+      closeButton.onclick = function () {
+         closeAlert(alert);
+      };
+      alert.appendChild(closeButton);
+      // Adicione o elemento ao corpo do documento
+      document.body.appendChild(alert);
+      // Defina um tempo limite para remover o elemento após 5 segundos
+      setTimeout(function () {
+         closeAlert(alert);
+      }, 5000); // 5000 milissegundos = 5 segundos
+      {% endfor %}
+   }
+
+   // Chame a função para exibir as mensagens de sucesso
+   showSuccessMessages();
+</script>
+{% endif %}
+{% endblock content_final %} 

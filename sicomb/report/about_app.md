@@ -1,0 +1,3 @@
+Este app é um auxiliar na geração de formulários para a geração de relatórios de forma dinâmica, essa parte é uma que não foi finalizada, a idéia era fazer os models Report e Report_field, o report é o todo, e nele teríamos vários Report_field, de acordo com as informações do Report_field ele se disporia no pdf de forma diferente.
+
+Caso ache mais simples seria melhor fazer um template html para cada caso de relatório, nessa questão a idéia seria, caso o policial queira filtrar alguma carga e baixar um pdf com os resultados ele conseguiria, o mesmo com as listas de modelos, equipamentos e policiais.

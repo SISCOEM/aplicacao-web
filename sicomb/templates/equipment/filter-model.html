@@ -1,0 +1,98 @@
+{% extends 'base/footer.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}SICOMB - Lista de modelos{% endblock title %}
+{% block title_top %}LISTA DE MODELOS DE EQUIPAMENTOS{% endblock title_top %}
+{% block css2 %}{% static 'css/equipamentos.css' %}{% endblock%}
+
+{% block content_final %}
+<style>
+    .footer-div{
+        position: absolute;
+    }
+    .container {
+        <!-- max-width: 100%; -->
+    }
+    .dashboard_loads{
+        width: auto;
+    }
+    .cargo_itens {
+        overflow-y: none;
+        overflow-x: none;
+    }
+    .button_promote {
+        width: 100%;
+        padding: 5px;
+        border-radius: 10px;
+        background-color: rgb(130, 241, 130);
+        font-family: interBold;
+    }
+    .button_promote:hover {
+        background-color: rgb(90, 206, 90);
+    }
+</style>
+<section style="padding: 0px 20px">
+    <div class="cargo_itens dashboard_loads shadow"> 
+        <table class="table_itens">
+            <thead>
+                <tr>
+                    <th colspan="100%" class="cargo_title"><h3>MODELOS</h3></th>
+                </tr>
+                <form method="get">
+                    <tr class="col-itens">
+                        <th colspan="100%" class=""><input type="submit" class="button" value="Filtrar"></th>
+                    </tr>
+                    <tr class="col-itens">
+                        {% for field in filter_form %}
+                            <th>
+                                {{ field }}
+                                {% for erro in field.errors %}
+                                    {{erro}}
+                                {% endfor %}
+                            </th>
+                        {% endfor %}
+                        {% if user.is_superuser %}
+                        <th></th>
+                        {% endif %}
+                    </tr>
+                </form>
+                <tr class="col-itens">
+                    {% for field in filter_form %}
+                        <td>
+                            {{ field.label }}
+                        </td>
+                    {% endfor %}
+                    {% if user.is_superuser %}
+                        <th>EDITAR</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for model in model_list %}
+                <tr class="row-tbody">
+                    <td>{{ model|model_class }}</td>
+                    <td>{{ model|get_amount }}</td>
+                    <td>{{ model.caliber|default:"-" }}</td>
+                    <td>{{ model.model|default:"-" }}</td>
+                    <td>{{ model.description|default:"-" }}</td>
+                    <td>{{ model.size|default:"-" }}</td>
+                    <td>{{ model.activator|default:"-" }}</td>
+                    {% if user.is_superuser %}
+                        <td class="click_redirect"><button class="button" type="button" onclick="window.location='{% url "edit_model" model_name="armament" id=model.pk %}'" name="pk" value="{{ model.pk }}">EDITAR<button></td>
+                    {% endif %}
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="100%">Nenhum equipamento encontrado.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <span>
+        <hr>
+    </span>
+</section>
+
+{% endblock content_final %} 

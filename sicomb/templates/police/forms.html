@@ -1,0 +1,94 @@
+{% extends 'base/footer.html' %}
+{% load static %}
+
+{% block css %}{% static 'css/register_police_form.css' %}{% endblock %}
+{% block title %}SICOMB - Registro de Equipamento{% endblock title %}
+{% block title_top %}{% if edit|default:False %}EDIÇÃO DE POLICIAL{% else %}REGISTRO DE POLICIAL{% endif %}{% endblock title_top %}
+
+{% block content_final %}
+<section class="section_register shadow">
+  <div class="registration shadow box-form">
+    <table>
+        <thead>
+            <tr>
+                <th colspan="100%" class="title"><h3>{% if edit|default:False %}EDIÇÃO DE POLICIAL{% else %}FORMULÁRIO DE CADASTRO{% endif %}</h3></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="sub-title">FORMULÁRIO</td>
+            </tr>
+        </tbody>   
+    </table>
+    <div class="row_color"><span><hr></span></div>
+    
+    <form method="post" action="." enctype="multipart/form-data" class="form-element" id="form-equipment">
+      <div class="input-div">
+        {% csrf_token %}
+        {% for field in form %}
+            {% if field.name == "image_path" %}
+                <div class="input-box">
+                    <h4 class="input-title {% if field.errors %}input-error{% endif %}">{{ field.label }}</h4>
+                    <div class="file-div">
+                        <label class="file-label" for="{{ field.id_for_label }}">UPLOAD DE ARQUIVO +</label>
+                        <input class="input-file input-image" name="{{ field.name }}" type="file" id="{{ field.id_for_label }}" accept="image/*">
+                    </div>
+                </div>
+            {% elif field.name == "matricula" %}
+                <div class="input-box">
+                    <h4 for="{{ field.id_for_label }}" class="input-title {% if field.errors %}input-error{% endif %}">{{ field.label }}</h4>
+                    <div class="input-search">
+                        {{ field }}
+                    </div>
+                </div>
+            {% elif field.name == "fingerprint" %}
+            {% else %}
+                <div class="input-box">
+                    <h4 for="{{ field.id_for_label }}" class="input-title {% if field.errors %}input-error{% endif %}">{{ field.label }}</h4>
+                    {{ field }}
+                </div>
+            {% endif %}
+        {% endfor %}
+
+        {% if edit|default:False %}
+            <div class="input-box">
+                <h4 class="input-title">&nbsp;</h4>
+                <input type="hidden" name="police_id" value="{{police.id}}">
+                <input type="hidden" name="police_name" value="{{police.name}}">
+                {% if police.fingerprint is not None %}
+                    <div class="file-div">
+                        <input type="button" id="delete-digital" class="button" value="Deletar digital">
+                    </div>
+                {% else %}
+                    <div class="file-div">
+                        <input type="button" id="register-fingerprint" class="button" value="Registrar impressão digital">
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+        <div class="finalize-registration">
+            <label><input type="submit" class="box-shadow-registration" value="Enviar"></label>
+        </div>
+      </div> 
+    </form>
+  </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        let timer = 2000;
+        {% for field in form %}
+            {% if field.errors %}
+                {% for error in field.errors %}
+                    popUp("{{ field.label }}: {{ error }}", {timer: timer, overlay: false});
+                    timer += 1000;
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    });
+</script>
+{% endblock content_final %}
+
+{% block js %}
+<script src="{% static "js/register_police.js" %}"></script>
+{% endblock js %}

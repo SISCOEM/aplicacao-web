@@ -1,0 +1,110 @@
+{% extends 'base/footer.html' %}
+{% load static %}
+
+{% block title %}SICOMB - Lista de modelos{% endblock title %}
+{% block title_top %}LISTA DE EQUIPAMENTOS{% endblock title_top %}
+{% block css2 %}{% static 'css/equipamentos.css' %}{% endblock%}
+
+{% block content_final %}
+<style>
+    .footer-div{
+        position: absolute;
+    }
+    .container {
+        <!-- max-width: 100%; -->
+    }
+    .dashboard_loads{
+        width: auto;
+    }
+    .cargo_itens {
+        overflow-y: none;
+        overflow-x: none;
+    }
+    .button_promote {
+        width: 100%;
+        padding: 5px;
+        border-radius: 10px;
+        background-color: rgb(130, 241, 130);
+        font-family: interBold;
+    }
+    .button_promote:hover {
+        background-color: rgb(90, 206, 90);
+    }
+    .button_delete {
+        width: 100%;
+        padding: 5px;
+        border-radius: 10px;
+        background-color: rgb(241, 130, 130);
+        font-family: interBold;
+    }
+    .button_delete:hover {
+        background-color: rgb(206, 90, 90);
+    }
+</style>
+<section style="padding: 0px 20px">
+    <div class="cargo_itens dashboard_loads shadow"> 
+        <table class="table_itens">
+            <thead>
+                <tr>
+                    <th colspan="100%" class="cargo_title"><h3>EQUIPAMENTOS</h3></th>
+                </tr>
+                <form method="get">
+                    <tr class="col-itens">
+                        <th colspan="100%" class=""><input class="button" type="submit" value="Filtrar"></th>
+                    </tr>
+                    <tr class="col-itens">
+                        {% for field in filter_form %}
+                            <th>
+                                {{ field }}
+                            </th>
+                        {% endfor %}
+                        <th colspan='2'></th>
+                    </tr>
+                </form>
+                <tr class="col-itens">
+                    <td>Numero de Série</td>
+                    <td>Status</td>
+                    <td>Tipo</td>
+                    <td>Modelo</td>
+                    <td>Policial Ativador</td>
+                    {% if user.is_superuser %}
+                        <th>EDITAR</th>
+                    {% endif %}
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for equipment in equipment_list %}
+                <tr class="row-tbody">
+                    <td class="click_redirect"><!--<a href="{% url 'get_equipment_info' pk=equipment.uid %}">{{ equipment.serial_number }}</a>-->{{ equipment.serial_number }}</td>
+                    <td>{{ equipment.status }}</td>
+                    <td>{% if equipment.model_type.name == "model_accessory" %}
+                        Acessório
+                    {% elif equipment.model_type.name == "model_grenada" %}
+                        Granada
+                    {% elif equipment.model_type.name == "model_wearable" %}
+                        Vestível
+                    {% elif equipment.model_type.name == "model_armament" %}
+                        Armamento
+                    {% endif %}</td>
+                    <td>{{ equipment.model.model }}</td>
+                    <td><a href="{% url 'perfil_police' id=equipment.activator.id %}">{{ equipment.activator|default:"-" }}</a></td>
+                    {% if user.is_superuser %}
+                        <td class="click_redirect"><button class="button" type="button" onclick="window.location='{% url "edit_equipment" id=equipment.pk %}'" name="pk" value="{{ equipment.pk }}">EDITAR<button></td>
+                    {% endif %}
+                    <td></td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="100%">Nenhum equipamento encontrado.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+        
+    <span>
+        <hr>
+    </span>
+</section>
+{% endblock content_final %} 

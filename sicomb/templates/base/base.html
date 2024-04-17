@@ -1,0 +1,326 @@
+{% load static %}
+{% load decorators %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% block css %}{% endblock %}">
+    <link rel="stylesheet" href="{% block css2 %}{% endblock %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/topo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/popUp.css' %}">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="icon" type="image/png" href="{% static "img/policiamilitar_logo.png" %}">
+
+    <style>
+        @font-face {
+            font-family: interRegular;
+            src:url({% static 'fonts/Inter-Regular.ttf' %});
+        }
+
+        @font-face {
+            font-family: interBold;
+            src:url({% static 'fonts/Inter-Bold.ttf' %});
+        }
+
+        @font-face {
+            font-family: interExtraBold;
+            src: url({% static 'fonts/Inter-ExtraBold.ttf' %});
+        }
+
+        @font-face {
+            font-family: interExtraLight;
+            src: url({% static 'fonts/Inter-ExtraLight.ttf' %});
+        }
+
+        html {
+            min-height: 100vh;
+        }
+
+        .d-none {
+            display: none !important;
+            animation: 0.5s;
+        }
+
+        .arrow-direction {
+            transform: rotate(-90deg);
+            animation: 0.5s;
+        }
+
+        .arrow {
+            left: 0px;
+            transition: 0.2s;
+        }
+
+        .section_nav {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding-right: 15px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function toggle_nav_group(group) {
+            $('.group-nav').not('#' + group).addClass('d-none');
+            $('.arrow').not('#arrow-' + group).addClass('arrow-direction');
+            $('#' + group).toggleClass('d-none'); 
+            $('#arrow-' + group).toggleClass('arrow-direction');
+        }
+    </script>
+</head>
+
+<body>
+    {% block content_main %}
+        <main>
+            {% block nav %}
+            <header>
+                <nav id="navbar">
+                    <ul class="alter">
+                        {% if user|has_group:"adjunct" or user.is_superuser %}
+                            <div class="logo" onclick="window.location='/'">
+                                <img id="pm_nav_img" class="img-bpm" src="{% static 'img/policiamilitar_logo.png' %}"
+                                    alt="17º Batalhão de Polícia Militar do Estado da Bahia">
+                                <h3>SISCOEM</h3>
+                            </div>
+                            <li onclick="reset_rfid()">
+                                <img src="{% static 'img/dashboard.png' %}" alt="">
+                                <span>Ativar Leitor</span>
+                            </li>
+                            <li onclick="window.location='{% url 'request_cargo_login' %}'">
+                                <img src="{% static 'img/dashboard.png' %}" alt="">
+                                <span>Login policial</span>
+                            </li>
+                            <li onclick="window.location='/'">
+                                <img src="{% static 'img/dashboard.png' %}" alt="">
+                                <span>Dashboard</span>
+                            </li>
+                            <div onclick="toggle_nav_group('gerenciamento')" class="section_nav">
+                                <p>Gerenciamento</p>
+                                <svg
+                                    id="arrow-gerenciamento"
+                                    class="arrow-direction arrow"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                    d="M16.929 5L18.3432 6.41421L12.6863 12.0711L18.3432 17.7279L16.929 19.1421L9.85789 12.0711L16.929 5Z"
+                                    fill="currentColor"
+                                    />
+                                    <path d="M8 19V5H6V19H8Z" fill="currentColor" />
+                                </svg>
+                            </div>
+                            <div id="gerenciamento" class="d-none group-nav">
+                                <li onclick="window.location='{% url 'fazer_carga' %}'">
+                                    <img src="{% static 'img/click.png' %}" alt="">
+                                    <span>Fazer Carga/Descarga</span>
+                                </li>
+                                <li onclick="window.location='{% url 'filter_cargas' %}'">
+                                    <img src="{% static 'img/network.png' %}" alt="">
+                                    <span>Cargas</span>
+                                </li>
+                                <li onclick="generateQrTag()">
+                                    <img src="{% static 'img/network.png' %}" alt="">
+                                    <span>Gerar tag qr</span>
+                                </li>
+                                <li onclick="window.location='{% url 'test_tag' %}'">
+                                    <img src="{% static 'img/network.png' %}" alt="">
+                                    <span>Testar tags</span>
+                                </li>
+                                <li onclick="window.location='{% url "filter_equipment" %}'">
+                                    <img src="{% static 'img/disket.png' %}" alt="">
+                                    <span>Equipamentos</span>
+                                </li>
+                                <li onclick="window.location='{% url 'filter_police' %}'">
+                                    <img src="{% static 'img/warehouse.png' %}" alt="">
+                                    <span>Policiais</span>
+                                </li>
+                                <li onclick="window.location='/equipamento/modelos/'">
+                                    <img src="{% static 'img/disket.png' %}" alt="">
+                                    <span>Modelos</span>
+                                </li>
+                                {% comment %} <li onclick="window.location='{% url "relatorios" %}'">
+                                    <img src="{% static 'img/reports.png' %}" alt="">
+                                    <span>Relatórios</span>
+                                </li> {% endcomment %}
+                            </div>
+                            <hr>
+                            <div onclick="toggle_nav_group('cadastramento')" class="section_nav">
+                                <p>Cadastramento</p>
+                                <svg
+                                    id="arrow-cadastramento"
+                                    class="arrow-direction arrow"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                    d="M16.929 5L18.3432 6.41421L12.6863 12.0711L18.3432 17.7279L16.929 19.1421L9.85789 12.0711L16.929 5Z"
+                                    fill="currentColor"
+                                    />
+                                    <path d="M8 19V5H6V19H8Z" fill="currentColor" />
+                                </svg>
+                            </div>
+                            <div id="cadastramento" class="d-none group-nav">
+                                <li onclick="window.location='{% url 'register_police' %}'">
+                                    <img src="{% static 'img/user.png' %}" alt="">
+                                    <span>Cadastrar Policial</span>
+                                </li>
+                                <li onclick="window.location='{% url 'register_equipment' %}'">
+                                    <img src="{% static 'img/warehouse.png' %}" alt="">
+                                    <span>Cadastrar Equipamento</span>
+                                </li>
+                            </div>
+                            <hr>
+                        {% endif %}
+                        {% if  user.is_superuser %}
+                        <div onclick="toggle_nav_group('admin')" class="section_nav">
+                            <p>Admin</p>
+                            <svg
+                                id="arrow-admin"
+                                class="arrow-direction arrow"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                d="M16.929 5L18.3432 6.41421L12.6863 12.0711L18.3432 17.7279L16.929 19.1421L9.85789 12.0711L16.929 5Z"
+                                fill="currentColor"
+                                />
+                                <path d="M8 19V5H6V19H8Z" fill="currentColor" />
+                            </svg>
+                        </div>
+                            <div id="admin" class="d-none group-nav">
+                                <li onclick="window.location='{% url 'register_model' %}'">
+                                    <img src="{% static 'img/warehouse.png' %}" alt="">
+                                    <span>Cadastrar Modelo</span>
+                                </li>
+                                <li onclick="window.location='{% url 'promote_police' %}'">
+                                    <img src="{% static 'img/warehouse.png' %}" alt="">
+                                    <span>Promover Policial</span>
+                                </li>
+                                <li onclick="window.location='{% url 'reduce_police' %}'">
+                                    <img src="{% static 'img/warehouse.png' %}" alt="">
+                                    <span>Rebaixar Adjunto</span>
+                                </li>   
+                                <li onclick="window.location='{% url 'approve_equipment' %}'">
+                                    <img src="{% static 'img/warehouse.png' %}" alt="">
+                                    <span>Aprovar Equipamentos</span>
+                                </li>
+                                <li onclick="window.location='{% url 'approve_model' %}'">
+                                    <img src="{% static 'img/warehouse.png' %}" alt="">
+                                    <span>Aprovar Modelos</span>
+                                </li>
+                                <li onclick="window.location='{% url 'approve_police' %}'">
+                                    <img src="{% static 'img/warehouse.png' %}" alt="">
+                                    <span>Aprovar Policiais</span>
+                                </li>
+                                {% comment %} <li onclick="window.location='{% url 'settings' %}'">
+                                    <img src="{% static 'img/warehouse.png' %}" alt="">
+                                    <span>Settings</span>
+                                </li> {% endcomment %}
+                            </div>
+                        {% endif %}
+                        <br>
+                        <div class="card-qrcode">
+                            <h2 style="margin-bottom: 5px;">Link</h2>
+                            <span><a href="{{link}}">{{link}}</a></span>
+                            <div id="qrcode"></div>
+                        </div>
+                    </ul>
+                </nav>
+            </header>
+            <div id="messages"></div>
+            {% endblock nav %}
+            
+            <script src="{% static 'js/jquery-3.7.1.js' %}"></script>
+            <script src="{% static "js/utilitary.js" %}"></script>
+            <script>
+                var user = "{{ user.name }}";
+                var pass = "{{ user.password }}";
+            </script>
+            
+            {% block content %}{% endblock content %}
+        </main>
+    {% endblock content_main %}
+    
+    {% block js %}{% endblock js %}
+    
+    <script>
+        {% if messages %}
+            {% for message in messages %}
+                // Crie um elemento de alerta para cada mensagem
+                popUp("{{ message }}");
+            {% endfor %}
+        {% endif %}
+    </script>
+    <script src="{% static 'js/qrcode.min.js' %}"></script>
+    <script>
+        const url = `{{link}}`;
+        const container = document.getElementById('qrcode');
+        const qr = new QRCode(container, {
+            text: url,
+            width: 185,
+            height: 185
+        });
+
+        function generateRandomString(length) {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return result;
+        }
+
+        function generateQrTag() {
+            const randomString = generateRandomString(20);
+            const qrData = "qrSICOMBtag=" + randomString;
+
+            let qrCodeElement = document.createElement("div");
+
+            const qrCode = new QRCode(qrCodeElement, {
+            text: qrData,
+            width: 128,
+            height: 128
+            });
+
+            qrCodeElement.style = ` 
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: solid 20px white;
+            `;
+        
+            const qrElement = qrCode._el.firstChild;
+            qrElement.style.border = "4px solid white";
+        
+            const qrDataURL = qrElement.toDataURL("image/png");
+        
+            const downloadLink = document.createElement("a");
+            downloadLink.href = qrDataURL;
+            downloadLink.download = "qrCode.png";
+        
+            downloadLink.click();
+            console.log(qrCode);
+
+            popUp("QR code garado!", {adicional: qrCodeElement});
+        }
+    </script>
+</body>
+
+</html>

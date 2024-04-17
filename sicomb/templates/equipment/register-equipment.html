@@ -1,0 +1,181 @@
+{% extends 'base/footer.html' %}
+{% load static %}
+
+{% block css %}{% static 'css/register_equipment.css' %}{% endblock %}
+{% block title %}SICOMB - Registro de Equipamento{% endblock title %}
+{% block title_top %}REGISTRO DE EQUIPAMENTO{% endblock title_top %}
+
+{% block content_final %}
+
+<section class="section_register shadow">
+  <div class="registration shadow box-form">
+    <table>
+        <thead>
+            <tr>
+                <th colspan="100%" class="title"><h3>FORMULÁRIO DE CADASTRO DE EQUIPAMENTOS</h3></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="sub-title">PREENCHA O FORMULÁRIO PARA O CADASTRO <br>DE UM NOVO EQUIPAMENTO</td>
+            </tr>
+        </tbody>   
+    </table>
+    <div class="row_color"><span><hr></span></div>
+      
+    <form method="post" action="." class="form-element" id="form-equipment">
+      <div class="input-div">
+        {% csrf_token %}
+        <div class="input-box">
+          <h4 class="input-title">TAG</h4>
+          <h4 id="text-uid" class="input-title input-data">Passe a tag no sensor</h4>
+          {% if form.uid %}
+          <ul>
+            {% for erro in form.uid.errors %}
+            <li>
+              <p class="input-title">{{ erro }}</p>
+            </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        </div>
+        <div class="input-box">
+          <h4 for="{{ form.serial_number.id_for_label }}" class="input-title">{{ form.serial_number.label }}</h4>
+          {{ form.serial_number }}
+          {% if form.serial_number %}
+            <ul>
+              {% for erro in form.serial_number.errors %}
+              <li>
+                <p class="input-title">{{ erro }}</p>
+              </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <div for="{{ form.type.id_for_label }}" class="input-box">
+          <h4 for="{{ form.type.id_for_label }}" class="input-title">{{ form.type.label }}</h4>
+          <div class="select">
+            {{ form.type }}
+            <div class="custom-arrow"></div>
+          </div>
+          {% if form.type %}
+            <ul>
+              {% for erro in form.type.errors %}
+              <li>
+                <p class="input-title">{{ erro }}</p>
+              </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <div for="{{ form.status.id_for_label }}" class="input-box">
+          <h4 for="{{ form.status.id_for_label }}" class="input-title">{{ form.status.label }}</h4>
+          <div class="select">
+            {{ form.status }}
+            <div class="custom-arrow"></div>
+          </div>
+          {% if form.status %}
+            <ul>
+              {% for erro in form.status.errors %}
+              <li>
+                <p class="input-title">{{ erro }}</p>
+              </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <div class="input-box">
+          <h4 for="{{ form.grenada.id_for_label }}" class="input-title">{{ form.grenada.label }}</h4>
+          <div class="select">
+            {{ form.grenada }}
+            <div class="custom-arrow"></div>
+          </div>
+          {% if form.grenada %}
+            <ul>
+              {% for erro in form.grenada.errors %}
+              <li>
+                <p class="input-title">{{ erro }}</p>
+              </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <div class="input-box">
+          <h4 for="{{ form.wearable.id_for_label }}" class="input-title">{{ form.wearable.label }}</h4>
+          <div class="select">
+            {{ form.wearable }}
+            <div class="custom-arrow"></div>
+          </div>
+          {% if form.wearable %}
+            <ul>
+              {% for erro in form.wearable.errors %}
+              <li>
+                <p class="input-title">{{ erro }}</p>
+              </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <div class="input-box">
+          <h4 for="{{ form.accessory.id_for_label }}" class="input-title">{{ form.accessory.label }}</h4>
+          <div class="select">
+            {{ form.accessory }}
+            <div class="custom-arrow"></div>
+          </div>
+          {% if form.accessory %}
+            <ul>
+              {% for erro in form.accessory.errors %}
+              <li>
+                <p class="input-title">{{ erro }}</p>
+              </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <div class="input-box">
+          <h4 for="{{ form.armament.id_for_label }}" class="input-title">{{ form.armament.label }}</h4>
+          <div class="select">
+            {{ form.armament }}
+            <div class="custom-arrow"></div>
+          </div>
+            {% if form.armament %}
+              <ul>
+                {% for erro in form.armament.errors %}
+                <li>
+                  <p class="input-title">{{ erro }}</p>
+                </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        </div>
+        <div class="finalize-registration">
+          <label><input type="button" id="submit-btn" class="box-shadow-registration" value="Enviar"></label>
+          <label><input type="button" id="clear-btn" class="box-shadow-registration" value="limpar uid"></label>
+          <label><input onclick="register_bullet()" type="button" class="box-shadow-registration" value="Inserir Munição"></label>
+        </div>
+        {{ form.uid }}
+      </div> 
+    </form>
+  </div>
+</section>
+
+{% endblock content_final %}
+
+{% block js %}
+
+  {% if form.errors %}
+  <script>
+    {% for field in form %}
+    // Crie um elemento de alerta para cada mensagem
+      {% if field.errors %}
+        {% for message in field.errors %}
+          popUp("{{ message }}");
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </script>
+  {% endif %}
+  <script src="{% static 'js/register_equipment.js' %}"></script>
+  
+{% endblock js %}         

@@ -1,0 +1,75 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    #menu {
+        display: none;
+        position: absolute;
+        right: 10px;
+        top: 50px;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        padding: 10px;
+        height: auto;
+        width: 80px;
+        display: flex;
+        align-items: center;
+        
+        opacity: 0; /* Inicialmente, o menu é totalmente transparente */
+        transition: opacity 0.1s ease-in-out; /* Adiciona uma transição suave de 0.3 segundos */
+    }
+
+    #menu ul {
+        width: 100%;
+    }
+    #menu li {
+        padding: 4px 5px;
+        border-radius: 10px;
+        transition: 0.2s;
+    }
+    
+    #menu .dropdown-item {
+        font-family: interBold;
+        color: #5B4939;
+        font-size: 14px;
+    }
+    #menu li:hover {
+        transition: 0.2s;
+        font-family: interBold;
+        background-color: #a99885;
+    }
+</style>
+
+<div class="container">
+<section class="top-content">
+    <h1>{% block title_top %}{% endblock title_top %}</h1>
+    <div>
+        {% block perfil %}
+        <div class="info-login">
+            <span class="top-item" onclick="window.location='{% url "perfil_police" id=request.user.id %}'">
+                {% if request.user.image_path %}
+                    <img style="border-radius:500px; margin-right:15px;" src="{{ request.user.image_path.url|default:'/static/img/user.png' }}" onerror="this.src='{% static "img/user.png"%}'" alt="Usuário">
+                {% else %}
+                    <img style="border-radius:500px; margin-right:15px;" src="{% static "img/user.png"%}" alt="Usuário">
+                {% endif %}
+            </span>
+            
+            <span class="top-item">
+                <h3>{{ request.user.name}}</h3>
+                <p>MATRÍCULA: {{ request.user.matricula }}</p>
+            </span class="top-item">
+            <span>
+                <a href="{% url "logout" %}">
+                    <img id="down_arrow" src="{% static 'img/out-icon.png' %}" alt="">
+                <a>
+                <a></a> <!-- Ver o pq se tirar esse link ele buga -->
+            </span>
+        </div>
+        {% endblock perfil %}
+    </div>
+</section>
+{% block content_intermed %}{% endblock content_intermed %}
+</div>
+{% endblock content %}

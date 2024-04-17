@@ -1,0 +1,117 @@
+{% extends 'base/footer.html' %}
+{% load static %}
+
+{% block title %}SICOMB - Lista de modelos{% endblock title %}
+{% block title_top %}LISTA DE RELATÓRIOS{% endblock title_top %}
+{% block css2 %}{% static 'css/equipamentos.css' %}{% endblock%}
+
+{% block content_final %}
+<style>
+    .footer-div{
+        position: absolute;
+    }
+    .container {
+        <!-- max-width: 100%; -->
+    }
+    .dashboard_loads{
+        width: auto;
+    }
+    .cargo_itens {
+        overflow-y: none;
+        overflow-x: none;
+    }
+    .button_promote {
+        width: 100%;
+        padding: 5px;
+        border-radius: 10px;
+        background-color: rgb(130, 241, 130);
+        font-family: interBold;
+    }
+    .button_promote:hover {
+        background-color: rgb(90, 206, 90);
+    }
+    .button_delete {
+        width: 100%;
+        padding: 5px;
+        border-radius: 10px;
+        background-color: rgb(241, 130, 130);
+        font-family: interBold;
+    }
+    .button_delete:hover {
+        background-color: rgb(206, 90, 90);
+    }
+</style>
+<section style="padding: 0px 20px">
+    <div class="cargo_itens dashboard_loads shadow"> 
+        <table class="table_itens">
+            <thead>
+                <tr>
+                    <th colspan="100%" class="cargo_title"><h3>EQUIPAMENTOS</h3></th>
+                </tr>
+                <form method="get">
+                    <tr class="col-itens">
+                        <th colspan="100%" class=""><input class="button" type="submit" value="Filtrar"></th>
+                    </tr>
+                    <tr class="col-itens">
+                        <th colspan='100%'></th>
+                    </tr>
+                </form>
+                <tr class="col-itens">
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Data de publicação</th>
+                    <th>BAIXAR</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for report in reports %}
+                    <tr  class="row-tbody" onclick="window.location = '{% url 'relatorio' id=report.id %}'">
+                        <th>{{report.id}}</th>
+                        <th>{{report.title}}</th>
+                        <th>{{report.date_creation}}</th>
+                        <th><input class="button" type="button" onclick="download({{report.id}}, '{{report.title}}')" value="BAIXAR"></th>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <span>
+        <hr>
+    </span>
+</section>
+
+<script>
+    function download(id, titulo) {
+        $.ajax({
+            type: "GET",
+            url: "/report/get_pdf_file/" + id + "/",
+            xhrFields: {
+                responseType: "blob" // Resposta do tipo Blob (binário)
+            },
+            success: function (data) {
+                // Sucesso na solicitação AJAX
+                var blob = new Blob([data]);
+                var downloadLink = document.createElement("a");
+                var url = window.URL.createObjectURL(blob);
+
+                // Define os atributos do elemento <a> para iniciar o download
+                downloadLink.href = url;
+                downloadLink.download = titulo + ".pdf";
+                downloadLink.style.display = "none";
+                document.body.appendChild(downloadLink);
+
+                // Simula um clique no elemento <a> para iniciar o download
+                downloadLink.click();
+
+                // Limpa a URL criada para evitar vazamentos de memória
+                window.URL.revokeObjectURL(url);
+            },
+            error: function (error) {
+                console.log("Erro de requisição: " + error);
+                popUp("Conexão com o sistema perdida!", {timer: 2000, overlay: false});
+            }
+        });
+    }
+</script>
+
+{% endblock content_final %} 

@@ -1,0 +1,116 @@
+                            <div class="means_room_table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th colspan="5" class="cargo_title">SALA DE MEIOS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="tbody_top_means_room">
+                                        <tr>
+                                            <td>DATA DE SOLICITAÇÃO</td>
+                                            <td>HORA</td>
+                                            <td>TURNO / TIPO</td>
+                                            <td rowspan="2">
+                                                <a href="." class="return-btn">
+                                                    <img class="img-return" src="/static/img/return-icon-colored.png" alt="">
+                                                </a>
+                                            </td>
+                                            <td class="cargo_id" rowspan="2">
+                                                <h3>CARGA</h3>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h4 id="date"></h4> 
+                                            </td>
+                                            <td>
+                                                <h4 id="time"></h4> 
+                                            </td>
+                                            <td>
+                                                <h4 id="turn_type"></h4>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                            </div>
+                            <div class="row_color"><span><hr></span></div>
+                            <div class="search-info">
+                                <div class="search-table">
+                                    <table cellspacing="0" cellpadding="0" align="center" >
+                                        <thead>
+                                            <tr>
+                                                <td>NUM. DE SÉRIE/ID</td>
+                                                <td>QUANTIDADE</td>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody id="wating_list">
+                                            <tr>
+                                                <td  class="search-box">
+                                                    <input type="text" id="search-camp" class="search-txt" placeholder="Pesquisar">
+                                                    <a href="#" id="search-btn" class="search-btn">
+                                                        <img class="img-search" src="/static/img/search.png" alt="">
+                                                    </a>
+                                                </td>
+                                                <td class="put_qnt"> <input type="text" id="amount_input" name="name" required placeholder="1"/></td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="img_product">
+                                    <img class="means_room_product" id="means_room_product" src="/static/img/default.png" alt="" >
+                                </div>
+                            </div> 
+                            <br>
+                                <div class="info_product">
+                                    <table class="table_info_product">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="100%" class="info_product_title">
+                                                    <h3>ITEM(S)</h3>
+                                                </th>
+                                            </tr>
+                                            <tr class="info_product_th">
+                                                <th>QNT</th>
+                                                <th>TIPO</th>
+                                                <th colspan="2">MODELO</th>
+                                                <th>NUM. DE SÉRIE / ID</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="description_product">
+                                                <td id="amount">&nbsp;</td>
+                                                <td id="type">&nbsp;</td>
+                                                <td id="description" colspan="2">&nbsp;</td>
+                                                <td id="serial_number">&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <hr>
+                            <div class="bottom_means_room">
+                                <div class="note">
+                                    <h5>MUNIÇÕES: </h5>
+                                    <button type="button" class="search-bullet input-bullet" value="9mm">9 MM</button>
+                                    <button type="button" class="search-bullet input-bullet" value=".45 ACP">.45 ACP</button>
+                                    <button type="button" class="search-bullet input-bullet" value=".380 ACP">.380 ACP</button>
+                                    <button type="button" class="search-bullet input-bullet" value=".40 S&W">.40 S&W</button>
+                                    <button type="button" class="search-bullet input-bullet" value=".357 Magnum">.357 Magnum</button>
+                                    <button type="button" class="search-bullet input-bullet" value=".44 Magnum">.44 Magnum</button>
+                                    <button type="button" class="search-bullet input-bullet" value="5.56mm">5.56 MM</button>
+                                    <button type="button" class="search-bullet input-bullet" value="7.62mm">7.62 MM</button>
+                                    <button type="button" class="search-bullet input-bullet" value=".22 LR">.22 LR</button>
+
+                                    <!-- <h5>OBSERVAÇÃO: </h5>
+                                    <textarea id="note_equipment" name="note" rows="3" cols="60">
+                                    </textarea> -->
+
+                                </div>
+                                
+                                <div class="insert_button">
+                                    <input id="insert_btn" onclick="check_cargo_square()" type="submit" value="INSERIR" class="btn btn-insert shadow">
+                                </div>
+                            </div>
+

@@ -1,0 +1,591 @@
+@import 'header.css';
+
+.input-data {
+    background-color: #eeeceb;
+    padding: 2% 5%;
+    border-radius: 10px;
+    border: 2px solid rgb(91,73,57, 0.6);
+    font-size: 14px;
+    font-family: 'interBold';
+    color: #757575;
+    height: 30px;
+    width: 110px;
+}
+select.input-data.select-multiple {
+    height: auto !important;
+}
+
+select.input-data {
+    height: 38px !important;
+}
+
+.button {
+    margin-top: 10px !important;
+    font-family: interBold;
+    font-size: 15px;
+    color: #fff;
+    background-color: rgba(74, 58, 45, 0.9);
+    border-radius: 10px;
+    border: 1px solid #90816A;
+    padding: 10px 20px;
+    height: 40px;
+    width: 90%;
+    margin: auto 20px;
+    cursor: pointer;
+    box-shadow: -2px 4px 2px rgb(65, 35, 6);
+}
+
+.button.disabled {
+    border: 1px solid #beb7ae;
+    background-color: rgba(178, 169, 160, 0.9);
+    box-shadow: -2px 4px 2px rgba(190, 184, 179, 0.401);
+}
+
+.checkboxes div {
+    text-align: left;
+    height: 25px;
+    /* margin-left: 10px; */
+    margin: 5px 5px 0px 5px;
+}
+.checkboxes {
+    margin-bottom: 20px;
+    /* display: none; */
+}
+.checkboxes div label input[type="checkbox"]{
+    /* display: none; */
+    
+}
+
+.checkboxes div label{
+    background-color: white;
+    color: #5B4939;
+    padding: 5px 5px 5px 10px;
+    border-radius: 10px;
+    box-shadow: 1px 3px 6px #a38972;
+    cursor: pointer;
+}
+
+
+.checkboxes div label input[type="checkbox"]:hover{ 
+    /* border: 1px solid #916d4c; */
+    /* box-shadow: 3px 2px 2px #916d4c; */
+  }
+
+.checkboxes div label input[type="checkbox"]{
+  /* content: ""; */
+  /* display: block; */
+  /* width: 1.4em; */
+  /* height: 1.4em; */
+  /* border: 1px solid #916d4c; */
+  /* border-radius: 0.2em; */
+  /* position: absolute; */
+  /* left: 0; */
+  /* top: 0; */
+  /* -webkit-transition: all 0.2s, background 0.2s ease-in-out; */
+  /* transition: all 0.2s, background 0.2s ease-in-out; */
+  /* background: rgba(255, 255, 255, 0.03); */
+  /* box-shadow: -3px -2px 2px #916d4c; */
+  /* background: #f3f3f3; */
+
+  
+  
+}
+.checkboxes div label input[type="checkbox"]:checked {
+  border: 2px solid #ff0000;
+  /* border-radius: 0.3em; */
+  background-color: #916d4c;
+  /* box-shadow: 3px 2px 2px #916d4c; */
+  /* color: #fff; */
+}
+
+
+
+.container{
+    flex: 1;
+    min-height: 100vh;
+}
+
+.content{
+    padding: 0 20px;  
+}
+.equipment_informations{
+    padding: 0px 20px;
+}
+.equipment_and_police{
+    font-family: interRegular;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+table .cargo_title{
+    font-family: interBold;
+    color: #fff;
+    height: 50px;
+    width: 100%;
+    background-color: #5B4939;
+    border-radius: 10px 10px 0px 0px;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+}
+
+table {
+    border-collapse: collapse;
+    justify-content: center;
+    width: 100%;
+    font-family: interBold;
+    font-size: 15px;
+    color: #5B4939;
+}
+
+.police_officer_table td{
+    text-align: center;
+    padding: 7px 2px;
+    font-size: 13px;
+}  
+.police_officer_table img{
+    border-radius: 80px;
+    border: 3px inset #5B4939;
+}
+table img{
+    width: 130px;
+}
+
+.police_officer_field {
+    width: 300px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgb(0,0,0,0.50);
+    justify-content: center; 
+
+}
+
+.equipment_field{
+    width: 30%;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgb(0,0,0,0.50);
+}
+
+
+.cargo_itens h2{
+    color: #5B4939;
+    background-color: #fff;
+}
+
+.military_means_room{
+    background-color: #fff;
+    border-radius: 10px;
+    width: 735px;
+    height: 400px;
+}
+
+.perfil {
+    max-width: 130px;
+    max-height: 130px;
+}
+
+.shadow{
+    box-shadow: -0px 5px 10px rgb(0,0,0,0.25);
+}
+
+.means_room_table table tbody, td{
+    text-align: center;
+    padding: 3px 0px 3px 0px;
+}
+
+.img-search{
+    height: 40px;
+    width: 40px;
+}
+.tbody_top_means_room tr td h4{
+    /* background-color: rgb(197, 196, 196); */
+    background-color: rgba(179, 166, 155, 0.9);
+    color: white;
+    border-radius: 10px;
+    margin: 0px 20px;
+    /* border: 2px solid #cba677; */
+    border: 1px solid rgb(195 164 136 / 90%);
+    padding: 2px;
+    font-family: 'interRegular';
+    font-size: 14px;
+}
+.search-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.search-table{
+    display: flex;
+    width: 500px;
+    padding: 0px 20px;
+}
+.search-table table{
+    text-align: center;
+}
+.search-table table td{
+    padding: 5px 0px;;
+}
+.search-box{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(91,73,57, 0.1);
+    border-radius: 10px 0px 0px 10px;
+
+}
+.search-txt{
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    color: #5B4939;
+    font-size: 15px;
+    font-family: interBold;
+    line-height: 20px;
+    width:200px;
+    padding: 10px;
+    text-align: center;
+}
+
+::-webkit-input-placeholder{
+    color:#5b4939b3;
+    font-family: interRegular;
+}
+
+.search-btn{
+    justify-content: center;
+    align-items: center;
+}
+.put_qnt{
+    background-color: rgb(91,73,57, 0.1);
+    border-radius: 0px 10px 10px 0px;
+    border-left: 2px solid rgb(0, 69, 147, 0.20);
+}
+.put_qnt input{
+    background: none;
+    justify-items: center;
+    text-align: center;
+    font-size: 15px;
+    padding: 0px;
+    font-family: 'interBold';
+    color: #5B4939;
+}
+.means_room_product{
+    width: 81px;
+    margin: 17px 46px 0px 0px;
+}
+
+ .img_product{
+    padding: 0px 20px;
+ }
+
+.info_product{
+    width: 550px;
+    padding: 0px 20px 0 20px;
+    max-height: 80px;
+    overflow-y: scroll;
+}
+.info_product tbodey tr:nth-child(even){
+    background-color: rgb(235, 235, 235);
+}
+
+/* .info_product table th{
+    border-bottom: 1px solid #5B4939;
+} */
+
+.table_info_product{
+    background: gainsboro;
+    border-radius: 10px;
+ }
+
+ .table_info_product thead{
+    /* position: sticky; */
+    /* top: 0; */
+ }
+
+.info_product_title{
+    background-color: burlywood;
+    border-radius: 10px 10px 0 0;
+}
+.info_product_th{
+    font-size: 13px;
+    background-color: antiquewhite;
+}
+.row_color{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px 0px 0px;
+}
+.row_color span{
+    height: 2px;
+    width: 600px;
+    background-color: #5B4939;
+}
+.description_product{
+    font-family: 'interRegular';
+    font-size: 13px;
+}
+
+.bottom_means_room{
+    display: flex;
+    padding: 10px 20px;
+    justify-content: space-between;
+}
+
+.btn{
+    font-family: interBold;
+    font-size:15px;
+    color:#5B4939;
+    background: none;
+    background-color: rgb(91,73,57, 0.45);
+    width: 130px;
+    height: 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #5B4939;
+
+}
+.insert_button{
+    display: flex;
+    align-items: end;
+}
+
+.note{
+    border-bottom: 1px solid #5B4939;
+}
+
+.note h5{
+    font-family: interBold;
+    font-size:15px;
+    color: #5B4939;
+
+}
+.note textarea{
+    font-family: interRegular;
+    font-size:13px;
+    color: #5B4939;
+}
+
+.cargo_itens{
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 20px 0px;
+    /* max-height: 75vh; */
+}
+.dashboard_loads{
+    width: 100%;
+}
+.cargo_itens table{
+    /* width: 500px; */
+    min-width: max-content;
+}
+ .cargo_itens tbody tr:nth-child(even){
+    background-color: rgb(235, 235, 235);
+ }
+.cargo_itens .cargo_title{
+    font-family: interBold;
+    color: #5B4939;
+    height: 50px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px 10px 0px 0px;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    font-size: 16px;
+    line-height: 60px;
+}
+.table_itens .col-itens{
+    background-color: #5B4939;
+    color: #fff;
+    height: 40px;
+    font-size: 13px;
+    text-align: center;
+    line-height: 50px;
+}
+.table_itens .row-tbody{
+    height: 40px;
+    font-size: 13px;
+    text-align: center;
+    /* line-height: 50px; */
+}
+
+.table_itens tbody{
+    font-size: 14px;
+    /* border-bottom: 1px solid #5B4939; */
+    /* line-height: 30px; */
+}
+.table_itens td, th{
+    padding: 0px 11px;
+}
+.table_itens thead{
+    top: 0;
+}
+.table_itens thead th{
+    min-width: 100px;
+}
+
+.finalize_load{
+    justify-content: flex-end;
+    display: flex;
+    padding: 0px 0px 20px 0px;
+}
+
+.btn_finalize{
+    font-family: interExtraBold;
+    font-size:18px;
+    color:#fff;
+    width: 220px;
+    height: 35px;
+    border-radius: 10px;
+    margin: 0px 0px 0px 20px;
+}
+
+.btn_cancel{
+    background-color: #C5033D;
+}
+.btn_confirm{
+    background-color: rgb(5, 168, 5);
+}
+
+.btn_cancel:hover{
+    background-color: #b63159;
+}
+.btn_confirm:hover{
+    background-color: rgb(5, 168, 5, 0.8);
+}
+
+footer{
+    position: static !important;
+}
+
+/* Para a tela final de fazer carga */
+.return-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-return{
+    width: 40px;
+}
+.cargo_id h3{
+    background-color: rgba(179, 166, 155, 0.9);
+    color: #fff;
+    border-radius: 10px;
+    margin: 0px 10px;
+    padding: 13px;
+    border: 1px solid rgb(195 164 136 / 90%);
+}
+/*  -----------------------------------------------------------------------------------  /
+/ CSS da página que exibe todas cargas e descargas realizadas */
+
+.click_redirect a {
+    background: none;
+    color: #5B4939;
+}
+
+.click_redirect a:hover{
+    text-decoration: underline ;
+}
+
+::-webkit-scrollbar{
+    width: 0.5rem;
+    height: 0.5rem;
+}
+::-webkit-scrollbar-track{
+    background: gainsboro;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgb(91,73,57, 0.4);
+    border-radius: 10px;
+
+}
+
+
+/* LISTA DE CARGAS DA PÁGINA 'CARGAS' */
+
+.status-atrasada {
+    /* color: #fff; */
+    /* border-left: solid;
+    border-right: solid;
+    background-color: rgb(247, 117, 117); */
+
+    /* border-left: solid #5B4939; */
+    /* border-right: solid #5B4939; */
+    color: #fff;
+    background-color: #9f0000db;
+}
+  
+.status-dentro-prazo {
+    color: #fff;
+    /* border-left: solid #5B4939; */
+    /* border-right: solid #5B4939; */
+    background-color: rgb(189, 186, 9);
+    /* background-color: rgb(255, 255, 103); */
+}
+
+.status-descarregada-atraso {
+    /* border-left: solid #5B4939; */
+    /* border-right: solid #5B4939; */
+    background-color: #ff9100c0;
+    color: #ffff;
+  }
+
+.status-descarregada-prazo {
+    /* border-left: solid #5B4939; */
+    /* border-right: solid #5B4939; */
+    color: #fff;
+    background-color: rgb(82, 240, 82);
+    /* background-color: rgb(79, 180, 79); */
+}
+
+.status-data-indefinida{
+    /* color: #fff; */
+    color: #5B4939;
+    border-left: solid #5B4939;
+    border-right: solid #5B4939;
+    background-color: lightgray;
+    /* background-color: rgb(117, 117, 238); */
+}
+
+
+
+/* Página de carga_policial */
+.div_load_specification{
+    padding: 0 20px;
+}
+
+.div_load_specification .cargo{
+    display: flex;
+    justify-content: center;
+}
+
+/* Tabela de descargas */
+.unload_itens{
+    /* background-color: blue; */
+    border-radius: 10px;
+    height: 400px;
+    /* margin: 20px 0px; */
+    max-height: 400px;
+}
+
+.unload_itens .table_itens .cargo_title{
+    font-family: interBold;
+    color: #5B4939;
+    height: 50px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px 10px 0px 0px;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+}
+
+.unload_itens .table_itens thead th {
+    min-width: 60px;
+}
+

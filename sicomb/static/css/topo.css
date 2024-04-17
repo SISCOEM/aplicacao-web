@@ -1,0 +1,46 @@
+
+.top-content {
+    color: #90816A;
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    align-items: center;
+    padding: 0 20px;
+    
+}
+
+.top-content h1 {
+    font-family: interExtraBold;
+    font-style: italic;
+
+
+}
+
+.top-item {
+    color: #90816A;
+}
+
+.info-login {
+    display: flex;
+    top: 10px;
+    align-items: center;
+}
+
+.info-login img {
+    width: 50px;
+    height: 50px;
+}
+
+.info-login h3 {
+    font-family: interBold;
+    font: 15px;
+}
+
+.info-login p {
+    font-size: 10px;
+}
+
+#down_arrow {
+    width: 25px;
+    height: 25px;
+}
