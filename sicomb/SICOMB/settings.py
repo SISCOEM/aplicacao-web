@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     "equipment",
     "load",
     "report",
+    "api_rest"
     
     # Apps de terceiros
     "corsheaders",  # Configuração necessaria para acerro da página equipment/get como uma api
@@ -103,7 +104,8 @@ DATABASES = {
         "OPTIONS": {
             "sql_mode": "traditional",
         },
-        "PASSWORD": "root",
+        "PASSWORD": "#Tony17#",
+        # "PASSWORD": "root",
         # "PASSWORD": "12345679",
         "HOST": "localhost",
         "PORT": "3306",
