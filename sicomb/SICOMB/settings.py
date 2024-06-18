@@ -18,13 +18,15 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'rest_framework',
+    'rest_framework.authtoken',
     
     # Meus Apps 
     "police",
     "equipment",
     "load",
     "report",
-    "api_rest"
+    "api_rest",
     
     # Apps de terceiros
     "corsheaders",  # Configuração necessaria para acerro da página equipment/get como uma api
@@ -145,7 +147,6 @@ CORS_ALLOW_HEADERS = [
     "cache-control",
     "Content-Type"
 ]
-
 # Configurações de emails
 APPEND_SLASH = True
 
