@@ -9,7 +9,7 @@ SECRET_KEY = "django-insecure-=@-^(fuzcew496ttksj^_=+irgt1xd5oc86f2wr0ck6yo%qhtw
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*", "192.168.1.9:8081"]
 
 INSTALLED_APPS = [
     "django.contrib.contenttypes",
