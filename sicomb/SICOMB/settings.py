@@ -9,7 +9,7 @@ SECRET_KEY = "django-insecure-=@-^(fuzcew496ttksj^_=+irgt1xd5oc86f2wr0ck6yo%qhtw
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*", "192.168.1.9:8081"]
 
 INSTALLED_APPS = [
     "django.contrib.contenttypes",
@@ -18,12 +18,15 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'rest_framework',
+    'rest_framework.authtoken',
     
     # Meus Apps 
     "police",
     "equipment",
     "load",
     "report",
+    "api_rest",
     
     # Apps de terceiros
     "corsheaders",  # Configuração necessaria para acerro da página equipment/get como uma api
@@ -103,7 +106,8 @@ DATABASES = {
         "OPTIONS": {
             "sql_mode": "traditional",
         },
-        "PASSWORD": "root",
+        "PASSWORD": "#Tony17#",
+        # "PASSWORD": "root",
         # "PASSWORD": "12345679",
         "HOST": "localhost",
         "PORT": "3306",
@@ -143,7 +147,6 @@ CORS_ALLOW_HEADERS = [
     "cache-control",
     "Content-Type"
 ]
-
 # Configurações de emails
 APPEND_SLASH = True
 

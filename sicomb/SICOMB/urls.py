@@ -23,6 +23,7 @@ urlpatterns = [
     path('police/', include('police.urls')),
     path('report/', include('report.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('api/', include('api_rest.urls'))
 ]
 
 if settings.DEBUG:
