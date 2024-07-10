@@ -7,7 +7,7 @@ from SICOMB import settings
 from load.models import *
 from .templatetags.custom_filters import require_user_pass
 from django.views.decorators.csrf import csrf_exempt
-import simpleaudio as sa # usada para reprodução de um áudio
+# import simpleaudio as sa # usada para reprodução de um áudio
 
 @csrf_exempt 
 @require_user_pass

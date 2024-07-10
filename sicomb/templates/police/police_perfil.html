@@ -36,16 +36,6 @@
                     <tr>
                         <td>{{police.email}}</td>
                     </tr>
-                    <tr>
-                        <td>
-                            <form action="./" method="post">
-                                {% csrf_token %}
-                                <div class="btn_final">
-                                    <input class="btn_finalize btn_cancel shadow" name="cancelar" type="button" onclick="window.location='{% url "logout" %}'" value="Sair">
-                                </div>
-                            </form>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </div>

@@ -2,7 +2,7 @@ from serial.tools import list_ports
 import threading
 import serial
 import time
-import simpleaudio as sa
+#import simpleaudio as sa
 
 
 command_hex = "AA 00 27 00 03 22 FF FF 4A DD"
@@ -153,9 +153,9 @@ def get_uids():
             print(AUX["uids"])
             if line not in AUX["uids"] and line.strip() != "" :
                 AUX["uids"].append(line)
-                som = sa.WaveObject.from_wave_file(STATICFILES_DIRS[0] + "/sounds/passSound.wav")
-                play_obj = som.play()
-                play_obj.wait_done()
+                #som = sa.WaveObject.from_wave_file(STATICFILES_DIRS[0] + "/sounds/passSound.wav")
+                #play_obj = som.play()
+                #play_obj.wait_done()
                 
         except UnicodeDecodeError:
             print(f"Erro de decodificação no sensor RFID, impossível decodificar como UTF-8")
