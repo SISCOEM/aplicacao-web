@@ -61,9 +61,12 @@
                 <p>MATRÍCULA: {{ request.user.matricula }}</p>
             </span class="top-item">
             <span>
-                <a href="{% url "logout" %}">
-                    <img id="down_arrow" src="{% static 'img/out-icon.png' %}" alt="">
-                <a>
+                <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" style="background:none; border:none; padding:0;">
+                        <img id="down_arrow" src="{% static 'img/out-icon.png' %}" alt="Logout">
+                    </button>
+                </form>
                 <a></a> <!-- Ver o pq se tirar esse link ele buga -->
             </span>
         </div>
