@@ -18,12 +18,15 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'rest_framework',
+    'rest_framework.authtoken',
     
     # Meus Apps 
     "police",
     "equipment",
     "load",
     "report",
+    "api_rest",
     
     # Apps de terceiros
     "corsheaders",  # Configuração necessaria para acerro da página equipment/get como uma api
@@ -103,10 +106,11 @@ DATABASES = {
         "OPTIONS": {
             "sql_mode": "traditional",
         },
-        "PASSWORD": "988689092",
+        "PASSWORD": "#Tony17#",
+        # "PASSWORD": "root",
         # "PASSWORD": "12345679",
         "HOST": "localhost",
-        "PORT": "3308",
+        "PORT": "3306",
     }
 }
 
@@ -141,9 +145,15 @@ CORS_ALLOW_METHODS = [
 
 CORS_ALLOW_HEADERS = [
     "cache-control",
-    "Content-Type"
+    "Content-Type",
+    "Authorization"
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
 # Configurações de emails
 APPEND_SLASH = True
 
