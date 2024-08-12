@@ -9,7 +9,7 @@ from django.conf import settings
 from django.utils import timezone
 from .forms import *
 from django.contrib import messages
-
+from notifications_app_mobile.views import NotificationService
 
 settings.AUX["list_equipment"] = {}  # lista de equipamentos
 settings.AUX["list_equipment_removed"] = {}  # lista de equipamentos removidos
@@ -157,6 +157,12 @@ def confirm_load(request):
                         ).save()
                 
                 Load.objects.send_relatory(load)
+                NotificationService().send_notification(
+                    title="Nova carga",
+                    message=f"Nova carga realizada por {request.user.name}",
+                    data={"load_id": load.id},
+                    expo_push_token=police.pushToken
+                )
 
                 # Limpa as variáveis de sessão
                 settings.AUX["matricula"] = ""

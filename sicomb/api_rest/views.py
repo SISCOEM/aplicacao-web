@@ -129,3 +129,20 @@ class EquipmentLoadsInfo(APIView):
             return Response({
                 'erro': str(error)
             })
+            
+class PushToken(APIView):
+    def post(self, request, registration, tokenPush):
+        try:
+            police = Police.objects.get(matricula=registration)
+            print(police)
+            police.pushToken = tokenPush
+            police.save()
+            return Response({
+                'ok': True
+            })
+        except Exception as error:
+            print(error)
+            return Response({
+                'erro': str(error)
+            })
+
