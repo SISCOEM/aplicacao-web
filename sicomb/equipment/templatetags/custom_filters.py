@@ -45,7 +45,7 @@ def require_user_pass(funcao):
 
     def wrapper(request, *args, **kwargs):
         if request.method == 'POST':
-            json_data = json.loads(request.body)
+            json_data = request.POST
             
             password = json_data.get('pass')
             user = json_data.get('user')

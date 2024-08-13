@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 import os
 import socket
+from django.core.wsgi import get_wsgi_application
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -9,7 +10,7 @@ SECRET_KEY = "django-insecure-=@-^(fuzcew496ttksj^_=+irgt1xd5oc86f2wr0ck6yo%qhtw
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     "django.contrib.contenttypes",
@@ -43,6 +44,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "SICOMB.middlwares.handle_error",
+        
 ]
 
 APPEND_SLASH = True  # resolve erro do fetch de rotas do django
@@ -214,7 +216,7 @@ AUX = {
     
     # LEITOR DE DIGITAL
     "message_fingerprint_sensor": None,
-    "PORT_RFID": "COM13",
+    "PORT_RFID": "COM4",
 }
 
 
