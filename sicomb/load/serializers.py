@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Load, Equipment_load
 from police.serializers import PoliceSerializer
-
+from equipment.serializers import EquipmentSerializer, BulletSerializer, ArmamentModelSerializer
         
 class LoadSerializer(serializers.ModelSerializer):
     police_adjunct = PoliceSerializer(source='adjunct', read_only=True)
@@ -30,3 +30,15 @@ class LoadSerializer(serializers.ModelSerializer):
             return len(items_load)
         
         
+class Equipment_loadSerializer(serializers.ModelSerializer):
+    bullet = BulletSerializer(read_only=True)
+    equipment = EquipmentSerializer(read_only=True)
+    armament_model = ArmamentModelSerializer( read_only=True)
+
+    class Meta:
+        model = Equipment_load
+        fields = ['amount','observation', 'status', 'bullet', 'equipment', 'armament_model'] # Selecionar os campos
+        
+    
+        
+    

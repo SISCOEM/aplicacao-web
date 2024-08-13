@@ -1,12 +1,13 @@
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.hashers import check_password
 from police.models import Police
 from rest_framework import status
-from load.models import Load
-from django.shortcuts import get_object_or_404
-from load.serializers import LoadSerializer
+from load.models import Load, Equipment_load
+from django.shortcuts import get_object_or_404, get_list_or_404
+from load.serializers import LoadSerializer, Equipment_loadSerializer
 
 class LoginAPIView(APIView):
     def post(self, request):
@@ -67,7 +68,11 @@ class ProfilePhotoPath(APIView):
                 'error_message': 'Deu erro aqui meu patrao'
             })
             
+
 class PoliceLoadsReport(APIView):
+    
+    permission_classes = [IsAuthenticated] # É obrigatório estar logado
+    
     def get(self, request, registration):
         try:
             police = get_object_or_404(Police, matricula=registration)
@@ -94,6 +99,9 @@ class PoliceLoadsReport(APIView):
             })
             
 class PoliceLoadsInfo(APIView):
+    
+    permission_classes = [IsAuthenticated] # É obrigatório estar logado
+    
     def get(self, request, registration):
         try:
             police = get_object_or_404(Police, matricula=registration)
@@ -106,3 +114,35 @@ class PoliceLoadsInfo(APIView):
             return Response({
                 'erro': str(error)
             })
+
+class EquipmentLoadsInfo(APIView):
+    
+    permission_classes = [IsAuthenticated] # É obrigatório estar logado
+    
+    def get(self, request, load_id):
+        try:
+            equipment_load = get_list_or_404(Equipment_load, load_id=load_id)
+            serializer = Equipment_loadSerializer(equipment_load, many=True)
+            return Response(serializer.data)
+        except Exception as error:
+            print(error)
+            return Response({
+                'erro': str(error)
+            })
+            
+class PushToken(APIView):
+    def post(self, request, registration, tokenPush):
+        try:
+            police = Police.objects.get(matricula=registration)
+            print(police)
+            police.pushToken = tokenPush
+            police.save()
+            return Response({
+                'ok': True
+            })
+        except Exception as error:
+            print(error)
+            return Response({
+                'erro': str(error)
+            })
+
