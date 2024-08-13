@@ -87,7 +87,7 @@
             "Comandante Geral"
         ]
     ],
-    "SENSOR_FINGERPRINT": false,
-    "SENSOR_RFID": false,
+    "SENSOR_FINGERPRINT": true,
+    "SENSOR_RFID": true,
     "stop_event": false
 }

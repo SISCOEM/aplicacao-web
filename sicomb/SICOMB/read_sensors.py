@@ -2,8 +2,18 @@ from serial.tools import list_ports
 import threading
 import serial
 import time
-#import simpleaudio as sa
+# import simpleaudio as sa
 
+# Criação do evento de parada e da thread
+# stop_event = threading.Event()
+# stop_event.clear()
+
+# Função de limpeza para garantir que a thread será sinalizada ao final da execução do programa
+# def cleanup():
+#     print('Encerrando o programa... Sinalizando a thread...')
+    # stop_event.set()
+
+# atexit.register(cleanup)
 
 command_hex = "AA 00 27 00 03 22 FF FF 4A DD"
 # command_hex_2 = "AA 00 B6 00 02 03 E8 A3 DD"
@@ -40,75 +50,94 @@ def is_iterable(variable):
     
 
 def verificar_portas(sensor):
-    if sensor == "DIGITAL_READER":
-        for porta in list_ports.comports():
-            if "CH340" in porta.description.upper():
-                try:
-                    ser = serial.Serial(porta.device, baudrate=115200, timeout=2)
-                    print(f"Tentando porta {porta.device}...")
-                    
-                    for _ in range(10000):
-                        time.sleep(1)
-                        try:
-                            resposta = ser.readline().decode('UTF-8')
-                            print(resposta)
-                            if "FINGERPRINT::SUCCESS::Started" in resposta:
-                                print(f"Mensagem 'started' recebida em {porta.device}")
-                                ser.write("4".encode())
-                                return porta.device
-                        except UnicodeDecodeError:
-                            print(f"Erro de decodificação em {porta.device}: impossível decodificar como UTF-8")
-                    ser.write("4".encode())
-                    ser.close()
+    while list_ports.comports() is None or len(list_ports.comports()) == 0:
+        print("Insira o sensor!")
+        time.sleep(2)
+    
+    while True:
+        if sensor == "DIGITAL_READER":
+            for porta in list_ports.comports():
+                if "CH340" in porta.description.upper():
+                    try:
+                        ser = serial.Serial(porta.device, baudrate=115200, timeout=2)
+                        print(f"Tentando porta {porta.device}...")
+                        
+                        for i in range(0, 3):
+                            time.sleep(1)
+                            try:
+                                resposta = ser.readline().decode('UTF-8')
+                                if "FINGERPRINT::SUCCESS::Started" in resposta:
+                                    print(f"Mensagem 'started' recebida em {porta.device}")
+                                    ser.write("4".encode())
+                                    ser.close()
 
-                except serial.SerialException:
-                    print(f"Erro ao abrir a porta {porta.device}")
-            else:
-                print(f"Porta {porta.device} descartada, description: {porta.description.upper()}")
-                
-    elif sensor == "RFID_MODULE":
-        for porta in list_ports.comports():
-            if "CH340" in porta.description.upper():
-                try:
-                    ser = serial.Serial(porta.device, baudrate=115200, timeout=2)
-                    print(f"device {ser}...")
-                    print(f"Tentando porta {porta.device}...")
-                    
-                    for _ in range(10000):
-                        time.sleep(1)
-                        send_hex_command(ser, "AA 00 08 00 08 DD")
-                        try:
-                            resposta = read_line(ser, read_tag=False, timer=2)
-                            if is_iterable(resposta) and "AA" in resposta and "DD" in resposta:
-                                print(f"Modulo RFID recebido {porta.device}")
-                                return porta.device
-                            else:
-                                send_hex_command(ser, "AA 00 08 00 08 DD")
-                                resposta = read_line(ser, timer=3)
-                                print(resposta)
-                                
-                                if is_iterable(resposta) and "aa" in resposta and "dd" in resposta:
-                                    print(f"Modulo RFID recebido {porta.device}")
                                     return porta.device
-                                
-                        except UnicodeDecodeError:
-                            print(f"Erro de decodificação em {porta.device}: impossível decodificar como UTF-8")
-                    ser.write("4".encode())
-                    ser.close()
+                            except UnicodeDecodeError:
+                                print(f"Erro de decodificação em {porta.device}: impossível decodificar como UTF-8")
 
-                except serial.SerialException:
-                    print(f"Erro ao abrir a porta {porta.device}")
-            else:
-                print(f"Porta {porta.device} descartada, description: {porta.description.upper()}")
+                        ser.write("4".encode())
+                        ser.close()
+
+                    except serial.SerialException:
+                        print(f"Erro ao abrir a porta {porta.device}")
+                else:
+                    print(f"Porta {porta.device} descartada, description: {porta.description.upper()}")
+                time.sleep(1)
+            
+            print("Erro ao detectar leitor de impressão digital")
+            
+        elif sensor == "RFID_MODULE":
+            for porta in list_ports.comports():
+                if "CH340" in porta.description.upper():
+                    print(f"Tentando porta {porta.device}...")
+                    
+                    try:
+                        ser = serial.Serial(porta.device, baudrate=115200, timeout=2)
+                        for i in range(0, 3):
+                            time.sleep(1)
+                            
+                            # Manda um comando pro RFID que tem uma resposta
+                            try:
+                                for i in range(0, 3):
+                                    port = try_RFID_connection(ser, porta.device)
+                                    
+                                    if port is not None:
+                                        ser.close()
+                                        print("Porta fechada")
+                                        print(ser)
+                                        return port
+                                
+                            except UnicodeDecodeError:
+                                print(f"Erro de decodificação em {porta.device}: impossível decodificar como UTF-8")
+                            
+                        ser.close()
+
+                    except serial.SerialException:
+                        print(f"Erro ao abrir a porta {porta.device}")
+                else:
+                    print(f"Porta {porta.device} descartada, description: {porta.description.upper()}")
+            
+            print("Erro ao detectar leitor RFID")
         
+
+def try_RFID_connection(ser, port):
+    send_hex_command(ser, command_hex)
+    resposta = read_line(ser, read_tag=False, timer=1, start_time=time.time())
+    
+    # As respostas sempre tem os bytes "AA" e "DD", que significa início (AA) e final (DD) 
+    if resposta is not None:
+        ser.close()
+        return port
+
 
 def read_line(ser, start_time=time.time(), timer=time_while, read_tag=True):
     is_reading = False
     read_data = []
-    print("Reading")
+    # print("Reading")
 
-    while time.time() - start_time < timer:
+    while (time.time() - start_time) < timer:
         rc = ser.read(1)
+        # print(rc)
         
         if rc == b'\xAA':
             is_reading = True
@@ -150,12 +179,13 @@ def get_uids():
             
             line = "".join(line[6:len(line) - 2])
 
-            print(AUX["uids"])
             if line not in AUX["uids"] and line.strip() != "" :
                 AUX["uids"].append(line)
-                #som = sa.WaveObject.from_wave_file(STATICFILES_DIRS[0] + "/sounds/passSound.wav")
-                #play_obj = som.play()
-                #play_obj.wait_done()
+                # som = sa.WaveObject.from_wave_file(STATICFILES_DIRS[0] + "/sounds/passSound.wav")
+                # play_obj = som.play()
+                # play_obj.wait_done()
+                
+            print(AUX["uids"])
                 
         except UnicodeDecodeError:
             print(f"Erro de decodificação no sensor RFID, impossível decodificar como UTF-8")
@@ -261,6 +291,8 @@ if AUX["SENSOR_RFID"]:
 
 if AUX["SENSOR_FINGERPRINT"]:
     AUX['PORT_FINGERPRINT'] = verificar_portas("DIGITAL_READER")
+    
+    print(AUX['PORT_FINGERPRINT'])
     
     ser_fingerprint = None
     while ser_fingerprint is None:

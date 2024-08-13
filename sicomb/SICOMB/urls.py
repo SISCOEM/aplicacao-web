@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 from .settings import AUX
 from .main_view import main_view
 from django.http import HttpResponse
+from django.contrib.auth import urls
 
 def minha_view(request):
     dominio = request.META['HTTP_HOST']
