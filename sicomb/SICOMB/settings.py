@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "load",
     "report",
     "api_rest",
+    "notifications_app_mobile",
     
     # Apps de terceiros
     "corsheaders",  # Configuração necessaria para acerro da página equipment/get como uma api
@@ -169,7 +170,7 @@ DEFAULT_FROM_EMAIL = 'edielromily01@gmail.com'
 EMAIL_SENDER_NAME = 'SISCOEM'
 
 
-ADMINS = [('Ediel Romily', 'edielromily7@gmail.com')]
+# ADMINS = [('Ediel Romily', 'edielromily7@gmail.com')]
 
 LOGGING = {
     'version': 1,
