@@ -158,8 +158,10 @@ def confirm_load(request):
                 
                 Load.objects.send_relatory(load)
                 NotificationService().send_notification(
-                    title="Nova carga",
-                    message=f"Nova carga realizada por {request.user.name}",
+                    title="CARGA REALIZADA",
+                    emoji_title="👮‍♂️",
+                    body=f"Olá policial, nova carga realizada por {request.user.name}!",
+                    emoji_body="✅",
                     data={"load_id": load.id},
                     expo_push_token=police.pushToken
                 )
@@ -261,7 +263,14 @@ def confirm_load(request):
                 load.save()
                 
                 Load.objects.send_relatory(load)
-                
+                NotificationService().send_notification(
+                    title="CARGA DEVOLVIDA COM SUCESSO",
+                    emoji_title="👮‍♂️",
+                    body=f"Olá policial, a sua descarga de equipamentos se encontra ok!",
+                    emoji_body="✅",
+                    data={"load_id": load.id},
+                    expo_push_token=police.pushToken
+                )
                 settings.AUX["matricula"] = ""
                 
                 if load_unload: Load.objects.check_load(load_unload) 

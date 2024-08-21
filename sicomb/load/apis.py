@@ -141,6 +141,7 @@ def get_list_equipment_avalible(request):
 @csrf_exempt
 @require_user_pass
 def get_list_equipment(request):
+    print(settings.AUX["list_equipment"])
     return JsonResponse(settings.AUX["list_equipment"], json_dumps_params={'ensure_ascii': False})
 
 
