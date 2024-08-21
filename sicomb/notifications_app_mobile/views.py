@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Notification
 import requests
 
 # Create your views here.
@@ -10,25 +11,14 @@ class NotificationService:
             'Content-Type': 'application/json'
         }
         
-    def send_notification(self, title, message, data, expo_push_token):
-        data = {
+    def send_notification(self, title, emoji_title, emoji_body, body, data, expo_push_token):
+        notification = Notification(title=title, body=body, data=data, to=expo_push_token)
+        data_notification = {
             'to': expo_push_token,
-            'title': title,
-            'body': message,
+            'title': title + ' ' + emoji_title,
+            'body': body + ' ' + emoji_body,
             'data': data
         }
-        response = requests.post(self.expo_push_url, headers=self.headers, json=data)
+        response = requests.post(self.expo_push_url, headers=self.headers, json=data_notification)
+        notification.save()
         return response.json()
-    
-def send_notification(request):
-    if request.method == 'POST':
-        title = request.POST.get('title')
-        message = request.POST.get('message')
-        data = request.POST.get('data')
-        expo_push_token = request.POST.get('expo_push_token')
-        
-        notification_service = NotificationService()
-        response = notification_service.send_notification(title, message, data, expo_push_token)
-        return render(request, 'notifications_app_mobile/send_notification.html', {'response': response})
-    
-    return render(request, 'notifications_app_mobile/send_notification.html', {})

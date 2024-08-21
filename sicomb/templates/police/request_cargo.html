@@ -6,7 +6,9 @@
 {% block title_top %}REQUISITAR CARGA{% endblock title_top %}
 {% block nav %}{% endblock nav %}
 {% block perfil %}{% endblock perfil %}
-
+{% block 'head' %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+{% endblock 'head' %}
 {% block content_final%}
     <div id="messages"></div>
     <section class="cargo">
@@ -163,6 +165,16 @@
                     </div>
                 </div>
             </form>
+            <div style="width: 10px; height: 20px;"></div>
+            <div class="row_color row_color_police_login"><span><hr></span></div>
+            <table>
+                <tbody class="tbody_top_means_room">
+                    <tr>
+                        <td class="sub-title">AGORA VOCÊ PODE ACESSAR PELO CELULAR<br><br>ACESSE O APLICATIVO SISCOEM E ESCANEIE O QRCODE ABAIXO NA ABA DE REQUISITAR CARGA</td>
+                    </tr>
+                </tbody>
+            </table>
+                <div style="display: flex; justify-content: center; align-items: center;" id="qrcode_login_policial_app"></div>
                 <!-- </div> -->
             <!-- </div> -->
         </div>
@@ -171,6 +183,15 @@
 {% endblock content_final%}
 
 {% block js %}
+    <script>
+        var qr = qrcode(0, 'L');
+        var link = window.location.href;
+        qr.addData(link);
+        qr.make();
+        
+        document.getElementById('qrcode_login_policial_app').innerHTML = qr.createImgTag(10);
+      </script>
+      
     <script src="{% static "js/utilitary.js" %}"></script>
     {% if police %}
         <script src="{% static "js/police_request_page.js" %}"></script>

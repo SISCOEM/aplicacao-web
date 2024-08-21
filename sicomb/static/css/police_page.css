@@ -74,7 +74,7 @@ table img{
     background-color: #fff;
     border-radius: 10px;
     width: 300px; /**/
-    height: 400px;
+    height: 500px;
     /* width: 60%; */
     /* height: 85%; */
 }
@@ -83,7 +83,7 @@ table img{
     background-color: #fff;
     border-radius: 10px;
     width: 60%;
-    height: 100%;
+    height: 120%;
 }
 
 .shadow{

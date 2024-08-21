@@ -15,8 +15,10 @@ from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import Group
 from cryptography.fernet import Fernet
 from django.db.models import Q
+from rest_framework.response import Response
+from .serializers import RequestLoad
 
-@login_required
+# @login_required # Talvez seja necessário descomentar
 def login(request):
     """
     View para processar o login de um policial com o fim de requisitar uma carga.
@@ -28,6 +30,11 @@ def login(request):
     settings.AUX["matricula"] = ''
     
     if request.method == "POST":
+        body = {}
+        try:
+            body = json.loads(request.body)
+        except Exception as error:
+            pass
         # Verifica se não foi o botão de cancelar que foi pressionado
         if not request.POST.get("cancelar"):
             # Verifica o tipo de login (senha ou impressão digital)
@@ -104,6 +111,25 @@ def login(request):
                 else:
                     # Retorna uma mensagem de erro se o token de acesso estiver ausente
                     messages.error(request, "Token de acesso inexistente!")
+            try:
+                if body['type_login'] == "app":
+                    try:
+                        police = Police.objects.get(
+                            matricula=body['matricula']
+                        )
+                        settings.AUX["confirm_cargo"] = False
+                        settings.AUX["matricula"] = body['matricula']
+                        data["police"] = police
+                        loads = Load.objects.filter(police=police).order_by('-date_load')[:35]
+                        data["loads"] = []
+                        for i in loads:
+                            ec = Equipment_load.objects.filter(load=i)
+                            data["loads"].append([i, len(ec)])
+                    except Police.DoesNotExist:
+                        return Response({"error": "Não foi possível encontrar policial!"})
+            except Exception as error:
+                pass
+
     
     # Renderiza a página de solicitação de carga com os dados apropriados
     return render(request, "police/request_cargo.html", data)

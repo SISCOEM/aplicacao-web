@@ -88,6 +88,6 @@
         ]
     ],
     "SENSOR_FINGERPRINT": false,
-    "SENSOR_RFID": true,
+    "SENSOR_RFID": false,
     "stop_event": false
 }
