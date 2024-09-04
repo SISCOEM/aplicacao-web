@@ -67,6 +67,7 @@
             cursor: pointer;
         }
     </style>
+    {% block 'head' %}{% endblock 'head' %}
     <script>
         function toggle_nav_group(group) {
             $('.group-nav').not('#' + group).addClass('d-none');
