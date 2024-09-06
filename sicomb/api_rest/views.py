@@ -175,3 +175,59 @@ class GetAdjunct(APIView):
         }
         print(data)
         return Response(data)
+class GetEquipmentList(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        list_return = []
+        list_equipment = settings.AUX.get("list_equipment")
+
+        
+        if list_equipment and isinstance(list_equipment, dict):
+            tipo_model = {
+                'wearable' : 'Vestimento',
+                'accessory' : 'Acessório',
+                'armament' : 'Armamento',
+                'grenada' : 'Granada',
+                'bullet' : 'Munição',
+                'equipment' : '-',
+            }
+            for equipment_name, equipment_info in list_equipment.items():
+                if isinstance(equipment_info, dict) and 'amount' in equipment_info:
+                    if 'registred' in equipment_info:
+                        type = equipment_info['registred']
+                        type = tipo_model[type]
+                    else:
+                        type = 'Munição'
+                info_equipment = {
+                    'quantity': str(equipment_info['amount']) if 'amount' in equipment_info else '-',
+                    'img_path': equipment_info['model']['image_path'] if 'model' in equipment_info and 'image_path' in equipment_info['model'] else '-',
+                    'caliber': equipment_info['model']['caliber'] if 'model' in equipment_info and 'caliber' in equipment_info['model'] else '-',
+                    'description': equipment_info['model']['description'] if 'model' in equipment_info and 'description' in equipment_info['model'] else '-',
+                    'type' : type,
+                    'nSerie' : equipment_info['equipment']['serial_number'] if 'equipment' in equipment_info and 'serial_number' in equipment_info['equipment'] else '-',
+                    'obs' : equipment_info['observation'] if 'observation' in equipment_info else '-',
+                    'size' : equipment_info['model']['size'] if 'size' in equipment_info['model'] else '-',
+                    'campo' : equipment_info['campo'] if 'campo' in equipment_info else '-',
+                }
+                list_return.append(info_equipment)
+            data = {
+                'list_equipment': list_return,
+                'ok': True
+            }
+            return Response(data)
+        return Response({'ok': True, 'list_equipment': list_equipment})
+        
+class ConfirmLoad(APIView):
+    def post(self, request):
+        try:
+            settings.AUX['confirm_cargo'] = True
+            
+            return Response({
+                'ok': True
+            })
+        except Exception as error:
+            print(error)
+            return Response({
+                'error_message': 'Matrícula incorreta'
+            })

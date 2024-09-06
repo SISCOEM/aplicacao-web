@@ -31,7 +31,7 @@ def confirm_load(request):
         "municoes": settings.AUX["calibres"]
     }
     police = None
-    
+    settings.AUX["registration_adjunct"] = request.user.matricula
     # Verifica se o método HTTP utilizado é POST e se a confirmação de carga está habilitada
     if request.method == "POST" and settings.AUX["confirm_cargo"]:
         # Limpa a matrícula e desativa a confirmação de carga

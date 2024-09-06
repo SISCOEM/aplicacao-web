@@ -11,4 +11,6 @@ urlpatterns = [
     path("push-token/<str:registration>/<str:tokenPush>", views.PushToken.as_view(), name="push_tokenAPI"),
     path("get-csrf-token/", views.get_csrf_token, name="get_csrf_tokenAPI"),
     path("get-adjunct/", views.GetAdjunct.as_view(), name="get_adjunctAPI"),
+    path("get-equipment-list/", views.GetEquipmentList.as_view(), name="get_equipment_listAPI"),
+    path("confirm-load/", views.ConfirmLoad.as_view(), name="confirm_loadAPI"),
 ]
