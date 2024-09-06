@@ -37,7 +37,7 @@
                         <td>{{police.matricula}}</td>
                     </tr>
                     <tr>
-                        <td>{{police.telefone}}</td>
+                        <td id="telefone-txt">{{police.telefone}}</td>
                     </tr>
                     <tr>
                         <td>{{police.lotacao}}</td>
@@ -130,5 +130,30 @@
 
         </div>
     </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function formatPhoneNumber(phoneNumber) {
+                var cleaned = phoneNumber.replace(/\D/g, ''); 
+    
+                if (cleaned.length === 13) {
+                    return '+' + cleaned.slice(0, 2) + ' (' + cleaned.slice(2, 4) + ') ' + cleaned.slice(4, 9) + '-' + cleaned.slice(9);
+                }
+                else if (cleaned.length === 11) {
+                    return '(' + cleaned.slice(0, 2) + ') ' + cleaned.slice(2, 7) + '-' + cleaned.slice(7);
+                }
+                else if (cleaned.length === 10) {
+                    return '(' + cleaned.slice(0, 2) + ') ' + cleaned.slice(2, 6) + '-' + cleaned.slice(6);
+                }
+    
+                return phoneNumber;
+            }
+    
+            var telefoneElement = document.getElementById('telefone-txt');
+            if (telefoneElement) {
+                var phoneNumber = telefoneElement.textContent.trim();
+                telefoneElement.textContent = formatPhoneNumber(phoneNumber);
+            }
+        });
+    </script>
 {% endblock content_final%}
 
