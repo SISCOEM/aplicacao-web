@@ -6,8 +6,10 @@
 {% block title_top %}PERFIL DO POLICIAL{% endblock title_top %}
 {% block nav %}{% endblock nav %}
 {% block perfil %}{% endblock perfil %}
+{% block css2 %}{% static 'css/carga.css' %}{% endblock%}
 
 {% block content_final%}
+<link rel="stylesheet" href="{% static 'css/equipamentos.css' %}">
     <section class="cargo">
         <div class="police_officer_field shadow">
             <table class="police_officer_table">
@@ -53,19 +55,29 @@
     </section>
     <br>    
     <section>
-        <div style="margin-right: 0px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
-                <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2z"/>
-            </svg>
-        </div>
-    </section>
-    <section>
         <div class="cargo_itens shadow">
             <table class="table_itens">
                 <thead>
+                    <form method="get">
                     <tr>
-                        <th colspan="100%" class="cargo_title"><h3 >CARGAS</h3></th>
+                        <th colspan="100%" class="cargo_title"><h3>CARGAS </h3></th>
                     </tr>
+                        <tr class="col-itens">
+                            <th colspan="100%" class=""><input type="submit" class="button" value="Filtrar"></th>
+                        </tr>
+                            
+                        <tr class="col-itens">
+                            <th></th>
+                            <th>{{ filter_form.turn_type }}</th>
+                            <th></th>
+                            <th>{{ filter_form.adjunct }}</th>
+                            <th></th>
+                            <th>{{ filter_form.amount_items }}</th>
+                            <th><label>Começo<br> {{ filter_form.date_load_start }} <br>Fim<br> {{ filter_form.date_load_end }}</th>
+                            <th>Começo<br> {{ filter_form.expected_load_return_date_start }} <br>Fim<br> {{ filter_form.expected_load_return_date_end }}</th>
+                            <th>{{ filter_form.status }}</th>
+                        </tr>
+                    </form>
                     <tr class="col-itens">
                         <th>ID DE CARGA</th>
                         <th>TIPO</th>
@@ -75,6 +87,7 @@
                         <th>QNT. DE ITENS</th>
                         <th>DATA</th>
                         <th>PREVISÃO DE DESCARGA</th>
+                        <th>STATUS</th>
                     </tr>
                 </thead>
                 {% if loads %}
@@ -85,11 +98,35 @@
                             <td class="click_redirect"><a  href="">{{ i.0.pk }}</a></td>
                             <td>{{i.0.turn_type}}</td>
                             <td>{{ i.0.police.matricula |default:"-" }}</td>
-                            <td class="click_redirect" ><a  href="">{{ i.0.adjunct.name |default:"Adjunto Indisponível" }}</a></td>
+                            <td class="click_redirect" ><a href="{% url 'perfil_police' id=i.0.adjunct.id %}">{{ i.0.adjunct.name|default:'Adjunto não cadastrado' }}</a></td>  
                             <td>{{ i.0.police.posto |default:'Tenente'}}</td>
                             <td>{{ i.1 }}</td>
-                            <td>{{ i.0.date_cargo }}</td>
+                            <td>{{ i.0.date_load|date:"d/m/Y  H:i:s" }}</td>
                             <td>{{ i.0.expected_load_return_date |default:'-' }}</td>
+                            <td class="{% if i.0.status == 'ATRASADA' %}
+                            status-atrasada
+                            {% elif i.0.status == 'DENTRO DO PRAZO' %}
+                            status-dentro-prazo
+                            {% elif i.0.status == 'DESCARREGADA COM ATRASO' %}
+                            status-descarregada-atraso
+                            {% elif i.0.status == 'DESCARREGADA' %}
+                            status-descarregada-prazo
+                            {% elif i.0.status == 'DATA DE RETORNO NÃO DEFINIDA' %}
+                            status-data-indefinida
+                            {% elif i.0.status == 'DESVIADA COM ATRASO' %}
+                            status-atraso
+                            {% elif i.0.status == 'DESVIADA DENTRO DO PRAZO' %}
+                            status-prazo
+                            {% elif i.0.status == 'PARCIALMENTE DESCARREGADA COM ATRASO' %}
+                            status-parcial-atraso
+                            {% elif i.0.status == 'PARCIALMENTE DESCARREGADA' %}
+                            status-parcial-prazo
+                            {% elif i.0.status == 'PARCIALMENTE DESCARREGADA COM ATRASO' %}
+                            status-parcial-atraso
+                            {% elif i.0.status == 'PARCIALMENTE DESCARREGADA DENTRO DO PRAZO' %}
+                            status-parcial-prazo
+                            {% endif %}">
+                            {{ i.0.status}} </td>
                         </tr>
                     </tr>
                     {% endfor %}

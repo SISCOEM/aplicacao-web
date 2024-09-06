@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     
     # Apps de terceiros
     "corsheaders",  # Configuração necessaria para acerro da página equipment/get como uma api
+    "django_extensions",
 ]
     
 MIDDLEWARE = [
@@ -109,11 +110,11 @@ DATABASES = {
         "OPTIONS": {
             "sql_mode": "traditional",
         },
-        "PASSWORD": "#Tony17#",
+        "PASSWORD": "988689092",
         # "PASSWORD": "root",
         # "PASSWORD": "12345679",
         "HOST": "localhost",
-        "PORT": "3306",
+        "PORT": "3308",
     }
 }
 
@@ -268,3 +269,8 @@ def ler_settings():
     return sett
 
 AUX = {**AUX, **ler_settings()}
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}

@@ -17,6 +17,7 @@ from cryptography.fernet import Fernet
 from django.db.models import Q
 from rest_framework.response import Response
 from .serializers import RequestLoad
+from load.forms import LoadFilterForm
 
 # @login_required # Talvez seja necessário descomentar
 def login(request):
@@ -209,11 +210,26 @@ def dashboard_police(request):
     View do painel de controle do policial.
     Retorna informações sobre as cargas do policial.
     """
+    police = Police.objects.filter(police=request.user).first()
+    
+    if police is None:
+        messages.error(request, "Policial não encontrado!")
+        return render(request, "error.html")
+    
+    form = LoadFilterForm(request.GET)
+    
+    loads = Load.objects.filter(police=request.user)
+    
+    if form.is_valid():
+        loads = form.filter_queryset(loads)
+        
+        
     context = {
         'cargos' : '',
         "loads": [],
+        'filter_form': form
     }
-    loads = Load.objects.filter(police=request.user)
+    
     for i in loads:
         ec = Equipment_load.objects.filter(load=i)
         context["loads"].append([i, len(ec)])
@@ -232,17 +248,25 @@ def perfil_police(request, id):
         messages.error(request, "Policial não encontrado!")
         return render(request, "error.html")
     
+    form = LoadFilterForm(request.GET)
+    
+    loads = Load.objects.filter(adjunct=police) | Load.objects.filter(police=police)
+    
+    if form.is_valid():
+        loads = form.filter_queryset(loads)
+        
     context = {
         'cargos' : '',
         "loads": [],
-        'police': police
+        'police': police,
+        'filter_form': form
     }
-    loads = Load.objects.filter(adjunct=police) | Load.objects.filter(police=police)
+    
     for i in loads:
         ec = Equipment_load.objects.filter(load=i)
         context["loads"].append([i, len(ec)])
+        
     return render(request, "police/police_perfil.html", context)
-
 
 @has_group('admin')
 def promote_police(request):
