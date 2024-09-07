@@ -315,7 +315,7 @@ def filter_loads(request):
     """
     filtra as cargas para a dashboard das cargas
     """
-    queryset = Load.objects.all().exclude(turn_type="descarga")
+    queryset = Load.objects.all().exclude(turn_type="descarga").order_by('-date_load')
     
     form = LoadFilterForm(request.GET)
     

@@ -218,7 +218,7 @@ def dashboard_police(request):
     
     form = LoadFilterForm(request.GET)
     
-    loads = Load.objects.filter(police=request.user)
+    loads = Load.objects.filter(police=request.user).order_by('-date_load')
     
     if form.is_valid():
         loads = form.filter_queryset(loads)
