@@ -231,3 +231,15 @@ class ConfirmLoad(APIView):
             return Response({
                 'error_message': 'Matrícula incorreta'
             })
+            
+class VerifyConexion(APIView):
+    def get(self, request):
+        try:
+            return Response({
+                'ok': True
+            })
+        except Exception as error:
+            print(error)
+            return Response({
+                'error_message': error
+            })

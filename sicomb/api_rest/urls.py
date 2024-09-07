@@ -13,4 +13,5 @@ urlpatterns = [
     path("get-adjunct/", views.GetAdjunct.as_view(), name="get_adjunctAPI"),
     path("get-equipment-list/", views.GetEquipmentList.as_view(), name="get_equipment_listAPI"),
     path("confirm-load/", views.ConfirmLoad.as_view(), name="confirm_loadAPI"),
+    path("verify-conexion/", views.VerifyConexion.as_view(), name="verify_conexionAPI"),
 ]
