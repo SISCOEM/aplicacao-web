@@ -29,7 +29,19 @@ class LoadManager(models.Manager):
         }
         
         html = render_to_string('load/pdf_template.html', context)
-        return pdfkit.from_string(html, pdf_path, options=options)
+        path_to_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+        config = pdfkit.configuration(wkhtmltopdf=path_to_wkhtmltopdf)
+        
+        try:
+            if pdf_path:
+                pdfkit.from_string(html, pdf_path, configuration=config, options=options)
+                return pdf_path
+            else:
+                return pdfkit.from_string(html, configuration=config, options=options)
+        except Exception as e:
+            print(f"Erro ao gerar o PDF: {e}")
+            return None
+
     
 
     def check_all_loads(self):
@@ -145,8 +157,16 @@ class LoadManager(models.Manager):
         def send():
             pdf = self.get_load_pdf(load)
             
+            if not pdf:
+                print("Não foi possivel gerar o relatório")
+                return
+            
+            with open(f'teste_pdf_carga_{load.id}.pdf', 'wb') as f:
+                f.write(pdf)
+                print(f"Relatório gerado com sucesso em: {f.name}, como teste_pdf_carga_{load.id}.pdf")
+            
             subject = 'Relatório de carga'
-            message = f'Relatório da carga feita no dia {load.date_load}' if load.turn_type != "descarga" else f'Relatório da descarga feita no dia {load.date_load}'
+            message = f'Relatório da carga feita no dia {load.date_load.strftime("%d/%m/%Y")}' if load.turn_type != "descarga" else f'Relatório da descarga feita no dia {load.date_loadstrftime("%d/%m/%Y")}'
             from_email = load.adjunct.email
             
             self.generate_load_report(load, subject)
@@ -178,7 +198,7 @@ class LoadManager(models.Manager):
 
 class Load(models.Model):
     load_unload = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, default=None)
-    date_load = models.DateTimeField(default=timezone.now)
+    date_load = models.DateTimeField(default=datetime.now())
     expected_load_return_date = models.DateTimeField(
         "Data Prevista de Devolução", null=True
     )
@@ -236,6 +256,3 @@ class Equipment_load(models.Model):
             ("Justificado", "Justificado"),
         ),
     )
-
-
-
