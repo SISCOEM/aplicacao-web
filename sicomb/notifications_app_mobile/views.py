@@ -20,5 +20,8 @@ class NotificationService:
             'data': data
         }
         response = requests.post(self.expo_push_url, headers=self.headers, json=data_notification)
-        notification.save()
+        if expo_push_token is None:
+            pass
+        else:
+            notification.save()
         return response.json()

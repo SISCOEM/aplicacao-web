@@ -110,9 +110,11 @@ DATABASES = {
         "OPTIONS": {
             "sql_mode": "traditional",
         },
-        "PASSWORD": "#Tony17#",
-        "HOST": "database-1.cdea8og62r7h.us-east-2.rds.amazonaws.com",
-        "PORT": "3306",
+        "PASSWORD": "988689092",
+        # "PASSWORD": "root",
+        # "PASSWORD": "12345679",
+        "HOST": "localhost",
+        "PORT": "3308",
     }
 }
 
