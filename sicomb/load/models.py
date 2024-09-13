@@ -11,6 +11,7 @@ from django.template.loader import render_to_string
 
 from report.models import *
 from django.db import transaction
+import shutil
 
 
 class LoadManager(models.Manager):
@@ -29,7 +30,7 @@ class LoadManager(models.Manager):
         }
         
         html = render_to_string('load/pdf_template.html', context)
-        path_to_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+        path_to_wkhtmltopdf = shutil.which('wkhtmltopdf')
         config = pdfkit.configuration(wkhtmltopdf=path_to_wkhtmltopdf)
         
         try:
