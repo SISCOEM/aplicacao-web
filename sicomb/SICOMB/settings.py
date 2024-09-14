@@ -110,11 +110,11 @@ DATABASES = {
         "OPTIONS": {
             "sql_mode": "traditional",
         },
-        "PASSWORD": "988689092",
+        "PASSWORD": "A23EDB8BF27273BB7511E34F52178755",
         # "PASSWORD": "root",
         # "PASSWORD": "12345679",
-        "HOST": "localhost",
-        "PORT": "3308",
+        "HOST": "db-siscoem.cdea8og62r7h.us-east-2.rds.amazonaws.com",
+        "PORT": "3306",
     }
 }
 
