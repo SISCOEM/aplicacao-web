@@ -5,7 +5,7 @@ Siga estes passos para clonar o repositório, configurar um ambiente virtual e i
 
 ## 1. Clonar o Repositório
 
-Comece clonando o repositório a partir do GitHub ou da fonte preferida.
+Comece clonando o repositório a partir do GitHub.
 
 ```bash
 git clone https://github.com/SISCOEM/aplicacao-web.git
