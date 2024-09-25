@@ -7,6 +7,7 @@ urlpatterns = [
     path('approve/', views.approve_police, name="approve_police"),
     path("register/", views.register_police, name="register_police"),
     path("login/", views.login, name="request_cargo_login"), # login para o policial que deseja solicitar uma carga
+    path("loged/", views.destino, name="destino"),
     path("search/<str:id>/", views.search_police, name="procurar-policial"), # Pesquisa por um policial específico
     path("reduce/", views.reduce_police, name="reduce_police"),
     path("promote/", views.promote_police, name="promote_police"),

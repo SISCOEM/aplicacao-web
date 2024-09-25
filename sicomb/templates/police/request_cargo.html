@@ -70,6 +70,10 @@
             <!-- </div> -->
         </div>
     </section>
+    {% else %}
+        <script>
+            window.location.href = "{% url 'destino' %}";
+        </script>
     {% endif %}
 {% endblock content_final%}
 

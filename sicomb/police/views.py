@@ -1,6 +1,6 @@
 import json
 import os
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -29,6 +29,9 @@ def login(request):
     """
     data = {}
     settings.AUX["matricula"] = ''
+    
+    if settings.AUX.get("matricula"):
+        return redirect('destino')
     
     if request.method == "POST":
         body = {}
@@ -131,11 +134,39 @@ def login(request):
             except Exception as error:
                 pass
 
-    if request.method == "GET":
-        return render(request, "police/request_cargo.html")
     
     # Renderiza a página de solicitação de carga com os dados apropriados
+    return render(request, "police/request_cargo.html", data)
+
+
+def destino(request):
+    data = {}
+
+    # Tente obter a matrícula do policial da sessão
+    matricula = settings.AUX.get("matricula")
+    
+    if not matricula:
+        return redirect('request_cargo_login')  # Redireciona para a página de login se não estiver logado
+
+    try:
+        # Busca o policial com base na matrícula da sessão
+        police = Police.objects.get(matricula=matricula)
+        settings.AUX["confirm_cargo"] = False  # Desativa a confirmação de carga
+        data["police"] = police  # Adiciona o policial aos dados a serem renderizados
+
+        # Busca as cargas recentes do policial
+        loads = Load.objects.filter(police=police).order_by('-date_load')[:35]
+        data["loads"] = []
+        for load in loads:
+            ec = Equipment_load.objects.filter(load=load)
+            data["loads"].append([load, len(ec)])  # Adiciona a carga e a contagem de equipamentos
+            
+    except Police.DoesNotExist:
+        return Response({"error": "Não foi possível encontrar policial!"})
+
+    # Renderiza a página de solicitação de carga com os dados apropriados
     return render(request, "police/requesting_cargo.html", data)
+
 
 
 
