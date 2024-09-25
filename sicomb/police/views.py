@@ -131,9 +131,12 @@ def login(request):
             except Exception as error:
                 pass
 
+    if request.method == "GET":
+        return render(request, "police/request_cargo.html")
     
     # Renderiza a página de solicitação de carga com os dados apropriados
-    return render(request, "police/request_cargo.html", data)
+    return render(request, "police/requesting_cargo.html", data)
+
 
 
 @has_group('adjunct')

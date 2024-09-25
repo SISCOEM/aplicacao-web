@@ -1,0 +1,150 @@
+{% extends 'base/footer.html' %}
+{% load static %}
+
+{% block css %}{% static 'css/police_page.css' %}{% endblock %}
+{% block title %}SICOMB - Login Policial{% endblock title %}
+{% block title_top %}REQUISITAR CARGA{% endblock title_top %}
+{% block nav %}{% endblock nav %}
+{% block perfil %}{% endblock perfil %}
+{% block 'head' %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+{% endblock 'head' %}
+{% block content_final%}
+    <div id="messages"></div>
+    <section class="cargo">
+        {% if police %}
+        <div class="police_officer_field shadow"  style="margin-right: 50px;">
+            <table class="police_officer_table">
+                <thead>
+                    <tr>
+                        <th class="cargo_title">POLICIAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="#"><img class="shadow perfil" src="{% if police.image_path %}{{ police.image_path.url }}{% else %}static/img/user.png{% endif %}" onerror="this.src='{% static "img/user.png"%}';" alt=""></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{police.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{police.matricula}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{police.telefone}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{police.lotacao}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{police.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <form action="./" method="post">
+                                {% csrf_token %}
+                                <div class="btn_final">
+                                    <input class="btn_finalize btn_cancel shadow" name="Cancelar" type="submit" value="Cancelar">
+                                    <input class="btn_finalize btn_confirm shadow" onclick="confirmCargo(this);" type="button" value="Finalizar carga">
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="load_itens shadow">
+            <!-- <h2>ITENS</h2> -->
+            
+            <table class="table_itens">
+                <thead>
+                    <tr>
+                        <th colspan="100%" class="cargo_title"><h3 >ITENS</h3></th>
+                    </tr>
+                    <tr class="col-itens">
+                        <th>Nª</th>	
+                        <th>Nº DE SÉRIE</th>	
+                        <th>DESCRIÇÃO</th>	
+                        <th>TIPO</th>	
+                        <th>CALIBRE</th>	
+                        <th>QUANTIDADE</th>	
+                        <th>TAMANHO</th>	
+                        <th>OBSERVAÇÃO</th>	
+                        <th>AÇÃO</th>
+                    </tr>
+                </thead>
+                <tbody class="row-tbody-police-page" id="actually_load">
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section>
+        <div class="loads shadow">
+            <!-- <h2>ITENS</h2> -->
+            
+            <table class="table_itens">
+                <thead>
+                    <tr>
+                        <th colspan="100%" class="cargo_title"><h3 >CARGAS</h3></th>
+                    </tr>
+                    <tr class="col-itens">
+                        <th>ID DE CARGA</th>
+                        <th>TIPO</th>
+                        <th>MATRÍCULA</th>
+                        <th>ADJUNTO</th>
+                        <th>GRADUAÇÃO</th>
+                        <th>QNT. DE ITENS</th>
+                        <th>DATA</th>
+                        <th>PREVISÃO DE DESCARGA</th>
+                    </tr>
+                </thead>
+                {% if loads %}
+                <tbody>
+                    {% for i in loads %}
+                        <tr class="row-tbody-police-page">
+                            <td class="click_redirect"><a  href="">{{ i.0.pk }}</a></td>
+                            <td>{{i.0.turn_type}}</td>
+                            <td>{{ i.0.police.matricula |default:"-" }}</td>
+                            <td class="click_redirect" ><a  href="">{{ i.0.adjunct.name |default:"Adjunto Indisponível" }}</a></td>
+                            <td>{{ i.0.police.posto |default:'Tenente'}}</td>
+                            <td>{{ i.1 }}</td>
+                            <td>{{ i.0.date_load }}</td>
+                            <td>{{ i.0.expected_load_return_date |default:'-' }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                {% endif %}
+            </table>
+        </div>
+    </section>
+    
+    {% else %}
+    <section>
+        <div class="alert alert-warning">
+            <h4>Nenhum policial encontrado. Por favor, faça login para acessar esta página.</h4>
+            <a href="{% url 'request_cargo_login' %}" class="btn btn-primary">Voltar para Login</a>  {# Substitua 'sua_url_de_login' pela URL correta #}
+        </div>
+    </section>
+    {% endif %}
+{% endblock content_final%}
+
+{% block js %}
+    <script>
+        var qr = qrcode(0, 'L');
+        var link = window.location.href;
+        qr.addData(link);
+        qr.make();
+        
+        document.getElementById('qrcode_login_policial_app').innerHTML = qr.createImgTag(10);
+      </script>
+      
+    <script src="{% static "js/utilitary.js" %}"></script>
+    {% if police %}
+        <script src="{% static "js/police_request_page.js" %}"></script>
+    {% else %}
+        <script src="{% static "js/login_police_request_page.js" %}"></script>
+    {% endif %}
+{% endblock js %}
