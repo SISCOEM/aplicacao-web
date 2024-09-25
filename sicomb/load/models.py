@@ -11,7 +11,8 @@ from django.template.loader import render_to_string
 
 from report.models import *
 from django.db import transaction
-import shutil
+import shutil, os
+from django.conf import settings
 
 
 class LoadManager(models.Manager):
@@ -31,6 +32,7 @@ class LoadManager(models.Manager):
         
         html = render_to_string('load/pdf_template.html', context)
         path_to_wkhtmltopdf = shutil.which('wkhtmltopdf')
+        #path_to_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
         config = pdfkit.configuration(wkhtmltopdf=path_to_wkhtmltopdf)
         
         try:
@@ -161,10 +163,14 @@ class LoadManager(models.Manager):
             if not pdf:
                 print("Não foi possivel gerar o relatório")
                 return
+            pdf_dir = os.path.join(settings.BASE_DIR, 'pdfs')
+            os.makedirs(pdf_dir, exist_ok=True)
             
-            with open(f'teste_pdf_carga_{load.id}.pdf', 'wb') as f:
+            pdf_path = os.path.join(pdf_dir, f'load_{load.id}.pdf')
+            
+            with open(pdf_path, 'wb') as f:
                 f.write(pdf)
-                print(f"Relatório gerado com sucesso em: {f.name}, como teste_pdf_carga_{load.id}.pdf")
+                print(f"Relatório gerado com sucesso em: {f.name}, como load_{load.id}.pdf")
             
             subject = 'Relatório de carga'
             message = f'Relatório da carga feita no dia {load.date_load.strftime("%d/%m/%Y")}' if load.turn_type != "descarga" else f'Relatório da descarga feita no dia {load.date_loadstrftime("%d/%m/%Y")}'

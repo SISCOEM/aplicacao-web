@@ -54,12 +54,12 @@
                 </tr>
             </thead>
             <tbody>
-                {% for field in report.get_report_fields %}
-                    <tr class="row-tbody">
-                        <td>{{field.field}}</td>
-                        <td>{{field.content}}</td>
-                    </tr>
-                {% endfor %}
+                {% if report %}                    
+                        <tr class="row-tbody">
+                            <td>{{report.title}}</td>
+                            <td>{{report.date_creation}}</td>
+                        </tr>                    
+                {% endif %}
             </tbody>
         </table>
     </div>
