@@ -36,7 +36,9 @@ Após ativar o ambiente virtual, instale os pacotes necessários usando `pip`:
 
 ```bash
 pip install -r requirements.txt
+no diretorio SIScomb utilizar pip3
 ```
+
 
 ## 4. Aplicar as Migrações
 
