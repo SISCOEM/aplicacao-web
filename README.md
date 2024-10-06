@@ -27,7 +27,7 @@ venv\Scripts\activate
 
 ```bash
 python3 -m venv venv
-source venv/bin/activate
+source venv/bin/activate -> acessar a pasta venb/bin/ para exeutar o comando
 ```
 
 ## 3. Instalar as Dependências
