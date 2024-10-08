@@ -1,0 +1,197 @@
+@import 'header.css';
+
+.container {
+    flex: 1;
+    min-height: 100%;
+}
+
+.section_register{
+    display: flex;
+    justify-content: center;
+}
+.registration{
+    /* height: 800px; */
+    height: 110vh;
+    width: 70%;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 0% 0% 5% 0%;
+}
+
+.title{
+    font-family: interBold;
+    color: #fff;
+    height: 50px;
+    width: 100%;
+    background-color: rgb(91,73,57, 0.9);
+    border-radius: 10px 10px 0px 0px;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+}
+
+.sub-title{
+    height: 50px;
+    padding: 2% 0%;;
+}
+
+.row_color{
+    display: flex;
+    justify-content: center;
+    padding: 0% 0% 5% 0%;
+}
+.row_color span{
+    height: 2px;
+    width: 80%;
+    background-color: rgb(91,73,57, 0.6);   
+}
+
+.input-div{
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* duas colunas de largura igual */
+    justify-items: center; /* alinhamento horizontal dos elementos */
+    align-items: start; /* alinhamento vertical dos elementos */
+    max-height: 55vh;
+}
+.input-box{
+    padding: 0px 20px;
+    max-height: 55vh;
+    width: 70%;
+}
+
+#text-uid {
+    color: #757575;
+}
+
+.input-title{
+    font-family: interBold;
+    color: #5B4939;
+    font-size: 14px;
+    padding: 20px 10px 5px 5px;
+}
+.input-data{
+    background-color: rgb(91,73,57, 0.1);
+    padding: 2% 5%;
+    border-radius: 10px;
+    border: 2px solid rgb(91,73,57, 0.6);
+    font-size: 14px;
+    font-family: 'interBold';
+    color: #5B4939;
+    line-height: 40px;
+    width: 89%;
+}
+.file-div{
+    display: flex;
+    
+}
+.select-field{
+    outline: 0;
+    border: 0 !important;
+    background-color: rgb(0,69,147, 0.10);
+    background-image: none;
+    flex: 1;
+    cursor: pointer;
+    color: rgb(91,73,57, 0.8);
+    font-family: 'interBold';
+    font-size: 14px;
+    padding: 2% 5%;
+    border-radius: 10px;
+}
+
+.select{
+    height: 3.5em;
+    background-color: rgb(91,73,57, 0.1);
+    border: 2px solid rgb(91,73,57, 0.6);
+    overflow: hidden;
+    border-radius: 10px;
+    display: flex;
+    transition: .25s;
+    width: 100%;
+}
+
+.file-label{
+    padding: 6% 5%;
+}
+
+.input-file{
+    display: none;
+}
+
+.file-selected {
+    border: 2px solid #004593 !important;
+}
+
+.file-label{
+    padding: 6% 5%;
+    font-family: interBold;
+    font-size: 14px;
+    padding: 20px 5%;
+    border-radius: 10px;
+    width: 100%;
+    cursor: pointer;
+    transition: .5s;
+    
+    color: #fff;
+    background-color: rgb(91,73,57, 0.8);
+    border: 1px solid rgb(91,73,57, 0.6);
+}
+.file-label:hover{
+    color: #5B4939;
+    background-color: rgb(91,73,57, 0.6);
+    border: 1px solid rgb(91,73,57, 0.6);
+}
+
+.finalize-registration{
+    display: flex;
+    flex-direction: row; /* ou column */
+    justify-content: center;
+    padding: 5% 0%;
+    position: relative;
+    bottom: 0; 
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* padding: 50px 0px; */
+}
+
+.form-element {
+    position: relative;
+    height: 75%;
+    width: 100%;
+}
+
+.finalize-registration label input {
+    font-family: interBold;
+    font-size: 15px;
+    color: #fff;
+    background-color: rgb(91,73,57, 0.9);
+    border-radius: 10px;
+    border: 1px solid #90816A;
+    padding: 10px 20px;
+    height: 50px;
+    width: 180px;
+    margin: auto 20px;
+    cursor: pointer;
+}
+
+.box-shadow-registration{
+    box-shadow: -2px 4px 2px rgb(91,73,57);
+}
+
+.shadow{
+    box-shadow: -0px 5px 10px rgb(0,0,0,0.25);
+}
+
+table {
+    border-collapse: collapse;
+    justify-content: center;
+    width: 100%;
+    font-family: interBold;
+    font-size: 15px;
+    color: #5B4939;
+}
+
+table tbody td{
+    text-align: center;
+}

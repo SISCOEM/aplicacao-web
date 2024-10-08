@@ -1,0 +1,93 @@
+{
+    "calibres": [
+        [
+            "",
+            "SELECIONE"
+        ],
+        [
+            "9mm",
+            "9mm"
+        ],
+        [
+            ".45 ACP",
+            ".45 ACP"
+        ],
+        [
+            ".380 ACP",
+            ".380 ACP"
+        ],
+        [
+            ".40 S&W",
+            ".40 S&W"
+        ],
+        [
+            ".357 Magnum",
+            ".357 Magnum"
+        ],
+        [
+            ".44 Magnum",
+            ".44 Magnum"
+        ],
+        [
+            "5.56mm",
+            "5.56mm"
+        ],
+        [
+            "7.62mm",
+            "7.62mm"
+        ],
+        [
+            ".22 LR",
+            ".22 LR"
+        ]
+    ],
+    "postos": [
+        [
+            "Soldado",
+            "Soldado"
+        ],
+        [
+            "Cabo",
+            "Cabo"
+        ],
+        [
+            "Primeiro Sargento",
+            "Primeiro Sargento"
+        ],
+        [
+            "Subtenente",
+            "Subtenente"
+        ],
+        [
+            "Aspirante",
+            "Aspirante"
+        ],
+        [
+            "Primeiro Tenente",
+            "Primeiro Tenente"
+        ],
+        [
+            "Capitão",
+            "Capitão"
+        ],
+        [
+            "Major",
+            "Major"
+        ],
+        [
+            "Tenente Coronel",
+            "Tenente Coronel"
+        ],
+        [
+            "Coronel",
+            "Coronel"
+        ],
+        [
+            "Comandante Geral",
+            "Comandante Geral"
+        ]
+    ],
+    "SENSOR_FINGERPRINT": false,
+    "SENSOR_RFID": false,
+    "stop_event": false
+}

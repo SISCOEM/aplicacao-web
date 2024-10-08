@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.card_container{
+    padding: 2%;
+    display: grid;
+    font-family: interRegular;
+}
+
+.cards-row-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2% 0%;
+}
+
+.card{
+    padding: 2%;
+    color: white;
+    width: 200px;
+    height: 250px;
+    /* background-color: #5b5b5b; */
+    transition: 1s;
+}
+
+.card:hover{
+    transform: translateY(-10px);
+}
+
+.card, .card_report, .card_equipment_available, .card_equipment_unavailable{
+    justify-content: flex-end;
+    border-radius: 20px;
+    margin: 0% 2%;
+}
+
+
+
+.card_report{
+    background-color: #90816A;
+    box-shadow: 3px 4px 1px #6A5A4A;  
+}
+.card_equipment_available{
+    background-color: #19A502;
+    box-shadow: 3px 4px 1px #106d01;
+
+}
+.card_equipment_unavailable{
+    background-color: #C5033D;
+    box-shadow: 3px 4px 1px #7a0428;
+
+}
+
+.card-informations h2{
+    font-size: 15px;
+    padding: 3% 0%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.card-informations span{
+    font-size: 30px;
+    justify-content: flex-end;
+    display: flex;
+}
+
+.top-card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 1%;
+}
+
+.top-card img{
+    width: 40px;
+    border-radius: 40px;
+    margin-right: 2%;
+}
+
+.top-card span{
+    padding: 2% 6%;
+    border-radius: 50px;
+    transition: 0.5s;
+}
+
+.top-card span:hover{
+    padding: 4% 8%;
+    box-shadow: 2px 4px 8px rgb(153, 153, 153);
+}
+.top-card span a{
+    font-size: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.card_report .top-card span{
+    background-color: #b49d7a;
+    box-shadow: 3px 4px 1px #87755a;
+}
+
+.card_equipment_available .top-card span{
+    background-color: #47b836;
+    box-shadow: 3px 4px 1px rgb(19, 126, 3)
+}
+
+.cards-row-2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2% 0%;
+}
+
+.card-2{
+    padding: 2%;
+    color: white;
+    width: fit-content;
+    height: 200px;
+    transition: 1s;
+
+}
+.card-2:hover{
+    transform: translateY(-10px);
+}
+.card-2 .card-informations h2{
+    display: flex;
+    justify-content: flex-end;
+}
+.card-2, .card_police, .card_equipment_justice{
+    justify-content: flex-end;
+    border-radius: 20px;
+    margin: 0% 2%;
+}
+
+.card_police{
+    background-color: #48382B;
+    box-shadow: 3px 4px 1px #34271c;
+}
+
+.card_equipment_justice{
+    background-color: #D7C103;
+    box-shadow: 3px 4px 1px #a59406;
+
+}

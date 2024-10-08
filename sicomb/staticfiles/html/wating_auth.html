@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../CSS/styles.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/autenticacao.css">
+
+    <title>Fazer Carga</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <ul class="alter">
+                <div class="logo"> 
+                    <img class="img-bpm" src="/Images/17bpm_guanambi.png" alt="17º Batalhão de Polícia Militar do Estado da Bahia">
+                    <h3>SISCOEM</h3>
+                </div>
+                <li>
+                    <img src="/Images/dashboard.png" alt="">
+                    <a href ="#"><span>Dashboard</span></a>
+                </li>
+                <p>Gerenciamento</p> 
+                <li>
+                    <img src="/Images/click.png" alt="">
+                    <a href ="#"><span>Fazer Carga</span></a>
+                </li>
+                <li>
+                    <img src="/Images/network.png" alt="">
+                    <a href ="#"><span>Cargas</span></a>
+                </li>
+                <li>
+                    <img src="/Images/disket.png" alt="">
+                    <a href ="#"><span>Equipamentos</span></a>
+                </li>
+                <li>
+                    <img src="/Images/reports.png" alt="">
+                    <a href ="#" ><span>Relatórios</span></a>
+                </li>
+                <hr> 
+                <p>Cadastramento</p>
+                <li>
+                    <img src="/Images/user.png" alt="">
+                    <a class="test" href ="#"><span>Cadastrar Policial</span></a>
+                </li>
+                <li>
+                    <img src="/Images/warehouse.png" alt="">
+                    <a href ="#"><span>Cadastrar Equipamento</span></a>
+                </li>
+            </ul>
+            <div class="balls">
+                <div class="ball ball_blue"></div>
+                <div class="ball ball_red"></div>
+            </div>
+            
+        </nav>
+    </header>
+    <div>
+        <div class="content">
+            <section class="top-content">
+                <h1>FAZER CARGA</h1>
+                <div >
+                    <a href="" class="info-login">
+                        <span class="top-item">
+                            <img src="/Images/user.png" alt="Usuário" onerror="this.src='{% static "img/user.png"%}'">
+
+                        </span>
+
+                        <span class="top-item">
+                            <h3>SGTALMEIDA</h3>
+                            <p>MATRÍCULA: 129834765</p>
+                        </span class="top-item">
+                        <span>
+                            <img id="down_arrow" src="/Images/down_arrow.png" alt="">
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item">
+                                    <!-- <img src="/Images/" alt="" srcset="">
+                                    Logout -->
+                                </a>
+                            </div>
+                        </span>
+                    </a>
+                </div>
+            </section>
+                
+            
+            <!-- <main role="main" > -->
+                <section class="cargo">
+                
+                    <div class="police_officer_field shadow">
+                        <!-- <table class="police_officer_table">
+                            <thead>
+                                <tr>
+                                    <th class="cargo_title"></th>
+                                </tr>
+                            </thead>
+                            <tbody> -->
+                                
+                                <!-- <tr>
+                                    <td>
+                                        <a href="#" ><img class="shadow" src="/Images/minha_foto.jpg" alt=""></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Rafael Bragança de Oliveira</td>
+                                </tr>
+                                <tr>
+                                    <td>1519884</td>
+                                </tr>
+                                <tr>
+                                    <td>(77) 9 9922-1111</td>
+                                </tr>
+                                <tr>
+                                    <td>SGT</td>
+                                </tr>
+                                <tr>
+                                    <td>rafaelficticio@teste.com</td>
+                                </tr>-->
+                            <!-- </tbody>
+                            
+                        </table> -->
+                        <div class="waiting_auth">
+                            <table class="alert_auth">
+                                <thead>
+                                    <tr>
+                                        <th>AGUARDANDO <br> AUTENTICAÇÃO</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            É preciso que o policial solicitante faça autenticação por meio da digital ou matrícula e senha!
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="military_means_room shadow">
+                        <div class="means_room_content">
+
+                            <!-- <div class="means_room_table"> -->
+                                <!-- <table>
+                                    <thead>
+                                        <tr>
+                                            <th colspan="5" class="cargo_title">SALA DE MEIOS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="tbody_top_means_room">
+                                        <tr>
+                                            <td>DATA DE SOLICITAÇÃO</td>
+                                            <td>HORA</td>
+                                            <td class="checkbox">
+                                                <input type="radio" id="six-hours" name="options_load">
+                                                <label for="six-hours">6H</label>
+                                            </td>
+                                            <td class="checkbox">
+                                                <input type="radio" id="twenty-four-hours" name="options_load">
+                                                <label for="twenty-four-hours">24H</label>
+                                            </td>
+                                            <td class="checkbox">
+                                                <input type="radio" id="court-order" name="options_load">
+                                                <label for="court-order">REQUISIÇÃO JUDICIAL</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h4>11/05/2023</h4> 
+                                            </td>
+                                            <td>
+                                                <h4>14:23</h4> 
+                                            </td>
+                                            <td class="checkbox">
+                                                <input type="radio" id="twelve-hours" name="options_load">
+                                                <label for="twelve-hours">12H</label>
+                                            </td>
+                                            <td class="checkbox">
+                                                <input type="radio" id="repair" name="options_load">
+                                                <label for="repair">CONSERTO</label>
+                                            </td>
+                                            <td class="checkbox">
+                                                <input type="radio" id="indeterminate" name="options_load">
+                                                <label for="indeterminate">INDETERMINADO</label>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                            </div>
+                            <div class="row_color"><span><hr></span></div>
+                            <div class="search-info">
+                                <div class="search-table">
+                                    <table cellspacing="0" cellpadding="0" align="center" >
+                                        <thead>
+                                            <tr>
+                                                <td>NUM. DE SÉRIE/ID</td>
+                                                <td>QUANTIDADE</td>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td  class="search-box">
+                                                    <input type="text" class="search-txt" placeholder="Pesquisar">
+                                                    <a href="#" class="search-btn">
+                                                        <img class="img-search" src="/Images/search.png" alt="">
+                                                    </a>
+                                                </td>
+                                                <td class="put_qnt"> <input type="text" id="uname" name="name" required placeholder="1"/></td>
+                                                
+                                                
+                                               
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="img_product">
+                                    <img class="means_room_product" src="/Images/colete_balistico.png" alt="" >
+                                </div>
+                            </div> 
+                            <hr>
+                                <div class="info_product">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>QNT</th>
+                                                <th>TIPO</th>
+                                                <th colspan="2">DESCRIÇÃO</th>
+                                                <th>NUM. DE SÉRIE / ID</th>
+                                                
+                                                
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="description_product">
+                                                <td>1</td>
+                                                <td>COLETE</td>
+                                                <td colspan="2">COLETE MODULAR MARROM</td>
+                                                <td>1753292</td>
+                                                
+                                                
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <hr>
+                            <div class="bottom_means_room">
+                                <div class="note">
+                                    <h5>OBSERVAÇÃO: </h5>
+                                    <textarea id="note_equipment" name="note" rows="3" cols="60">It was a dark and stormy night...It was a dark and stormy night...It was a dark and stormy night...It was a dark and stormy night...It was a dark and stormy night...It was a dark and stormy night...It was a dark and stormy night...It was a dark and stormy night...It was a dark and stormy night...
+                                    </textarea>
+                                </div>
+                                <div class="insert_button">
+                                    <input type="submit" value="INSERIR" class="btn btn-insert shadow">
+                                </div>
+                            </div> -->
+
+                            
+                        </div>
+                        <div class="waiting_auth">
+                            <table class="alert_auth">
+                                <thead>
+                                    <tr>
+                                        <th>AGUARDANDO <br> AUTENTICAÇÃO</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            É preciso que o policial solicitante faça autenticação por meio da digital ou matrícula e senha!
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="cargo_itens shadow">
+                        <div class="waiting_auth">
+                            <table class="alert_auth">
+                                <thead>
+                                    <tr>
+                                        <th>AGUARDANDO <br> AUTENTICAÇÃO</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            É preciso que o policial solicitante faça autenticação por meio da digital ou matrícula e senha!
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </section>
+                <div class="finalize_load">
+                    <div class=""><input class="btn_finalize btn_cancel shadow" type="submit" value="Cancelar"></div>
+                    <div class=""><input class="btn_finalize btn_confirm shadow" type="submit" value="Finalizar"></div>
+
+                </div>
+                
+        <!-- </main> -->
+        </div>
+        <!-- <section class="footer_section">
+            <footer>
+                <div class="footer-div"> 
+                    <img class="img-bpm" src="/Images/17bpm_guanambi.png" alt="17º Batalhão de Polícia Militar do Estado da Bahia">
+                    <h3>SISCOEM - Sistema de Controle de Equipamentos Militarers</h3>
+                </div>
+            </footer>
+        </section> -->
+    </div>
+
+
+</body>
+</html>

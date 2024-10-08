@@ -1,0 +1,641 @@
+@import 'header.css';
+
+.container{
+    flex: 1;
+    min-height: 100vh;
+}
+
+.tr_cargos {
+    cursor: pointer;
+    height: 40px;
+    font-size: 13px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.tr_cargos:hover {
+    background-color: #5b493960;
+}
+
+.content{
+    padding: 0 20px;  
+}
+.cargo{
+    font-family: interRegular;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+.button {
+    margin: 10px 20px;
+    padding: 6% 5%;
+    font-family: interBold;
+    font-size: 14px;
+    padding: 20px 5%;
+    border-radius: 10px;
+    width: auto;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0px 5px 10px rgb(0,0,0,0.50);
+
+    color: #fff;
+    background-color: rgb(91,73,57, 0.8);
+    border: 1px solid rgb(91,73,57, 0.6);
+}
+.button:hover {
+    transition: .3s;
+
+    color: #fff;
+    background-color: rgba(117, 94, 74, 0.8);
+}
+
+.cargo .cargo_title{
+    font-family: interBold;
+    color: #fff;
+    height: 50px;
+    width: 100%;
+    background-color: #5B4939;
+    border-radius: 10px 10px 0px 0px;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+}
+
+table {
+    border-collapse: collapse;
+    justify-content: center;
+    width: 100%;
+    font-family: interBold;
+    font-size: 15px;
+    color: #5B4939;
+}
+.police_officer_table td{
+    text-align: center;
+    padding: 7px 2px;
+}  
+.police_officer_table img{
+    border-radius: 80px;
+    border: 3px inset #5B4939;
+}
+table img{
+    width: 130px;
+}
+
+.police_officer_field {
+    width: 300px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgb(0,0,0,0.50);
+    justify-content: center; 
+
+}
+
+.cargo_itens h2{
+    color: #5B4939;
+    background-color: #fff;
+}
+
+.military_means_room{
+    background-color: #fff;
+    border-radius: 10px;
+    width: 735px;
+    height: 400px;
+}
+
+.perfil {
+    max-width: 130px;
+    max-height: 130px;
+}
+
+.shadow{
+    box-shadow: -0px 5px 10px rgb(0,0,0,0.25);
+}
+
+.means_room_table table tbody, td{
+    text-align: center;
+    padding: 3px 20px 3px 20px;
+}
+
+.img-search{
+    height: 40px;
+    width: 40px;
+}
+.tbody_top_means_room tr td h4{
+    /* background-color: rgb(197, 196, 196); */
+    background-color: rgba(179, 166, 155, 0.9);
+    color: white;
+    border-radius: 10px;
+    margin: 0px 20px;
+    /* border: 2px solid #cba677; */
+    border: 1px solid rgb(195 164 136 / 90%);
+    padding: 2px;
+    font-family: 'interRegular';
+    font-size: 14px;
+}
+.search-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.search-table{
+    display: flex;
+    width: 500px;
+    padding: 0px 20px;
+}
+.search-table table{
+    text-align: center;
+}
+.search-table table td{
+    padding: 5px 0px;;
+}
+.search-box{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(91,73,57, 0.1);
+    border-radius: 10px 0px 0px 10px;
+
+}
+.search-txt{
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    color: #5B4939;
+    font-size: 15px;
+    font-family: interBold;
+    line-height: 20px;
+    width:200px;
+    padding: 10px;
+    text-align: center;
+}
+
+::-webkit-input-placeholder{
+    color:#5b4939b3;
+    font-family: interRegular;
+}
+
+.search-btn{
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.put_qnt{
+    background-color: rgb(91,73,57, 0.1);
+    border-radius: 0px 10px 10px 0px;
+    border-left: 2px solid rgb(0, 69, 147, 0.20);
+}
+.put_qnt input{
+    background: none;
+    justify-items: center;
+    text-align: center;
+    font-size: 15px;
+    padding: 0px;
+    font-family: 'interBold';
+    color: #5B4939;
+}
+.means_room_product{
+    width: 81px;
+    margin: 17px 46px 0px 0px;
+}
+
+ .img_product{
+    padding: 0px 20px;
+ }
+
+.info_product{
+    width: 550px;
+    padding: 0px 20px 0 20px;
+    max-height: 80px;
+    overflow-y: scroll;
+}
+.info_product tbody tr:nth-child(even){
+    background-color: rgb(235, 235, 235);
+}
+
+/* .info_product table th{
+    border-bottom: 1px solid #5B4939;
+} */
+
+.table_info_product{
+    background: gainsboro;
+    border-radius: 10px;
+ }
+
+ .table_info_product thead{
+    /* position: sticky; */
+    /* top: 0; */
+ }
+ 
+ .table_itens .row-tbody{
+    height: 40px;
+    font-size: 13px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.info_product_title{
+    background-color: burlywood;
+    border-radius: 10px 10px 0 0;
+}
+.info_product_th{
+    font-size: 13px;
+    background-color: antiquewhite;
+}
+.row_color{
+    display: flex;
+    justify-content: center;
+    /* padding: 10px 0px 0px 0px; */
+}
+.row_color span{
+    height: 1px;
+    width: 600px;
+    background-color: #5B4939;
+}
+.description_product{
+    font-family: 'interRegular';
+    font-size: 13px;
+}
+
+.bottom_means_room{
+    display: flex;
+    padding: 10px 20px;
+    justify-content: space-between;
+}
+
+.search-bullet{
+    padding: 1% 3%;
+    margin: 0.5% 0%;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #5B4939;
+    box-shadow: 1px 2px 0px #d39b53;
+    background-color: rgb(236, 190, 129);
+    transition: .5s;
+    cursor: pointer;
+    font-family: 'interBold'
+}
+.search-bullet:hover{
+    background-color: rgb(190, 128, 46); 
+    color: white;
+}
+
+.btn{
+    font-family: interBold;
+    font-size:15px;
+    color:#5B4939;
+    background: none;
+    background-color: rgb(91,73,57, 0.45);
+    width: 130px;
+    height: 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #5B4939;
+
+}
+.insert_button{
+    display: flex;
+    align-items: end;
+}
+
+.note{
+    /* border-bottom: 1px solid #5B4939; */
+}
+
+.note h5{
+    font-family: interBold;
+    font-size:15px;
+    color: #5B4939;
+
+}
+.note textarea{
+    font-family: interRegular;
+    font-size:13px;
+    color: #5B4939;
+}
+.row-tbody tr{
+    height: 40px;
+    font-size: 13px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.cargo_itens{
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 20px 0px;
+    /* max-height: 75vh; */
+    /* overflow-y: scroll; */
+    /* overflow-x: scroll; */
+    min-width: max-content;
+}
+.dashboard_loads{
+    width: 100%;
+}
+.cargo_itens table{
+    /* width: 500px; */
+    min-width: max-content;
+}
+ .cargo_itens tbody tr:nth-child(even){
+    background-color: rgb(235, 235, 235);
+ }
+.cargo_itens .cargo_title{
+    display: table-cell;
+    justify-content: space-between;
+    font-family: interBold;
+    color: #5B4939;
+    height: 50px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px 10px 0px 0px;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    font-size: 16px;
+    line-height: 60px;
+    flex-direction: row;
+    align-content: space-around;
+}
+.table_itens .col-itens{
+    background-color: #5B4939;
+    color: #fff;
+    height: 40px;
+    font-size: 13px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.table_itens tbody{
+    font-size: 14px;
+    /* border-bottom: 1px solid #5B4939; */
+    /* line-height: 30px; */
+}
+.table_itens tbody td{
+    /* padding: 10px; */
+    /* line-height: 30px; */
+}
+.table_itens td, th{
+    padding: 0px 11px;
+    /* line-height: 50px; */
+}
+/* section.table_section{
+    overflow: hidden;
+} */
+/* .table_itens tbody td a{
+    background: red;
+    color: #fff;
+    font-family: 'interExtraBold';
+    font-size: 17px;
+} */
+.table_itens thead{
+    /* position: sticky; */
+    /* top: 0; */
+}
+.table_itens thead th{
+    min-width: 100px;
+}
+
+.finalize_load{
+    justify-content: flex-end;
+    display: flex;
+    padding: 0px 0px 20px 0px;
+}
+
+.btn_finalize{
+    font-family: interExtraBold;
+    font-size:18px;
+    color:#fff;
+    width: 220px;
+    height: 35px;
+    border-radius: 10px;
+    margin: 0px 0px 0px 20px;
+    cursor: pointer;
+}
+
+.btn_disabled {
+    background-color: rgba(177, 177, 177, 0.875);
+    cursor: pointer;
+}
+
+.btn_confirm{
+    background-color: rgba(2, 183, 2, 0.875);
+    cursor: pointer;
+}
+.btn_confirm:hover{
+    background-color: rgba(60, 190, 60, 0.8);
+}
+.btn_cancel{
+    background-color: #c7180c;
+    cursor: pointer;
+}
+.btn_cancel:hover{
+    background-color: #b63131;
+    
+}
+
+footer{
+    position: static !important;
+}
+
+/* Para a tela final de fazer carga */
+.return-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.img-return{
+    width: 40px;
+}
+.cargo_id h3{
+    background-color: rgba(179, 166, 155, 0.9);
+    color: #fff;
+    border-radius: 10px;
+    margin: 0px 10px;
+    padding: 13px;
+    border: 1px solid rgb(195 164 136 / 90%);
+}
+/*  -----------------------------------------------------------------------------------  /
+/ CSS da página que exibe todas cargas e descargas realizadas */
+
+.click_redirect a {
+    background: none;
+    color: #5B4939;
+}
+
+.click_redirect a:hover{
+    text-decoration: underline ;
+}
+
+::-webkit-scrollbar{
+    width: 0.5rem;
+    height: 0.5rem;
+}
+::-webkit-scrollbar-track{
+    background: gainsboro;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgb(91,73,57, 0.4);
+    border-radius: 10px;
+
+}
+
+
+/* LISTA DE CARGAS DA PÁGINA 'CARGAS' */
+
+/* .status-desviada-atraso {
+    border-left: solid #5B4939;
+    border-right: solid #5B4939;
+    background-color: darkorange;
+    color: #fff;
+}
+
+.status-desviada-prazo {
+    border-left: solid #5B4939;
+    border-right: solid #5B4939;
+    background-color: yellow;
+    color: #5B4939;
+}
+
+.status-parcial-atraso {
+    border-left: solid #5B4939;
+    border-right: solid #5B4939;
+    background-color: red;
+    color: #fff;
+}
+
+.status-parcial-prazo {
+    border-left: solid #5B4939;
+    border-right: solid #5B4939;
+    background-color: green;
+    color: #fff;
+}
+
+.status-desviada-parcial-atraso {
+    border-left: solid #5B4939;
+    border-right: solid #5B4939;
+    background-color: brown;
+    color: #fff;
+}
+
+.status-desviada-parcial-prazo {
+    border-left: solid #5B4939;
+    border-right: solid #5B4939;
+    background-color: blue;
+    color: #fff;
+} */
+
+
+
+/* Página de carga_policial */
+.div_load_specification{
+    padding: 0 20px;
+}
+
+.div_load_specification .cargo{
+    display: flex;
+    justify-content: center;
+}
+
+/* Tabela de descargas */
+.unload_itens{
+        /* background-color: blue; */
+        border-radius: 10px;
+        height: 400px;
+        /* margin: 20px 0px; */
+        max-height: 400px;
+        overflow-y: scroll;
+        overflow-x: scroll;
+        min-width: max-content;
+}
+
+.unload_itens .table_itens .cargo_title{
+    font-family: interBold;
+    color: #5B4939;
+    height: 50px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px 10px 0px 0px;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+}
+
+.unload_itens .table_itens thead th {
+    min-width: 60px;
+    padding: 0px;
+}
+
+.unload_itens tbody tr:nth-child(even){
+    background-color: rgb(235, 235, 235);
+}
+/* status de cada carga */
+
+/* Status Atrasada */
+.status-atrasada {
+     background-color: #9f0000db; /* Cor de fundo vermelha ou apropriada */
+     color: #FFFFFF;/* Cor do texto branca ou apropriada */
+}
+
+/* Status Dentro do Prazo */
+.status-dentro-prazo {
+    background-color: rgb(238, 236, 144); /* Cor de fundo verde ou apropriada */
+    color: #FFFFFF; /*Cor do texto preta ou apropriada*/
+}
+
+/* Status Descarregada com Atraso */
+.status-descarregada-atraso {
+    background-color: #ff9100c0; /* Cor de fundo laranja ou apropriada */
+    color: #FFFFFF; /* Cor do texto preta ou apropriada */
+}
+
+/* Status Descarregada Dentro do Prazo */
+.status-descarregada-prazo {
+    background-color: rgb(82, 240, 82); /* Cor de fundo amarela ou apropriada */
+    color: #FFFFFF; /* Cor do texto preta ou apropriada */
+}
+
+/* Status Data de Retorno Não Definida */
+.status-data-indefinida {
+    background-color: #808080ce; /* Cor de fundo cinza ou apropriada */
+    color: #5B4939; /* Cor do texto branca ou apropriada */
+}
+
+/* Status Desviada com Atraso */
+.status-atraso {
+    background-color: #800080; /* Cor de fundo roxa ou apropriada */
+    color: #FFFFFF; /* Cor do texto branca ou apropriada */
+}
+
+/* Status Desviada Dentro do Prazo */
+.status-prazo {
+    background-color: #800080; /* Cor de fundo roxa ou apropriada */
+    color: #FFFFFF; /* Cor do texto branca ou apropriada */
+}
+
+/* Status Parcialmente Descarregada com Atraso */
+.status-parcial-atraso {
+    background-color: #FFA500; /* Cor de fundo laranja ou apropriada */
+    color: #000000; /* Cor do texto preta ou apropriada */
+}
+
+/* Status Parcialmente Descarregada Dentro do Prazo */
+.status-parcial-prazo {
+    background-color: #FFFF00; /* Cor de fundo amarela ou apropriada */
+    color: #000000; /* Cor do texto preta ou apropriada */
+}
+
+/* Status Desviada e Parcialmente Descarregada com Atraso */
+.status-parcial-atraso {
+    background-color: #800080; /* Cor de fundo roxa ou apropriada */
+    color: #FFFFFF; /* Cor do texto branca ou apropriada */
+}
+
+/* Status Desviada e Parcialmente Descarregada Dentro do Prazo */
+.status-parcial-prazo {
+    background-color: #800080; /* Cor de fundo roxa ou apropriada */
+    color: #FFFFFF; /* Cor do texto branca ou apropriada */
+}

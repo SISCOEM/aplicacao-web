@@ -1,0 +1,22 @@
+footer {
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    bottom: 0%;
+    height: 70px;
+    display: flex;
+}
+
+.footer-div {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-family: 'interRegular';
+    color: #48382B;
+    padding: 0px 20px;
+    border-top: 1px solid rgb(91,73,57, 0.2);
+    position: relative;
+    bottom: 0px;
+    background-color: #fff;
+    width: 90%;
+}

@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0x;
+    border: 0;
+    outline: none;
+    text-decoration: none;
+}
+
+body {
+    font-family: interRegular;
+    background-color: rgb(144, 129, 106, 0.10);
+}
+
+main{
+    display: flex;
+    /* flex-wrap: wrap; */
+    height: 100%;
+}
+
+header {
+    /* width: 285px; */
+    min-height: 100vh;
+    background-color: rgb(91,73,57, 0.9);
+}
+
+#qrcode {
+    margin-top: 15px;
+}
+
+.card-qrcode a {
+    color: #5B4939;
+    text-decoration: none;
+    margin: 10px;
+}
+.card-qrcode {
+    padding: 15px;
+    background-color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #5B4939;
+    font-weight: bold;
+    box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.50);
+    font-size: 13px;
+    margin: 10px;
+    transition: .5s;
+    text-align: center;
+}
+
+#navbar {
+    /* height: 100%; */
+    justify-content: center;
+}
+
+ul {
+    list-style-type: none;
+
+}
+
+#navbar li {
+    padding: 5px;
+    width: 195px;
+    height: 40px;
+    background-color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #5B4939;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -0px 5px 10px rgb(0, 0, 0, 0.50);
+    font-size: 13px;
+    margin: 10px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+#navbar li:hover {
+    background-color: rgb(91,73,57, 0.6);
+}
+
+
+#navbar li:hover span {
+    color: #ffffff;
+}
+
+#navbar li:visited {
+    background-color: rgb(91,73,57, 0.9);
+}
+
+
+#navbar p {
+    justify-content: center;
+    color: white;
+    font-family: interExtraLight;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 16px;
+    margin: 25px 0px 25px 10px;
+}
+
+#navbar li img {
+    width: 25px;
+    margin-right: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #fff;
+    margin: 20px;
+}
+
+#pm_nav_img{
+    background-color: rgb(141 122 104);
+    border-radius: 30px;
+    margin-right: 5px;
+}
+
+.img-bpm {
+    /* padding: 10px; */
+    width: 75px;
+}
+
+.alter{
+    padding: 10px 15px;
+}
+/* .balls {
+    display: flex;
+}
+
+.ball {
+    height: 225px;
+    width: 225px;
+    border-radius: 120px;
+}
+
+.balls .ball_blue {
+    background-image: linear-gradient(to top, rgb(0, 111, 237, 0.1), rgb(0, 111, 237, 0.45));
+    margin-left: -50px;
+    margin-top: -70px;
+}
+
+.balls .ball_red {
+    background-image: linear-gradient(to top, rgba(197, 3, 61, 0.4), rgba(197, 3, 61, 1));
+    position: absolute;
+} */

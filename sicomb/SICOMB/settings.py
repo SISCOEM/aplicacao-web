@@ -3,6 +3,9 @@ from pathlib import Path
 import os
 import socket
 from django.core.wsgi import get_wsgi_application
+from dotenv import load_dotenv
+
+load_dotenv()  
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -95,32 +98,26 @@ USE_I18N = True
 
 USE_TZ = True
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'), # O nome do arquivo SQLite
-#     }
-# }
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "sicomb",
-        "USER": "root",
-        "OPTIONS": {
-            "sql_mode": "traditional",
-        },
-        "PASSWORD": "A23EDB8BF27273BB7511E34F52178755",
-        # "PASSWORD": "root",
-        # "PASSWORD": "12345679",
-        "HOST": "db-siscoem.cdea8og62r7h.us-east-2.rds.amazonaws.com",
-        "PORT": "3306",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USERNAME'),
+        'PASSWORD': os.getenv('DB_PASS'),
+        'HOST': 'db',
+        'PORT': os.getenv('DB_PORT'),
     }
 }
 
-STATIC_URL = "/static/"
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_URL = '/static/'
+
+# Local onde os arquivos estáticos serão coletados
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Adicione o diretório de arquivos estáticos, se necessário
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = "/media/"
 

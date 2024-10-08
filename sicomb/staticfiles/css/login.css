@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'interRegular';
+}
+
+
+.top-side {
+    background: white;
+    font-family: interExtraBold;
+    color:  rgb(91,73,57);
+    font-style: italic;
+}
+
+.header-content {
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 10px 10px;
+    font-family: sans-serif;
+}
+
+.logo img {
+    width: 70px;
+}
+
+.text-nav {
+    font-size: 30px;
+    margin: auto 0;
+    margin-left: 20px;
+}
+
+body {
+    background-color: rgb(91,73,57) !important;
+}
+
+.container {
+    width: 100% !important;
+    margin: 0 auto;
+    max-width: 1250px;
+    display: flex;
+    height: 500px;
+}
+
+.column {
+    flex: 1;
+    padding: 20px;
+}
+
+.l-left {
+    margin: 0 auto;
+    margin-top: 10%;
+    max-width: 75%;
+    height: 80%;
+}
+
+.l-left h1 {
+    font-family: sans-serif;
+    color: white;
+}
+
+.l-left h4 {
+    font-family: sans-serif;
+    margin-top: 20px;
+    font-size: 15px;
+    font-weight: normal;
+    color: white;
+}
+
+.img-login {
+    text-align: center;
+    margin: 30px;
+}
+
+.img-login img {
+    text-align: center;
+    width: 150px;
+}
+
+#login {
+    margin: 0 auto;
+    margin-top: 10%;
+    max-width: 55%;
+    height: 80%;
+}
+
+#login h4 {
+    font-family: sans-serif;
+    font-weight: normal;
+    color: white;
+    margin-bottom: 10px;
+}
+
+#login h4 span {
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    background: white;
+    text-align: left;
+    height: 80%;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    background: #c3c3c3;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+}
+
+input[type="submit"] {
+    background-color:  rgb(91,73,57);
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: .5s;
+}
+
+input[type="submit"]:hover {
+    background-color:  rgb(91,73,57, 0.8);
+}
+
+.mat-top {
+    margin-top: 25px;
+}
+
+@media (max-width: 1310px) {
+    .nav-content {
+        width: 100%;
+        margin: auto 0;
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .header-content {
+        max-width: 940px;
+    }
+
+    .text-nav {
+        font-size: 28px;
+        margin-left: 20px;
+    }
+
+    #login {
+        margin: 0 auto;
+        margin-top: 10%;
+        max-width: 70%;
+        height: 80%;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .column {
+        padding: 0;
+    }
+
+    .header-content {
+        max-width: 700px;
+    }
+
+    .text-nav {
+        margin-left: 20px;
+    }
+
+    #login {
+        margin: 0 auto;
+        margin-top: 10%;
+        max-width: 85%;
+        height: 80%;
+    }
+}
+
+@media (max-width: 425px) {
+
+    #login {
+        margin: 0 auto;
+        max-width: 85%;
+        margin-top: 10%;
+        height: 80%;
+    }
+
+    .container {
+        display: block;
+    }
+
+    .logo img {
+        width: 60px;
+    }
+
+    .text-nav {
+        margin-left: 10px;
+    }
+
+    .l-left {
+        display: none;
+    }
+}
+
+@media (max-width: 375px) {
+    .container {
+        display: block;
+    }
+
+    .logo img {
+        width: 60px;
+    }
+
+    .nav-content {
+        margin-left: 20px;
+    }
+
+    .nav a {
+        margin-right: 2px;
+    }
+
+    .text-nav {
+        font-size: 25px;
+        margin-left: 10px;
+    }
+
+    .l-left {
+        display: none;
+    }
+}
+
+.error-messages {
+    background-color: #f8d7da; /* Fundo rosa claro para erros */
+    color: #721c24; /* Cor do texto para erros */
+    border: 2px solid #f5c6cb; /* Borda rosa clara */
+    padding: 3px;
+    border-radius: 4px;
+    margin-top: 5px;
+    font-size: 12px; /* Diminuir o tamanho da fonte */
+}
+
+.error-messages ul {
+    list-style-type: none; /* Remove os marcadores de lista */
+    padding: 0;
+    margin: 0;
+}

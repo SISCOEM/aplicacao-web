@@ -173,10 +173,10 @@ class EquipmentFilterForm(forms.Form):
     
     models_eqipment = (
         (None, '----------'),
-        (ContentType.objects.get(app_label='equipment', model='Model_armament').pk, 'Armamento'),
-        (ContentType.objects.get(app_label='equipment', model='Model_accessory').pk, 'Acessório'),
-        (ContentType.objects.get(app_label='equipment', model='Model_wearable').pk, 'Vestimentos'),
-        (ContentType.objects.get(app_label='equipment', model='Model_grenada').pk, 'Granadas'),
+        (ContentType.objects.get(app_label='equipment', model='model_armament').pk, 'Armamento'),
+        (ContentType.objects.get(app_label='equipment', model='model_accessory').pk, 'Acessório'),
+        (ContentType.objects.get(app_label='equipment', model='model_wearable').pk, 'Vestimentos'),
+        (ContentType.objects.get(app_label='equipment', model='model_grenada').pk, 'Granadas'),
     )
 
     serial_number = forms.CharField(

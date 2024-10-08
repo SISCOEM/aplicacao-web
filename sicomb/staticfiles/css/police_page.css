@@ -1,0 +1,354 @@
+/* Mesmo css da página de fazer carga */
+@import 'header.css';
+
+.container{
+    margin: 30px;
+    min-height: 97vh;
+    min-width: 95vw;
+    max-width: 95vw;
+}
+
+.content{
+    padding: 0 20px;  
+}
+.cargo{
+    font-family: interRegular;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cargo .cargo_title{
+    font-family: interBold;
+    color: #fff;
+    height: 50px;
+    width: 100%;
+    background-color:  rgb(91,73,57);
+    border-radius: 10px 10px 0px 0px;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+}
+
+.cargo_itens{
+    border-radius: 15px;
+    padding: 0px 0px 10px 0px;
+}
+
+table {
+    border-collapse: collapse;
+    justify-content: center;
+    width: 100%;
+    font-family: interBold;
+    font-size: 15px;
+    color:  rgb(91,73,57);
+}
+.police_officer_table td{
+    text-align: center;
+    padding: 7px 2px;
+}  
+.police_officer_table img{
+    border-radius: 80px;
+    border: 3px inset  rgb(129, 108, 89);
+}
+table img{
+    width: 130px;
+}
+
+.police_officer_field {
+    width: 300px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgb(0,0,0,0.50);
+    justify-content: center; 
+
+}
+
+.load_itens .loads h2{
+    color:  rgb(91,73,57);
+    background-color: #fff;
+}
+
+.military_means_room{
+    background-color: #fff;
+    border-radius: 10px;
+    width: 300px; /**/
+    height: 500px;
+    /* width: 60%; */
+    /* height: 85%; */
+}
+
+.military_means_room_form{
+    background-color: #fff;
+    border-radius: 10px;
+    width: 60%;
+    height: 120%;
+}
+
+.shadow{
+    box-shadow: -0px 5px 10px rgb(0,0,0,0.25);
+}
+
+.means_room_table table tbody, td{
+    text-align: center;
+    padding: 5px 5px;
+}
+
+.tbody_top_means_room tr td h4{
+    background-color: rgb(197, 196, 196);
+    border-radius: 10px;
+    margin: 0px 20px;
+}
+
+::-webkit-input-placeholder{
+    color:#70B3FF;
+    font-family: interRegular;
+}
+
+
+.row_color{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px 0px 0px;
+}
+.row_color span{
+    height: 2px;
+    width: 250px;
+    background-color: rgb(129, 108, 89);
+}
+
+
+.btn{
+    font-family: interBold;
+    font-size:15px;
+    color: rgb(91,73,57);
+    background: none;
+    background-color:rgb(129, 108, 89, 0.20);
+    width: 130px;
+    height: 25px;
+    border-radius: 10px;
+}
+
+
+.load_itens{
+    background-color: #fff;
+    border-radius: 10px;
+    height: 478px;
+    margin: 20px 0px;
+}
+.loads{
+    background-color: #fff;
+    border-radius: 10px;
+    height: fit-content;
+
+    margin: 20px 0px;
+}
+
+.load_itens .cargo_title, .loads .cargo_title{
+    font-family: interBold;
+    color:  rgb(91,73,57);
+    height: 50px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px 10px 0px 0px;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+}
+.table_itens .col-itens{
+    background-color:  rgb(91,73,57);
+    color: #fff;
+    height: 40px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.table_itens tbody{
+    font-size: 11px;
+    line-height: 2em;
+    /* border-bottom: 1px solid rgb(129, 108, 89); */
+}
+.table_itens tbody td a{
+    /* background: red; */
+    /* color: #a82a2a; */
+    font-family: 'interExtraBold';
+    font-size: 11px;
+    /* background-color: burlywood; */
+    color: #5B4939;
+    background-color: rgb(236, 190, 129);
+    padding: 6px 8px;
+    /* padding: 1% 3%; */
+    border-radius: 10px;
+    /* box-shadow: 2px 2px 2px; */
+    box-shadow: 1px 2px 0px #d39b53;
+    transition: .5s;
+}
+.table_itens tbody td a:hover{
+    /* background: red; */
+    /* color: #8f2222; */
+    /* background-color: rgb(194, 141, 72); */
+    background-color: rgb(190, 128, 46);
+    color: white;
+    font-family: 'interExtraBold';
+    font-size: 12px;
+}
+.table_itens thead th{
+    min-width: 100px;
+}
+
+
+.row-tbody-police-page, .row-tbody-police-page tr{
+    height: 40px;
+    font-size: 13px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.table_itens tbody tr:nth-child(even){
+    background-color: rgb(235, 235, 235);
+}
+.finalize_load{
+    justify-content: flex-end;
+    display: flex;
+    padding: 0px 0px 20px 0px;
+}
+
+.btn_finalize{
+    font-family: interExtraBold;
+    font-size:18px;
+    color:#fff;
+    width: 80%;
+    height: 35px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.police_officer_field {
+    height: auto;
+}
+.btn_cancel{
+    background-color: #C5033D;
+}
+.btn_confirm{
+    background-color: rgb(5, 168, 5);
+    transition: .5s;
+}
+
+.btn_cancel:hover{
+    background-color: #b63159;
+}
+.btn_confirm:hover{
+    background-color: rgb(5, 168, 5, 0.8);
+}
+
+.btn_finger_digital{
+    background-color: coral;
+    transition: .5s;
+}
+.btn_finger_digital:hover{
+    background-color: rgb(248, 124, 79, 0.7);
+}
+/* ------------------------------------------------------------------------------- */
+
+.title{
+    font-family: interBold;
+    color: #fff;
+    height: 50px;
+    width: 100%;
+    background-color:  rgb(91,73,57);
+    border-radius: 10px 10px 0px 0px;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+}
+
+.sub-title{
+    height: 50px;
+    padding: 2% 0%;;
+}
+.row_color{
+    padding: 0% 0% 5% 0%;
+}
+.row_color span{
+    background-color: rgb(91,73,57, 0.45);;   
+}
+.row_color_police_login span{
+    width: 80%
+}
+
+
+.form_police_login{
+    display: flex;
+    justify-content: center;
+    color: #5B4939;
+}
+
+.input-div{
+    display: grid;
+    justify-content: space-around;
+}
+.input-div-form-police{
+    width: 50%;
+}
+.input-box{
+    /* padding: 0% 10%; */
+    /* color:  rgb(91,73,57); */
+
+}
+
+.input-title{
+    font-family: interBold;
+    color:  rgb(91,73,57);
+    font-size: 14px;
+    padding: 10% 5% 5% 5%;
+}
+.input-error{
+    color:  rgb(190, 24, 24) !important;
+}
+.input-title-form-police{
+    padding: 5%;
+}
+.input-data{
+    background-color: rgb(129, 108, 89, 0.10);
+    padding: 2% 5%;
+    border-radius: 10px;
+    border: 2px solid rgb(91,73,57, 0.45);;
+    font-size: 14px;
+    font-family: 'interBold';
+    color:  rgb(91,73,57);
+    line-height: 40px;
+    width: 89%;
+}
+/* ----------------------------------------------------------------------------------- */
+::-webkit-input-placeholder {
+    color: #4e0f0f;
+ }
+/* Para a página do policial */
+.row_color{
+    padding: 0% 0%;;
+}
+
+body{
+    justify-content: center;
+}
+
+.btn_finalize{
+    cursor: pointer;
+}
+
+.btn_finalize_form_police{
+    width:100%;
+    height: 50px;
+    margin-top: 20px;
+
+}
+
+.input-div{
+    /* padding: 5% 0% 8% 0%; */
+}
+
+
+.perfil {
+    width: 130px; /* A imagem ocupará todo o espaço disponível no link */
+    height: 130px; /* A altura da imagem será ajustada proporcionalmente à largura */
+}
