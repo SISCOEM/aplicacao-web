@@ -219,7 +219,7 @@ def search_police(request, id):
             
             group_police, _ = Group.objects.get_or_create(name='police')
 
-            if len(police.groups) == 0:
+            if not police.groups.filter(name='police').exists():
                 police.groups.add(group_police)
             
             messages.success(request, "Atualização realizada com sucesso!")
