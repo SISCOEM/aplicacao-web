@@ -215,6 +215,30 @@ def search_police(request, id):
         form = PoliceForm(request.POST, request.FILES, instance=police)
         
         if form.is_valid():
+            for i in Police.objects.all():
+                if i.matricula == form.cleaned_data.get("matricula") and i.id != police.id:
+                    messages.error(request, "Matrícula já cadastrada!")
+                    return render(
+                        request,
+                        "police/forms.html",
+                        context={
+                            "police": police,
+                            "form": form,
+                            "edit": True
+                        })
+                elif form.cleaned_data.get("telefone") == i.telefone and i.id != police.id:
+                    messages.error(request, "Telefone já cadastrado!")
+                    return render(
+                        request,
+                        "police/forms.html",
+                        context={
+                            "police": police,
+                            "form": form,
+                            "edit": True
+                        })
+                else:
+                    pass
+            
             police = form.save()
             
             group_police, _ = Group.objects.get_or_create(name='police')
