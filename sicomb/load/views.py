@@ -70,7 +70,7 @@ def confirm_load(request):
             load.save()
             
             # Adiciona tipos de turno extras
-            turn_types += ['REQUISIÇÃO JUDICIAL', 'CONSERTO', 'INDETERMINADO']
+            turn_types += ['REQUISIÇÃO JUDICIAL', 'CONSERTO', 'PERÍODO JUSTIFICADO']
 
             # Processa os equipamentos na lista de equipamentos
             if turn_type in turn_types:

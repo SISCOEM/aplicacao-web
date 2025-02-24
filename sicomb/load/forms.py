@@ -21,11 +21,12 @@ class LoadFilterForm(forms.Form):
             choices=[
                 ('', 'TODOS'), 
                 ('6h', '6h'), 
+                ('8h', '8h'),
                 ('12h', '12h'), 
                 ('24h', '24h'), 
                 ('conserto', 'conserto'), 
                 ('requisição judicial', 'requisição judicial'), 
-                ('indeterminado', 'indeterminado'),
+                ('período justificado', 'período justificado'),
                 ('descarga', 'descarga'),
             ]),
     )

@@ -77,7 +77,7 @@ class Equipment(models.Model):
         ("12H", "12H"),
         ("24H", "24H"),
         ("CONSERTO", "CONSERTO"),
-        ("INDETERMINADO", "INDETERMINADO"),
+        ("PERÍODO JUSTIFICADO", "PERÍODO JUSTIFICADO"),
         ("REQUISIÇÃO JUDICIAL", "REQUISIÇÃO JUDICIAL"),
     )
     date_register = models.DateTimeField("Data de registro", default=timezone.now)

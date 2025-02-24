@@ -101,7 +101,7 @@ USE_TZ = True
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USERNAME'),
         'PASSWORD': os.getenv('DB_PASS'),
@@ -159,12 +159,12 @@ REST_FRAMEWORK = {
 APPEND_SLASH = True
 
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "edielromily01@gmail.com"
+EMAIL_HOST_USER = "cprmo.nugaf@gmail.com" # "edielromily01@gmail.com"
 EMAIL_HOST_PASSWORD = "pvgybzhcgmltvbhh"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-DEFAULT_FROM_EMAIL = 'edielromily01@gmail.com'
+DEFAULT_FROM_EMAIL = "cprmo.nugaf@gmail.com"  # 'edielromily01@gmail.com'
 EMAIL_SENDER_NAME = 'SISCOEM'
 
 

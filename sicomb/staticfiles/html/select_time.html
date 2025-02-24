@@ -1,77 +1,64 @@
 <div class="means_room_load">
-    <!-- <div class="means_room"> -->
-       
-        <div class="loading_or_unloading ">
-            <h1 class="title">Escolha uma das opções que se refere a esta carga</h1>
-            <div class="table_select_time">
-                <!-- <thead>
-                    <tr>
-                    </tr>
-                </thead> -->
-                <div class="tbody_select_time">
-                    <!-- <tr> -->
-                        <div class="radio">
-                            <input type="radio" value="6H" id="six-hours" name="options_load">
-                            <div class="radio_label">
-                                <label for="six-hours">6H</label>
-                            </div>                            
-                        </div>
-                        <div class="radio">
-                            <input type="radio" value="12H" id="twelve-hours" name="options_load">
-                            <div class="radio_label">
-                                <label for="twelve-hours">12H</label>
-                            </div>
-                        </div>
-                        <div class="radio">
-                            <input type="radio" value="24H" id="twenty-four-hours" name="options_load">
-                            <div class="radio_label">
-                                <label for="twenty-four-hours">24H</label>
-                            </div>
-                        </div>  
-                    <!-- </tr> -->
-                    
-                    <!-- <tr> -->
-                        <!-- <td class="radio">
-                            <input type="radio" value="8H" id="eight-hours" name="options_load">
-                            <label for="eight-hours">8H</label>
-                        </td> -->
-                        
-                        <div class="radio">
-                            <input type="radio" value="CONSERTO" id="repair" name="options_load">
-                            <div class="radio_label">
-                                <label for="repair">CONSERTO</label>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="radio">
-                                <input type="radio" value="REQUISIÇÃO JUDICIAL" id="court-order" name="options_load">
-                                <div class="radio_label">
-                                    <label for="court-order">REQUISIÇÃO JUDICIAL</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="radio">
-                            <input type="radio" value="INDETERMINADO" id="indeterminate" name="options_load">
-                            <div class="radio_label">
-                                <label for="indeterminate">INDETERMINADO</label>
-                            </div>
-                        </div>
-                    <!-- </tr> -->
+    <div class="loading_or_unloading">
+        <h1 class="title">Escolha uma das opções que se refere a esta carga</h1>
+        
+        <div class="table_select_time">
+            <div class="tbody_select_time">
+                <div class="radio">
+                    <input type="radio" value="6H" id="six-hours" name="options_load">
+                    <div class="radio_label">
+                        <label for="six-hours">6H</label>
+                    </div>                            
                 </div>
-            </div>
-            <div class="continue_or_return">
-                <div class="return_button">
-                    <a href="." class="return-btn">
-                        <img class="img-return" src="/static/img/return-icon-colored.png" alt="">
-                    </a>
+                <div class="radio">
+                    <input type="radio" value="8H" id="eight-hours" name="options_load">
+                    <div class="radio_label">
+                        <label for="eight-hours">8H</label>
+                    </div>                            
                 </div>
-                <div class="insert_button button_continue">
-                    <input type="button" onclick="setTurnType()" value="CONTINUAR" class="btn-insert btn-continue shadow">
+                <div class="radio">
+                    <input type="radio" value="12H" id="twelve-hours" name="options_load">
+                    <div class="radio_label">
+                        <label for="twelve-hours">12H</label>
+                    </div>
+                </div>
+                <div class="radio">
+                    <input type="radio" value="24H" id="twenty-four-hours" name="options_load">
+                    <div class="radio_label">
+                        <label for="twenty-four-hours">24H</label>
+                    </div>
                 </div>  
+                
+                <div class="radio">
+                    <input type="radio" value="CONSERTO" id="repair" name="options_load">
+                    <div class="radio_label">
+                        <label for="repair">CONSERTO</label>
+                    </div>
+                </div>
+                <div class="radio">
+                    <input type="radio" value="REQUISIÇÃO JUDICIAL" id="court-order" name="options_load">
+                    <div class="radio_label">
+                        <label for="court-order">REQUISIÇÃO JUDICIAL</label>
+                    </div>
+                </div>
+                <div class="radio">
+                    <input type="radio" value="" id="indeterminate" name="options_load">
+                    <div class="radio_label">
+                        <label for="indeterminate"></label>
+                    </div>
+                </div>
             </div>
         </div>
-    <!-- </div> -->
 
-    
-    
+        <div class="continue_or_return">
+            <div class="return_button">
+                <a href="." class="return-btn">
+                    <img class="img-return" src="/static/img/return-icon-colored.png" alt="Voltar">
+                </a>
+            </div>
+            <div class="insert_button button_continue">
+                <input type="button" onclick="setTurnType()" value="CONTINUAR" class="btn-insert btn-continue shadow">
+            </div>  
+        </div>
+    </div>
 </div>

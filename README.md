@@ -27,7 +27,7 @@ venv\Scripts\activate
 
 ```bash
 python3 -m venv venv
-source venv/bin/activate -> acessar a pasta venb/bin/ para exeutar o comando
+source venv/bin/activate -> acessar a pasta venv/bin/ para executar o comando
 ```
 
 ## 3. Instalar as Dependências
@@ -36,27 +36,74 @@ Após ativar o ambiente virtual, instale os pacotes necessários usando `pip`:
 
 ```bash
 pip install -r requirements.txt
-no diretorio SIScomb utilizar pip3
 ```
 
+## 4. Configuração do Banco de Dados
 
-## 4. Aplicar as Migrações
+Crie o banco de dados e o adicione no arquivo .env
 
-Antes de executar a aplicação, aplique as migrações para configurar o esquema do banco de dados:
+```bash
+DB_NAME={nome do banco de dados}
+DB_USERNAME={nome de usuário}
+DB_PASS={senha de usuário}
+DB_PORT=3306
+DB_HOST=localhost
+```
+
+#### 4.1 Acesse o terminal django do banco de dados
+
+```bash
+python manage.py dbshell
+```
+
+#### 4.2 Execute os comandos que estão no arquivo `sicomb/content_type.sql`
+
+#### 4.3 Saia do terminal
+
+Após executar os comandos, execute:
+
+```bash
+exit
+```
+
+#### 4.4 Após sair do terminal
+
+Execute o comando:
+
+```bash
+python manage.py migrate --fake contenttypes
+```
+
+Em seguida, execute:
 
 ```bash
 python manage.py migrate
 ```
 
-Siga as instruções para configurar as credenciais do superusuário.
+## 5. Crie um superusuário
 
-## 5. Executar o Servidor de Desenvolvimento
+Execute o comando:
 
-Por fim, inicie o servidor de desenvolvimento do Django:
+```bash
+python manage.py createsuperuser
+```
+
+Em seguida, siga os passos informados no terminal.
+
+## 6. Executar o Servidor de Desenvolvimento
+
+Por fim, inicie o servidor de desenvolvimento do Django com:
+
+```bash
+python manage.py runserver 0.0.0.0:8000
+```
+
+ou
 
 ```bash
 python manage.py runserver
 ```
 
-Acesse `http://127.0.0.1:8000/` no seu navegador para visualizar a aplicação.
+Obs.: O comando com 0.0.0.0:8000 abre a aplicação para rede. Julgue se é necessário ou não.
 
+Acesse `http://127.0.0.1:8000/` no seu navegador para visualizar a aplicação.

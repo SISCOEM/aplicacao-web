@@ -85,7 +85,6 @@ table img{
 
 .police_officer_field {
     width: 300px;
-    height: 400px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 5px 10px rgb(0,0,0,0.50);
@@ -102,7 +101,7 @@ table img{
     background-color: #fff;
     border-radius: 10px;
     width: 735px;
-    height: 400px;
+    height: 500px;
 }
 
 .perfil {
